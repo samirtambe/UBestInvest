@@ -1,4 +1,4 @@
-(function(){
+(function() {
     angular.module('Sapp').directive('stockListing', function () {
         console.log("lineListing.js");
         return {

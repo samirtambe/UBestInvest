@@ -1,11 +1,18 @@
 (function() {
 
-    angular.module('Sapp').controller('StockListController', ['$scope', 'StockListService',
-        function($scope, StockListService) {
+    angular.module('Sapp').controller('StockListController', ['$scope', 'StockListService', function($scope, StockListService) {
 
-        $scope.stocklist = StockListService.query();
+        $scope.myStocks = ['T','MO','VZ','PRGO','BMY','AOS','AGN'];
+        $scope.stockInfoArray = [];
 
-        console.log("WeatherController Created");
+        for (var i=0,len=$scope.myStocks.length; i < len; i++) {
+
+            if (noerrorsINretreival) {
+                $scope.stockInfoArray.push(StockListService.query());
+            }
+        }
+
+        console.log("StockListController Created");
 
     }]); // Controller
 

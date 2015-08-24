@@ -50,7 +50,7 @@
         //}
 
         console.log("StockListController Created");
-        console.log("==>" + JQuery.parseJSON( $scope.stockInfoArray[0]));
+        //console.log("==>" + JQuery.parseJSON( $scope.stockInfoArray[0]));
     }])
 
 

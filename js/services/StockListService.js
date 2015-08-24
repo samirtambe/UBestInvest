@@ -5,7 +5,7 @@
     console.log("Using StockListService");
 
     return $resource(
-'https://www.quandl.com/api/v1/datasets/WIKI/AAPL.json?auth_token=kA5hVpUMRoQmJyRqFPvk',
+'https://www.quandl.com/api/v1/datasets/WIKI/AAPL.json?column=4&trim_start=2015-01-01&trim_end=2015-08-15&auth_token=kA5hVpUMRoQmJyRqFPvk',
             { },
             {
                 query: {

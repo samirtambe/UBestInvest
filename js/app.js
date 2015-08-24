@@ -35,8 +35,8 @@
                     controller: 'StockListController'
                 },
                 'rightCol@finance': {
-                    templateUrl:'views/stockdetail.html',
-                    controller:'StockDetailController'
+                    templateUrl:'views/stockdetail.html'//,
+                    //controller:'StockDetailController'
                 }
             }
         });

@@ -1,6 +1,6 @@
 (function() {
     angular.module('Sapp').directive('stockListing', function () {
-        console.log("lineListing.js");
+        console.log("stockListing.js");
         return {
             restrict: 'E',
             scope: {

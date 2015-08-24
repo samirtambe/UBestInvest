@@ -17,3 +17,9 @@
     }]); // Controller
 
 }()); // IFFE
+/*
+        0     4        5
+select date, close, volume,
+
+
+*/

@@ -40,17 +40,23 @@
     .controller('StockListController', ['$scope', 'StockListService', function($scope, StockListService) {
 
         $scope.myStocks = ['T','MO','VZ','PRGO','BMY','AOS','AGN'];
-        $scope.stockInfoArray = [];
 
-        //for (var i=0,len=$scope.myStocks.length; i < len; i++) {
+        //var slsvc = StockListService.get({});
 
-            //if (noerrorsINretreival) {
-                $scope.stockInfoArray.push(StockListService.query());
-            //}
-        //}
+        $scope.stockDetail = StockListService.query();
+        console.log ("===>>");
+        console.log($scope.stockDetail);
+
+
+
+        $scope.stockDetail = new StockListService(); // instantiate resource class
+        console.log ("=>");
+        console.log($scope.stockDetail.data);
+
+
 
         console.log("StockListController Created");
-        //console.log("==>" + JQuery.parseJSON( $scope.stockInfoArray[0]));
+
     }])
 
 

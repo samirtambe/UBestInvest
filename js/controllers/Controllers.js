@@ -47,8 +47,6 @@
         console.log ("===>>");
         console.log($scope.stockDetail);
 
-
-
         $scope.stockDetail = new StockListService(); // instantiate resource class
         console.log ("=>");
         console.log($scope.stockDetail.data);

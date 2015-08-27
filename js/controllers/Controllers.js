@@ -39,22 +39,20 @@
 
     .controller('StockListController', ['$scope', 'StockListService', function($scope, StockListService) {
 
+        var ssl = StockListService.get({ data: 'data'}, function() {
+            console.log("1..");
+            console.log(ssl);
+        });
+        var ssls = StockListService.query(function() {
+            console.log("2..");
+            console.log(ssls.data[0]);
+        });
+        $scope.ssl = new StockListService(); // instantiate resource class
+        $scope.ssl.data='some data';
+
         $scope.myStocks = ['T','MO','VZ','PRGO','BMY','AOS','AGN'];
 
-        //var slsvc = StockListService.get({});
-
-        $scope.stockDetail = StockListService.query();
-        console.log ("===>>");
-        console.log($scope.stockDetail);
-
-        $scope.stockDetail = new StockListService(); // instantiate resource class
-        console.log ("=>");
-        console.log($scope.stockDetail.data);
-
-
-
         console.log("StockListController Created");
-
     }])
 
 

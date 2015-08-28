@@ -11,18 +11,26 @@
 
         $stateProvider.state('home', {
             url: '/home',
-            templateUrl: 'views/partial-home.html'
+            templateUrl: 'views/main_menu.html'
         })
-        .state('home.simpleList', {
-            url: '/simple',
-            templateUrl: 'views/biz-list.html',
-            controller: 'MainController'
-        })
-        .state('home.weather', {
+        .state('weather', {
             url: '/weather',
-            templateUrl: 'views/oldweather.html',
-            controller: 'WeatherController'
-        })
+            views: {
+                // Parent Container
+                '': {
+                    templateUrl: 'views/finance.html'
+                },
+                'leftCol@finance': {
+                    templateUrl:'views/stocklist.html',
+                    controller: 'StockListController'
+                },
+                'rightCol@finance': {
+                    templateUrl:'views/stockdetail.html'//,
+                    //controller:'StockDetailController'
+                }
+            }
+
+        )
         .state('finance', {
             url: '/finance',
             views: {
@@ -42,3 +50,14 @@
         });
     });
 }());
+/*
+        .state('home.simpleList', {
+            url: '/simple',
+            templateUrl: 'views/biz-list.html',
+            controller: 'MainController'
+        })
+        .state('home.weather', {
+            url: '/weather',
+            templateUrl: 'views/oldweather.html',
+            controller: 'WeatherController'
+        })*/

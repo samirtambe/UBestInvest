@@ -18,19 +18,18 @@
             views: {
                 // Parent Container
                 '': {
-                    templateUrl: 'views/finance.html'
+                    templateUrl: 'views/weather.html'
                 },
-                'leftCol@finance': {
-                    templateUrl:'views/stocklist.html',
-                    controller: 'StockListController'
+                'leftWeather@finance': {
+                    templateUrl:'views/leftweather.html',
+                    controller: 'WeatherController'
                 },
-                'rightCol@finance': {
-                    templateUrl:'views/stockdetail.html'//,
+                'rightWeather@finance': {
+                    templateUrl:'views/rightweather.html'//,
                     //controller:'StockDetailController'
                 }
             }
-
-        )
+        })
         .state('finance', {
             url: '/finance',
             views: {
@@ -48,6 +47,7 @@
                 }
             }
         });
+
     });
 }());
 /*

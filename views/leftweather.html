@@ -1,0 +1,5 @@
+<!--Weather Template-->
+<img ng-src="{{ weather.current_observation.icon_url }}">
+<p>Temperature: {{ weather.current_observation.temp_f }} F.</p>
+<p>Wind: {{ weather.current_observation.wind_string }}. </p>
+<p>Precipitation: {{ weather.current_observation.precip_today_string }}.</p>

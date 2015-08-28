@@ -1,23 +1,13 @@
 <!--partial-home.html-->
 <div class="jumbotron text-center">
-
-    <h2>Metuchen Business Listing</h2>
-
-    <p>This page demonstrates <span class="text-info">nested views</span>.</p>
-
-<!--
-    When linking to a nested view, we are going to use dot denotation:
-        ui-sref=".list"
-        and
-        ui-sref=".paragraph".
-
-    These will be defined in our Angular file and once we set it up there, we will
-    inject into our new <div ui-view></div>.
--->
-
-    <a ui-sref=".simpleList" class="btn btn-primary">Simple List</a></a>
-
-    <a ui-sref=".weather" class="btn btn-info">Metuchen Weather</a>
+    <h2>Portal</h2>
+</div>
+<div class="col-sm-8 col-sm-offset-2 hidden-xs">
+    <a ui-sref="weather"><img src="/img/weather.png" class="img-thumbnail"></a>
+    <a ui-sref="finance"><img src="/img/finance.jpg" class="img-rounded img-responsive"></a>
+</div>
+<div class="col-xs-12 visible-xs">
+        <a ui-sref="weather">WEATHER</a> &nbsp;&nbsp;
+    <a ui-sref="finance">FINANCE</a>
 
 </div>
-<div ui-view></div>

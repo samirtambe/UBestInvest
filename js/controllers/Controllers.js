@@ -29,13 +29,6 @@
         console.log("StockListController Created");
     }])
 
-
-
-
-
-
-
-
     .controller('WeatherController',
                 ['$scope', 'WeatherService', function($scope, WeatherService) {
 

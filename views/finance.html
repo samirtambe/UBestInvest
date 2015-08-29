@@ -1,13 +1,11 @@
-<!-- finance.html -->
-<div ui-view="heading"></div>
-<div class="row">
-    <!-- LEFT COLUMN -->
-    <div class="col-sm-6">
-        <div ui-view="leftCol"></div>
-    </div>
+<!-- Display a few graphs of the stocks -->
+<h3>Graph of STOCK SYMBOL</h3>
+<input type="text"
+       id="listInvestments"
+       name="listInvestments"
+       placeholder="Select your investment"
+       list="investData"
+       />
+<datalist id="investData"></datalist>
 
-    <!-- RIGHT COLUMN -->
-    <div class="col-sm-6">
-        <div ui-view="rightCol"></div>
-    </div>
-</div>
+<stock-graph></stock-graph>

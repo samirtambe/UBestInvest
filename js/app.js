@@ -20,11 +20,11 @@
                 '': {
                     templateUrl: 'views/weather.html'
                 },
-                'leftWeather@finance': {
+                'leftWeather@weather': {
                     templateUrl:'views/leftweather.html',
                     controller: 'WeatherController'
                 },
-                'rightWeather@finance': {
+                'rightWeather@weather': {
                     templateUrl:'views/rightweather.html'//,
                     //controller:'StockDetailController'
                 }
@@ -32,20 +32,8 @@
         })
         .state('finance', {
             url: '/finance',
-            views: {
-                // Parent Container
-                '': {
-                    templateUrl: 'views/finance.html'
-                },
-                'leftCol@finance': {
-                    templateUrl:'views/stocklist.html',
-                    controller: 'StockListController'
-                },
-                'rightCol@finance': {
-                    templateUrl:'views/stockdetail.html'//,
-                    //controller:'StockDetailController'
-                }
-            }
+            templateUrl: 'views/finance.html',
+            controller: 'StockListController'
         });
 
     });

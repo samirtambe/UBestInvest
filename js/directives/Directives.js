@@ -1,12 +1,12 @@
 (function() {
-    angular.module('Sapp').directive('stockListing', function () {
-        console.log("stockListing.js");
+    angular.module('Sapp').directive('stockGraph', function () {
+        console.log("Running stockGraph Directive");
         return {
             restrict: 'E',
             scope: {
-                biz: '='
+                //stocksymbol: '='
             },
-            templateUrl: 'views/stock-listing.html'
+            templateUrl: 'views/stock-graph.html'
         };
     });
 });

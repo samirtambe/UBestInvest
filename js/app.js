@@ -42,14 +42,3 @@
 
     });
 }());
-/*
-        .state('home.simpleList', {
-            url: '/simple',
-            templateUrl: 'views/biz-list.html',
-            controller: 'MainController'
-        })
-        .state('home.weather', {
-            url: '/weather',
-            templateUrl: 'views/oldweather.html',
-            controller: 'WeatherController'
-        })*/

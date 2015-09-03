@@ -281,3 +281,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.menimage {
+    width: 100px;
+    height: 100px;
+}

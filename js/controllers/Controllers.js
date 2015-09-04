@@ -5,20 +5,22 @@
                 ['$scope', 'StockListService','$window',
                  function($scope, StockListService,$window) {
 
-        var ctr,
-            len,
-            opt,
-            datalist = document.getElementById('investData');
+$scope.getGraph = function() {
 
-        $scope.myStocks = ['T','MO','VZ','PRGO','BMY','AOS','AGN'];
+        //------------------------------------------------------------
+        var parentDiv = document.getElementById('stockChartDiv');
 
-        for (ctr = 0, len = $scope.myStocks.length; ctr < len; ctr++) {
-            opt = document.createElement('option')
-            opt.value = $scope.myStocks[ctr];
-            datalist.appendChild(opt);
-        }
+    try {
+        var childSVG = document.getElementById('theSVG');
+        parentDiv.removeChild(childSVG);
+    }
+    catch(error) {
+        console.log("The element with id = theSVG does not exist.");
+    }
+        //------------------------------------------------------------
 
-        $scope.graphData = StockListService.query();
+        $scope.graphData = StockListService($scope.stockSymbol).query();
+
 
         $scope.graphData.$promise.then(function (result) {
 
@@ -27,39 +29,39 @@
             $scope.graphData = result.data;
 
             console.log("Drawing Chart...");
-//=======================================================================
-//        var margin = {top: 10, right: 10, bottom: 10, left: 10},
-//            width = 460 - margin.left - margin.right,
-//            height = 250 - margin.top - margin.bottom;
-
-        var margin = {top: 20, right: 20, bottom: 30, left: 50},
-            width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
-
-        //var parseDate = d3.time.format("%d-%b-%y");
-        var parseDate = d3.time.format("%Y-%m-%d").parse;
-        var x = d3.time.scale().range([0, width]);
-
-        var y = d3.scale.linear().range([height, 0]);
-
-        var xAxis = d3.svg.axis().scale(x).orient("bottom");
-
-        var yAxis = d3.svg.axis().scale(y).orient("left");
-
-        var area = d3.svg.area()
-            .x(function(d) { return x(d.date); })
-            .y0(height)
-            .y1(function(d) { return y(d.close); });
-
-        var svg = d3.select("#stockChartDiv").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-            var data = [];
+            var margin = {top: 20,  right: 20,  bottom: 30,  left: 50 },
+                width = 960 - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom,
+
+            parseDate = d3.time.format("%Y-%m-%d").parse,
+
+            x = d3.time.scale().range([0, width]),
+
+            y = d3.scale.linear().range([height, 0]),
+
+            xAxis = d3.svg.axis().scale(x).orient("bottom"),
+
+            yAxis = d3.svg.axis().scale(y).orient("left"),
+
+            area = d3.svg.area()
+                .x(function(d) { return x(d.date); })
+                .y0(height)
+                .y1(function(d) { return y(d.close); }),
+
+            svg = d3.select("#stockChartDiv").append("svg")
+            .attr("id","theSVG")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
+
+
+            data = [];
+
 // CONVERT AN LONG ARRAY OF ARRAYS into an array of objects
+
             for (var cat=0,leng = $scope.graphData.length; cat < leng; cat++) {
                 data.unshift(
                     {
@@ -99,10 +101,16 @@
               .style("text-anchor", "end")
               .text("Price (USD)");
 
-//====================================================================================
-        });
+        })
 
-        console.log("StockListController Created");
+        .catch(function(error) {
+
+            console.error('!!! - '+error);
+            alert ($scope.stockSymbol + " is causing problems!");
+            $scope.stockSymbol = "";
+        });// PROMISE CATCH CLAUSE
+}
+        console.log("StockListController");
     }])
 
     .controller('WeatherController',
@@ -110,7 +118,7 @@
 
         $scope.weather = WeatherService.query();
 
-        console.log("WeatherController Created");
+        console.log("WeatherController");
 
     }]);
 }()); // IFFE

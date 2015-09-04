@@ -1,12 +1,23 @@
 <!-- Display a few graphs of the stocks -->
-<h3>Graph of STOCK SYMBOL</h3>
-<input type="text"
-       id="listInvestments"
-       name="listInvestments"
-       placeholder="Select your investment"
-       list="investData"
-       />
-<datalist id="investData"></datalist>
+<h3>Graph of Investment</h3>
+<h4><strong>Symbol:</strong> {{stockSymbol}} </h4>
+<div class="form-group input-group" >
 
+    <input type="search"
+           class="form-control"
+           placeholder="Stock Symbol"
+           id="stockInput"
+           ng-model="stockSymbol"
+           >
 
-<div id="stockChartDiv"></div>
+    <div class="input-group-btn">
+
+        <button type="submit" class="btn btn-primary" ng-click="getGraph()" >
+
+            <i class="glyphicon glyphicon-stats"></i>&nbsp;&nbsp;Get Chart
+
+        </button>
+    </div>
+</div>
+<div id="stockChartDiv">
+</div>

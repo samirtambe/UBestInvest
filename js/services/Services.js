@@ -2,14 +2,15 @@
 
     angular.module('Sapp')
         .factory('StockListService', ['$resource', function($resource) {
+return function(jojo){
 
             console.log("Using StockListService");
 
-            var symbol = 'AAPL',
+            var symbol = jojo,//'MSFT',
                 datatype = '.json?',
                 columns = 'column=4',
-                beginDate = '&trim_start=2015-08-17',
-                endDate = '&trim_end=2015-08-21',
+                beginDate = '&trim_start=2010-09-01',
+                endDate = '&trim_end=2015-08-27',
                 API_KEY = '&auth_token=kA5hVpUMRoQmJyRqFPvk';
 
             return $resource(
@@ -18,6 +19,7 @@
             { },
             { query: { method:'GET', params: {}, isArray:false } }
         );
+}
     }])
 
     .factory('WeatherService', ['$resource', function($resource) {
@@ -27,13 +29,7 @@
         return $resource(
 'http://api.wunderground.com/api/6e5628e3bc5762cf/geolookup/conditions/q/NJ/Metuchen.json',
             { },
-            {
-                query: {
-                    method:'GET',
-                    params: {},
-                    isArray:false
-                }
-            }
+            { query: { method:'GET', params: {}, isArray:false } }
         );
     }]);
 }());

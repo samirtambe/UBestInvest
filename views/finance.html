@@ -1,23 +1,51 @@
 <!-- Display a few graphs of the stocks -->
 <h3>Graph of Investment</h3>
-<h4><strong>Symbol:</strong> {{stockSymbol}} </h4>
-<div class="form-group input-group" >
 
-    <input type="search"
-           class="form-control"
-           placeholder="Stock Symbol"
-           id="stockInput"
-           ng-model="stockSymbol"
-           >
+<h4><strong>Symbol:</strong> {{ stockSymbol }} </h4>
 
-    <div class="input-group-btn">
+<div class="form-inline">
 
-        <button type="submit" class="btn btn-primary" ng-click="getGraph()" >
-
-            <i class="glyphicon glyphicon-stats"></i>&nbsp;&nbsp;Get Chart
-
-        </button>
+    <div class="form-group" >
+        <label class="sr-only" for="stockInput">Enter your stock symbol</label>
+        <input type="search" class="form-control" placeholder="Symbol" id="stockInput"
+               ng-model="stockSymbol">
     </div>
+
+    <div class="form-group">
+        <label ng-repeat="tmfrm in investViewTimeframes"
+               for="{{ tmfrm }}"
+               class="radio-inline">
+            <input type="radio"
+                   name="inlineRadioOptions"
+                   id="{{ tmfrm }}"
+                   ng-model = "timeframeSelected"
+                   ng-value = "tmfrm">{{ tmfrm }}
+        </label>
+<!--
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                 value="option1" >1 Week
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                 value="option1">1 Month
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                 value="option1">6 Months
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                 value="option1">1 Year
+        </label>
+-->
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" ng-click="getGraph()" >
+        &nbsp;&nbsp;<i class="glyphicon glyphicon-stats"></i>&nbsp;&nbsp;
+    </button>
 </div>
+<br />
 <div id="stockChartDiv">
 </div>

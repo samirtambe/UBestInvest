@@ -5,16 +5,16 @@
 
     <div class="form-group" >
         <label class="sr-only" for="stockInput">Enter Symbol</label>
-        <input type="search" class="form-control" placeholder="Symbol" id="stockInput"
-               ng-model="stockSymbol">
+        <input type="search" class="form-control" placeholder="Symbol" id="invInput"
+               ng-model="reqParams.symbol">
     </div>
     <div class="form-group">
         <label ng-repeat="tf in durations" for="{{ tf }}" class="radio-inline">
             <input type="radio"
-                   ng-model = "chosen.timeframe"
+                   ng-model = "reqParams.duration"
                    ng-value = "tf"
                    id = "{{ tf }}"
-                   ng-click = "changeTimeframe()">{{ tf }}
+                   ng-click = "debugParams()">{{ tf }}
         </label>
 <!--        NG-VALUE is the magic that changes the value of chosen.timeframe on each
             click of the radio button with value of tf (from the list of 'durations'
@@ -25,7 +25,7 @@
     </button>
 </div>
 
-<h4><strong>Symbol:</strong> {{ stockSymbol }}</h4>
+<h4><strong>Symbol:</strong> {{ reqParams.symbol }}</h4>
 
 <div id="stockChartDiv">
 </div>

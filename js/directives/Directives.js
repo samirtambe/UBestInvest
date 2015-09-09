@@ -1,7 +1,7 @@
 (function() {
     angular.module('Sapp').directive('stockGraph', function($window) {
 
-        console.log("Running stockGraph Directive");
+        console.log("stockGraph Directive");
 
         return {
 

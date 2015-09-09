@@ -5,17 +5,16 @@
         '$resource', function($resource) {
 
             return function(params) {
-                console.log("params.symbol > "+params.symbol);
-                console.log("params.startDate > "+params.startDate);
-                console.log("params.endDate > "+params.endDate);
+                console.log("symbol = " + params.symbol +
+                                ", startDate = "+ params.startDate +
+                                ", endDate = " + params.endDate
+                               );
 
-            console.log("Using StockListService");
+                console.log("Using StockListService");
 
-            var symbol = datatype = '.json?',
-                columns = 'column=4',
-//                beginDate = '&trim_start=2010-09-01',
-//                endDate = '&trim_end=2015-08-27',
-                API_KEY = '&auth_token=kA5hVpUMRoQmJyRqFPvk';
+                var symbol = datatype = '.json?',
+                    columns = 'column=4',
+                    API_KEY = '&auth_token=kA5hVpUMRoQmJyRqFPvk';
 
             return $resource(
                 'https://www.quandl.com/api/v1/datasets/WIKI/' +

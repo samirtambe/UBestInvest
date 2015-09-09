@@ -5,43 +5,104 @@
         '$scope', 'StockListService', '$window',
         function($scope, StockListService, $window) {
 
-        $scope.durations = ['1 Week', '1 Month', '3 Months', '6 Months', '1 Year'];
 
-        $scope.chosen = { timeframe: '1 Week' } ;
+        var padWithZero = function (chk) {
 
-        $scope.changeTimeframe = function() { console.log($scope.chosen.timeframe); };
+            if (chk.length == 1) { return ('0' + chk); }
+            else { return chk;  }
+        };
+
+
+        $scope.reqParams = {
+            symbol : $scope.stockSymbol,
+            todayDate : new Date(),
+            howLongAgo: new Date(), // just a dummy value, we need it to be a date object
+            duration: '1 Week',
+            startDate: '',
+            endDate: ''
+        };
+
+        $scope.durations = ['1 Week',
+                            '1 Month',
+                            '3 Months',
+                            '6 Months',
+                            '1 Year'];
+
+        $scope.debugParams = function() {
+            //console.log($scope.reqParams);
+            console.log('.');
+        };
+
+
+        $scope.reqParams = {
+            symbol : $scope.stockSymbol,
+            todayDate : new Date(),
+            howLongAgo: new Date(), // just a dummy value, we need it to be a date object
+            duration: '1 Week',
+            startDate: '',
+            endDate: ''
+        };
+
 
         $scope.getGraph = function() {
 
-            switch($scope.chosen.timeframe) {
+            switch($scope.reqParams.duration) {
+
                 case '1 Week':
-
+$scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 3); // yesterdate
+$scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
                     break;
+
                 case '1 Month':
-
+$scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 31);
                     break;
+
                 case '3 Months':
-
+$scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 93);
                     break;
+
                 case '6 Months':
-
+$scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 186);
                     break;
+
                 case '1 Year':
-
+$scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 366);
                     break;
+
+                default:
+$scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
+
             }
 
+//converting dates to a short form string
+            $scope.reqParams.startDate = $scope.reqParams.todayDate.getFullYear() +
+                '-' +
+                padWithZero(($scope.reqParams.todayDate.getMonth() + 1).toString()) +
+                '-' +
+                padWithZero($scope.reqParams.todayDate.getDate().toString());
+
+
+
+            $scope.reqParams.endDate = $scope.reqParams.howLongAgo.getFullYear() +
+                '-' +
+                padWithZero(($scope.reqParams.howLongAgo.getMonth() + 1).toString()) +
+                '-' +
+                padWithZero($scope.reqParams.howLongAgo.getDate().toString());
+
+
+
             var parentDiv = document.getElementById('stockChartDiv');
+
 
             try {
                 var childSVG = document.getElementById('theSVG');
                 parentDiv.removeChild(childSVG);
             }
             catch(error) {
-                console.log("The element with id = theSVG does not exist.");
+                console.log("There is no SVG element to delete...OK");
             }
 
-            $scope.graphData = StockListService($scope.stockSymbol).query();
+            $scope.graphData = StockListService($scope.reqParams).query();
 
 
             $scope.graphData.$promise.then(function (result) {
@@ -92,7 +153,7 @@
                         }
                     );
                 }
-                console.log('Length of array of objects = ' + data.length);
+                console.log('Data Elements = ' + data.length);
 
                 data.forEach(function(d) {
                     d.date = parseDate(d.date);
@@ -121,7 +182,7 @@
                   .attr("y", 6)
                   .attr("dy", ".71em")
                   .style("text-anchor", "end")
-                  .text("Price (USD)");
+                  .text("U.S. Dollars");
 
             })
 
@@ -130,9 +191,18 @@
                 console.error('!!! - '+error);
                 alert ($scope.stockSymbol + " is causing problems!");
                 $scope.stockSymbol = "";
-            });// PROMISE CATCH CLAUSE
+
+            }).finally(function() {
+
+                $scope.reqParams.todayDate = new Date();
+                $scope.reqParams.howLongAgo = new Date();
+                $scope.reqParams.startDate = '';
+                $scope.reqParams.endDate = '';
+
+            });// PROMISE
 
         }; // getGraph function()
+
 
         console.log("StockListController");
     }])

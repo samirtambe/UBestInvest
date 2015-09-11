@@ -22,20 +22,17 @@
             endDate: ''
         };
 
-        $scope.durations = ['1 Week',
-                            '1 Month',
-                            '3 Months',
-                            '6 Months',
-                            '1 Year'];
-
-        $scope.debugParams = function() {
-            //console.log($scope.reqParams);
-            console.log('.');
-        };
-
+        $scope.investments = [
+            {invName: 'Altria Group', invSymbol: 'MO'},
+            {invName: 'Apple Computers', invSymbol: 'AAPL'},
+            {invName: 'Bank of America', invSymbol: 'BAC'},
+            {invName: 'Google', invSymbol: 'GOOG'},
+            {invName: 'Perrigo', invSymbol: 'PRGO'},
+            {invName: 'Microsoft', invSymbol: 'MSFT'},
+        ];
 
         $scope.reqParams = {
-            symbol : $scope.stockSymbol,
+            investment : $scope.investments[0],
             todayDate : new Date(),
             howLongAgo: new Date(), // just a dummy value, we need it to be a date object
             duration: '1 Week',
@@ -43,13 +40,23 @@
             endDate: ''
         };
 
+    //    $scope.reqParams.selectedInvestment = $scope.investments[0];
+
+        $scope.durations = ['1 Week',
+                            '1 Month',
+                            '3 Months',
+                            '6 Months',
+                            '1 Year'];
+
+
+
 
         $scope.getGraph = function() {
 
             switch($scope.reqParams.duration) {
 
                 case '1 Week':
-$scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 3); // yesterdate
+$scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1); // yesterdate
 $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
                     break;
 
@@ -183,7 +190,6 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
                   .attr("dy", ".71em")
                   .style("text-anchor", "end")
                   .text("U.S. Dollars");
-
             })
 
             .catch(function(error) {
@@ -207,12 +213,25 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
         console.log("StockListController");
     }])
 
-    .controller('WeatherController',
-                ['$scope', 'WeatherService', function($scope, WeatherService) {
+    .controller('WeatherController', ['$scope', 'WeatherService', function($scope, WeatherService) {
 
-        $scope.weather = WeatherService.query();
+        $scope.weatherParams = {};
+
+        $scope.locations = [
+                {displayName: "Bangor, Maine", stateCityStr: "ME/Bangor"},
+                {displayName: "Dallas, Texas", stateCityStr: "TX/Dallas"},
+                {displayName: "Miami, Florida", stateCityStr: "FL/Miami"},
+                {displayName: "New York, New York", stateCityStr: "NY/New_York"},
+                {displayName: "Raleigh, North Carolina", stateCityStr: "NC/Raleigh"},
+                {displayName: "San Francisco, California", stateCityStr: "CA/San_Francisco"},
+                {displayName: "Seattle, Washington", stateCityStr: "WA/Seattle"},
+            ];
+
+        //$scope.weatherParams.selectedLocation = $scope.locations[0];
+        $scope.getWeather = function() {
+            $scope.weather = WeatherService($scope.weatherParams).query();
+        };
 
         console.log("WeatherController");
-
     }]);
 }()); // IFFE

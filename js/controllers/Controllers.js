@@ -40,8 +40,6 @@
             endDate: ''
         };
 
-    //    $scope.reqParams.selectedInvestment = $scope.investments[0];
-
         $scope.durations = ['1 Week',
                             '1 Month',
                             '3 Months',

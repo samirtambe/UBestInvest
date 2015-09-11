@@ -29,8 +29,7 @@
                     controller: 'WeatherController'
                 },
                 'rightWeather@weather': {
-                    templateUrl:'views/rightweather.html'//,
-                    //controller:'StockDetailController'
+                    templateUrl:'views/rightweather.html'
                 }
             }
         })

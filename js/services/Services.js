@@ -5,10 +5,6 @@
         '$resource', function($resource) {
 
             return function(params) {
-                console.log("symbol = " + params.symbol +
-                                ", startDate = "+ params.startDate +
-                                ", endDate = " + params.endDate
-                               );
 
                 console.log("Using StockListService");
 
@@ -18,7 +14,7 @@
 
             return $resource(
                 'https://www.quandl.com/api/v1/datasets/WIKI/' +
-                params.symbol + //investment symbol
+                params.investment.invSymbol + //investment symbol
                 datatype +
                 columns +
                 '&trim_start=' + params.endDate +
@@ -30,17 +26,28 @@
                     params: {},
                     isArray:false }
                 });
-            }//return function
+            };//return function
     }])
 
     .factory('WeatherService', ['$resource', function($resource) {
 
-        console.log("Using WeatherService");
+        return function(params) {
 
-        return $resource(
-'http://api.wunderground.com/api/6e5628e3bc5762cf/geolookup/conditions/q/NJ/Metuchen.json',
-            { },
-            { query: { method:'GET', params: {}, isArray:false } }
-        );
+            var API_KEY = '6e5628e3bc5762cf';
+
+            console.log("Using WeatherService...");
+
+            return $resource(
+                'http://api.wunderground.com/api/' +
+                API_KEY +
+                '/conditions/q/' +
+                params.selectedLocation.stateCityStr +
+                '.json',
+                { },
+                {
+                    query: { method:'GET', params: {}, isArray:false }
+                });
+
+        };// return function
     }]);
 }());

@@ -3,3 +3,26 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
+/js/controllers/EntryController.js
+/js/controllers/MainController.js
+/js/controllers/StockController.js
+/js/controllers/WeatherController.js
+/js/directives/StockListing.js
+/js/directives/lineListing.js
+/js/filters/CheckFilter.js
+/js/services/StockListService.js
+/js/services/WeatherService.js
+/template.html
+/gulpfile.js
+/views/biz-list.html
+/views/el.html
+/views/entry.html
+/views/line-listing.html
+/views/newsheading.html
+/views/oldweather.html
+/views/partial-addbiz.html
+/views/partial-home.html
+/views/stock-graph.html
+/views/stock-listing.html
+/views/stockdetail.html
+/views/stocklist.html

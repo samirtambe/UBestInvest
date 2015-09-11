@@ -1,5 +1,26 @@
 <!--Weather Template-->
+<h4>Weather Forecast Details</h4>
+<label for >Please select a city:</label>
+<select id="leftWeatherSelect" class="form-control"
+      ng-options="loc.displayName for loc in locations track by loc.stateCityStr"
+      ng-model="weatherParams.selectedLocation"
+        ng-change="getWeather()">
+</select>
+
 <img ng-src="{{ weather.current_observation.icon_url }}">
+
+<p>Location: {{ weather.current_observation.display_location.city }},
+{{ weather.current_observation.display_location.state_name }}
+</p>
+
 <p>Temperature: {{ weather.current_observation.temp_f }} F.</p>
+
+<p>Feels Like: {{ weather.current_observation.feelslike_f }}. </p>
+
 <p>Wind: {{ weather.current_observation.wind_string }}. </p>
+
+<p>Humidity: {{ weather.current_observation.relative_humidity }}. </p>
+
 <p>Precipitation: {{ weather.current_observation.precip_today_string }}.</p>
+
+<p>UV: {{ weather.current_observation.UV }}. </p>

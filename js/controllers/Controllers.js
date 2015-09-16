@@ -1,15 +1,13 @@
 (function(){
 
-    angular.module('Sapp')
-        .controller('StockListController', [
-        '$scope', 'StockListService', '$window',
-        function($scope, StockListService, $window) {
-
+    angular.module('Sapp').controller('StockListCtrl', ['$scope', 'StockListSvc', '$window', function($scope, StockListSvc, $window) {
 
         var padWithZero = function (chk) {
 
             if (chk.length == 1) { return ('0' + chk); }
+
             else { return chk;  }
+
         };
 
 
@@ -107,16 +105,16 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
                 console.log("There is no SVG element to delete...OK");
             }
 
-            $scope.graphData = StockListService($scope.reqParams).query();
+            $scope.graphData = StockListSvc($scope.reqParams).query();
 
 
             $scope.graphData.$promise.then(function (result) {
 
-                console.log('Setting $scope with retreived graph data');
+                //console.log('Setting $scope with retreived graph data');
 
                 $scope.graphData = result.data;
 
-                console.log("Drawing Chart...");
+                //console.log("Drawing Chart...");
 
 
                 var margin = {top: 20,  right: 20,  bottom: 30,  left: 50 },
@@ -158,7 +156,7 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
                         }
                     );
                 }
-                console.log('Data Elements = ' + data.length);
+                //console.log('Data Elements = ' + data.length);
 
                 data.forEach(function(d) {
                     d.date = parseDate(d.date);
@@ -193,7 +191,7 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
             .catch(function(error) {
 
                 console.error('!!! - '+error);
-                alert ($scope.stockSymbol + " is causing problems!");
+                console.error($scope.stockSymbol + " is causing problems!");
                 $scope.stockSymbol = "";
 
             }).finally(function() {
@@ -207,13 +205,11 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
 
         }; // getGraph function()
 
-
-        console.log("StockListController");
     }])
 
-    .controller('WeatherController', ['$scope', 'WeatherService', function($scope, WeatherService) {
+    .controller('WeatherCtrl', ['$scope', 'WeatherSvc', function($scope, WeatherSvc) {
 
-        $scope.weatherParams = {};
+        $scope.weatherParams = { forecastType: "/conditions"};
 
         $scope.locations = [
                 {displayName: "Bangor, Maine", stateCityStr: "ME/Bangor"},
@@ -227,9 +223,37 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
 
         //$scope.weatherParams.selectedLocation = $scope.locations[0];
         $scope.getWeather = function() {
-            $scope.weather = WeatherService($scope.weatherParams).query();
-        };
 
-        console.log("WeatherController");
+            var currConditionsPromise = WeatherSvc($scope.weatherParams).query();
+
+            currConditionsPromise.$promise.then(function(result){
+
+                $scope.weather = result.current_observation;
+            })
+            .catch(function(error) {
+                console.error('!!! - '+error);
+            });
+
+
+            // change parameter for next request to be 3 day forcast
+            $scope.weatherParams.forecastType = "/forecast";
+
+
+            var forecastPromise = WeatherSvc($scope.weatherParams).query();
+
+            forecastPromise.$promise.then(function(result) {
+
+                //only the array part is needed
+                $scope.threeForecast = result.forecast.txt_forecast.forecastday;
+            })
+            .catch(function(error) {
+                console.error('!!! - '+error);
+            });
+
+
+            //revert back directly after the query has been sent
+            $scope.weatherParams.forecastType = "/conditions";
+
+        };// getWeather()
     }]);
 }()); // IFFE

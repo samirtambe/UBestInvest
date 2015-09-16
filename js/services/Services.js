@@ -1,25 +1,24 @@
 (function() {
 
     angular.module('Sapp')
-        .factory('StockListService', [
+        .factory('StockListSvc', [
         '$resource', function($resource) {
 
             return function(params) {
 
-                console.log("Using StockListService");
-
                 var symbol = datatype = '.json?',
                     columns = 'column=4',
-                    API_KEY = '&auth_token=kA5hVpUMRoQmJyRqFPvk';
+                    API_KEY = '&auth_token=kA5hVpUMRoQmJyRqFPvk',
+                    qnStr = 'https://www.quandl.com/api/v1/datasets/WIKI/' +
+                        params.investment.invSymbol + //investment symbol
+                        datatype + columns +
+                        '&trim_start=' + params.endDate +
+                        '&trim_end=' + params.startDate +
+                        API_KEY;
 
-            return $resource(
-                'https://www.quandl.com/api/v1/datasets/WIKI/' +
-                params.investment.invSymbol + //investment symbol
-                datatype +
-                columns +
-                '&trim_start=' + params.endDate +
-                '&trim_end=' + params.startDate +
-                API_KEY,
+                //console.log(qnStr);
+
+            return $resource(qnStr,
                 { },
                 { query: {
                     method:'GET',
@@ -29,25 +28,21 @@
             };//return function
     }])
 
-    .factory('WeatherService', ['$resource', function($resource) {
+    .factory('WeatherSvc', ['$resource', function($resource) {
 
         return function(params) {
 
-            var API_KEY = '6e5628e3bc5762cf';
+            var API_KEY = '6e5628e3bc5762cf',
 
-            console.log("Using WeatherService...");
+            qryString = 'http://api.wunderground.com/api/' + API_KEY +
+                params.forecastType + '/q/' +
+                params.selectedLocation.stateCityStr + '.json';
 
-            return $resource(
-                'http://api.wunderground.com/api/' +
-                API_KEY +
-                '/conditions/q/' +
-                params.selectedLocation.stateCityStr +
-                '.json',
-                { },
-                {
-                    query: { method:'GET', params: {}, isArray:false }
-                });
+            //console.log(qryString);
 
-        };// return function
+            return $resource(qryString,{ }, {
+                query: { method:'GET', params: {}, isArray:false }
+                });//resource
+        };// return
     }]);
 }());

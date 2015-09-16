@@ -1,7 +1,7 @@
 (function() {
     angular.module('Sapp',['ui.router','firebase','ngResource']);
 
-    console.log("Created Sapp angular module");
+    //console.log("Created Sapp angular module");
 
     angular.module('Sapp').config(
 
@@ -26,17 +26,17 @@
                 },
                 'leftWeather@weather': {
                     templateUrl:'views/leftweather.html',
-                    controller: 'WeatherController'
-                },
+                    controller: 'WeatherCtrl'
+                }/*,
                 'rightWeather@weather': {
                     templateUrl:'views/rightweather.html'
-                }
+                }*/
             }
         })
         .state('finance', {
             url: '/finance',
             templateUrl: 'views/finance.html',
-            controller: 'StockListController'
+            controller: 'StockListCtrl'
         });
 
     });

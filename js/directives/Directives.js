@@ -1,17 +1,5 @@
 (function() {
-    angular.module('Sapp').directive('forecastTitle', function() {
-
-        return {
-
-            restrict:'E',
-            scope: {
-                label: '='
-            },
-            template:"{{ label.title }}"
-       };
-    })
-
-    .directive('stockGraph', function($window) {
+    angular.module('Sapp').directive('stockGraph', function($window) {
 
         console.log("stockGraph Directive");
 

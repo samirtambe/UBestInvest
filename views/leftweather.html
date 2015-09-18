@@ -7,20 +7,50 @@
         ng-change="getWeather()">
 </select>
 
-<img ng-src="{{ weather.current_observation.icon_url }}">
+<div class="weatherCurrentBox table-responsive"
+     ng-if="weather.display_location.city">
 
-<p>Location: {{ weather.current_observation.display_location.city }},
-{{ weather.current_observation.display_location.state_name }}
-</p>
+    <img class="cntwthicon" ng-src="{{ weather.icon_url }}">
 
-<p>Temperature: {{ weather.current_observation.temp_f }} F.</p>
+    <span class="weatherLocation">{{ weather.display_location.city }},
+    {{ weather.display_location.state }}
+    </span>
 
-<p>Feels Like: {{ weather.current_observation.feelslike_f }}. </p>
+    <span class="weatherTempf">{{ weather.temp_f }} F</span>
 
-<p>Wind: {{ weather.current_observation.wind_string }}. </p>
+    <table class="table table-striped">
+        <tr><td>Feels Like</td><td>{{ weather.feelslike_f }} F</td></tr>
+        <tr><td>Wind Speed</td><td>{{ weather.wind_string }}</td></tr>
+        <tr><td>Humidity</td><td>{{ weather.relative_humidity }}</td></tr>
+        <tr><td>Precipitation</td><td>{{ weather.precip_today_string }}</td></tr>
+        <tr><td>UV</td><td>{{ weather.UV }}</td></tr>
+    </table>
 
-<p>Humidity: {{ weather.current_observation.relative_humidity }}. </p>
+</div>
 
-<p>Precipitation: {{ weather.current_observation.precip_today_string }}.</p>
-
-<p>UV: {{ weather.current_observation.UV }}. </p>
+<div class="table-responsive" ng-if="threeForecast">
+    <h3>Extended Forecast for {{ weather.display_location.city }}</h3>
+    <table class="table">
+        <tr>
+            <th ng-repeat="timeframe in threeForecast" >
+                {{ timeframe.date.weekday_short }}
+            </th>
+        </tr>
+        <tr>
+            <td ng-repeat="timeframe in threeForecast" >
+                <img ng-src="{{ timeframe.icon_url }}">
+            </td>
+        </tr>
+        <tr>
+            <td ng-repeat="timeframe in threeForecast" >
+                {{ timeframe.high.fahrenheit }}
+            </td>
+        </tr>
+        <tr>
+            <td ng-repeat="timeframe in threeForecast" >
+                {{ timeframe.low.fahrenheit }}
+            </td>
+        </tr>
+    </table>
+</div>
+<img class="WULogo" ng-src="img/wundergroundLogo_4c.png">

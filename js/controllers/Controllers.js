@@ -244,7 +244,7 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
             forecastPromise.$promise.then(function(result) {
 
                 //only the array part is needed
-                $scope.threeForecast = result.forecast.txt_forecast.forecastday;
+                $scope.threeForecast = result.forecast.simpleforecast.forecastday;
             })
             .catch(function(error) {
                 console.error('!!! - '+error);

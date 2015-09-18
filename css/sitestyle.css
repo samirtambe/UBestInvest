@@ -285,3 +285,33 @@ fieldset[disabled] .navbar-default .btn-link:focus {
     width: 100px;
     height: 100px;
 }
+#leftWeatherSelect {
+    margin-bottom: 20px;
+}
+div.weatherCurrentBox {
+    font-family: verdana, Tahoma, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 7px 7px 7px 7px;
+}
+span.weatherLocation{
+    font-size: 25px;
+}
+
+span.weatherTempf {
+    font-size: 25px;
+    float: right;
+
+}
+img.cntwthicon {
+    margin: auto;
+    display: block;
+}
+img.WULogo {
+    margin: auto;
+    display: block;
+    width: 225px;
+    height: 135px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

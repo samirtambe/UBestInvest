@@ -290,7 +290,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 div.weatherCurrentBox {
     font-family: verdana, Tahoma, sans-serif;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
     padding: 7px 7px 7px 7px;
 }
@@ -314,4 +314,13 @@ img.WULogo {
     height: 135px;
     margin-top: 10px;
     margin-bottom: 30px;
+}
+th.centertext, td.centertext {
+    text-align: center;
+}
+tr > td > i[class^="glyphicon"] {
+    color: dodgerblue;
+}
+tr > td > span > i[class^="glyphicon"] {
+    color: dodgerblue;
 }

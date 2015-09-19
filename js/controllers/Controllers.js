@@ -221,7 +221,7 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
                 {displayName: "Seattle, Washington", stateCityStr: "WA/Seattle"},
             ];
 
-        //$scope.weatherParams.selectedLocation = $scope.locations[0];
+        $scope.weatherParams.selectedLocation = $scope.locations[0];
         $scope.getWeather = function() {
 
             var currConditionsPromise = WeatherSvc($scope.weatherParams).query();

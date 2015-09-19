@@ -212,16 +212,26 @@ $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 7);
         $scope.weatherParams = { forecastType: "/conditions"};
 
         $scope.locations = [
-                {displayName: "Bangor, Maine", stateCityStr: "ME/Bangor"},
-                {displayName: "Dallas, Texas", stateCityStr: "TX/Dallas"},
-                {displayName: "Miami, Florida", stateCityStr: "FL/Miami"},
-                {displayName: "New York, New York", stateCityStr: "NY/New_York"},
-                {displayName: "Raleigh, North Carolina", stateCityStr: "NC/Raleigh"},
-                {displayName: "San Francisco, California", stateCityStr: "CA/San_Francisco"},
-                {displayName: "Seattle, Washington", stateCityStr: "WA/Seattle"},
-            ];
+            {displayName: "Atlanta, Georgia", stateCityStr: "GA/Atlanta"},
+            {displayName: "Bangor, Maine", stateCityStr: "ME/Bangor"},
+            {displayName: "Boston, Massachusetts", stateCityStr: "MA/Boston"},
+            {displayName: "Chicago, Illinois", stateCityStr: "IL/Chicago"},
+            {displayName: "Dallas, Texas", stateCityStr: "TX/Dallas"},
+            {displayName: "Denver, Colorado", stateCityStr: "CO/Denver"},
+            {displayName: "Houston, Texas", stateCityStr: "TX/Houston"},
+            {displayName: "Las Vegas, Nevada", stateCityStr: "NV/Las_Vegas"},
+            {displayName: "Los Angeles, California", stateCityStr: "CA/Los_Angeles"},
+            {displayName: "Miami, Florida", stateCityStr: "FL/Miami"},
+            {displayName: "New York, New York", stateCityStr: "NY/New_York"},
+            {displayName: "Phoenix, Arizona", stateCityStr: "AZ/Phoenix"},
+            {displayName: "Raleigh, North Carolina", stateCityStr: "NC/Raleigh"},
+            {displayName: "San Francisco, California", stateCityStr: "CA/San_Francisco"},
+            {displayName: "Seattle, Washington", stateCityStr: "WA/Seattle"},
+            {displayName: "Washington, D.C.", stateCityStr: "DC/Washington"}
+        ];
 
         $scope.weatherParams.selectedLocation = $scope.locations[0];
+
         $scope.getWeather = function() {
 
             var currConditionsPromise = WeatherSvc($scope.weatherParams).query();

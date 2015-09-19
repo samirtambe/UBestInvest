@@ -20,14 +20,15 @@
         .state('weather', {
             url: '/weather',
             views: {
-                // Parent Container
+                // Parent/Main Weather Container
                 '': {
-                    templateUrl: 'views/weather.html'
-                },
+                    templateUrl: 'views/weather.html',
+                    controller: 'WeatherCtrl'
+                }/*,
                 'leftWeather@weather': {
                     templateUrl:'views/leftweather.html',
                     controller: 'WeatherCtrl'
-                }/*,
+                },
                 'rightWeather@weather': {
                     templateUrl:'views/rightweather.html'
                 }*/

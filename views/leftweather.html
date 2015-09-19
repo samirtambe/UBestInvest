@@ -8,13 +8,14 @@
               ng-model="weatherParams.selectedLocation"
                 ng-change="getWeather()">
         </select>
-        <button type="button"
-                class="btn btn-primary"
-                ng-click="getWeather()">
-            Go
-        </button>
     </div>
+    <button type="button"
+            class="btn btn-primary"
+            ng-click="getWeather()">
+        Go
+    </button>
 </div>
+
 <div class="weatherCurrentBox table-responsive"
      ng-if="weather.display_location.city">
 
@@ -36,7 +37,9 @@
 </div>
 
 <div class="table-responsive" ng-if="threeForecast">
-    <h3>3 Day Forecast</h3>
+
+    <span class="weatherLocation">3 Day Forecast</span>
+
     <table class="table">
         <tr>
             <th ng-repeat="timeframe in threeForecast" class="centertext">

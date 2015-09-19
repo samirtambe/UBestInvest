@@ -285,9 +285,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
     width: 100px;
     height: 100px;
 }
-#leftWeatherSelect {
-    margin-bottom: 20px;
-}
+
 div.weatherCurrentBox {
     font-family: verdana, Tahoma, sans-serif;
     margin-top: 10px;

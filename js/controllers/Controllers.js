@@ -183,8 +183,11 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
             $scope.graphData = data;
             createChart();
 
-        }).finally(function(){
-
+        }).finally(function() {
+            $scope.reqParams.todayDate = new Date();
+            $scope.reqParams.howLongAgo = new Date();
+            $scope.reqParams.startDate = '';
+            $scope.reqParams.endDate = '';
         });
 
     };

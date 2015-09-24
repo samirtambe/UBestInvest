@@ -4,21 +4,21 @@ angular.module('TambeTech').service('QuandlSvc', ['$scope', '$http', '$q', funct
         getQuandlData: getQuandlData
     });
 
-    function getQuandlData() {
+    function getQuandlData(params) {
 
         var prefix = 'https://www.quandl.com/api/v1/datasets/WIKI/',
             datatype = '.json?',
             columns = 'column=4',
             API_KEY = '&auth_token=kA5hVpUMRoQmJyRqFPvk',
             qnStr = prefix +
-                $scope.reqParams.investment.invSymbol +
+                params.investment.invSymbol +
                 datatype +
 
                 columns +
                 '&trim_start=' +
-                $scope.reqParams.endDate +
+                params.endDate +
                 '&trim_end=' +
-                $scope.reqParams.startDate +
+                params.startDate +
                 API_KEY,
 
             request = $http({

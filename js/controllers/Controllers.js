@@ -1,5 +1,6 @@
 angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', '$window', function($scope, QuandlSvc, $window) {
 
+
     var padWithZero = function (chk) {
 
         if (chk.length == 1) { return ('0' + chk); }
@@ -178,10 +179,14 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
         }
 
 
-        QuandlSvc.getQuandlData().then(function(data) {
+        QuandlSvc.getQuandlData($scope.reqParams).then(function(data) {
             $scope.graphData = data;
             createChart();
+
+        }).finally(function(){
+
         });
+
     };
 /**********************************************************************************/
 }])

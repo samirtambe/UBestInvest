@@ -178,10 +178,9 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
         }
 
 
-        QuandlSvc($scope.reqParams).getQuandlData()
-            .then(function(data) {
-                    $scope.graphData = data;
-                    createChart();
+        QuandlSvc.getQuandlData().then(function(data) {
+            $scope.graphData = data;
+            createChart();
         });
     };
 /**********************************************************************************/

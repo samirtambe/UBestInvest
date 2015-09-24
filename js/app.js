@@ -1,44 +1,25 @@
-(function() {
-    angular.module('Sapp',['ui.router','firebase','ngResource']);
+angular.module('TambeTech',['ui.router']).config(
 
-    //console.log("Created Sapp angular module");
+    function($stateProvider, $urlRouterProvider) {
 
-    angular.module('Sapp').config(
+    $urlRouterProvider.otherwise('/home');
 
-        function($stateProvider, $urlRouterProvider) {
-
-        $urlRouterProvider.otherwise('/home');
-
-        $stateProvider.state('home', {
-            url: '/home',
-            templateUrl: 'views/main_menu.html'
-        })
-        .state('about', {
-            url: '/about',
-            templateUrl: 'views/about.html'
-        })
-        .state('weather', {
-            url: '/weather',
-            views: {
-                // Parent/Main Weather Container
-                '': {
-                    templateUrl: 'views/weather.html',
-                    controller: 'WeatherCtrl'
-                }/*,
-                'leftWeather@weather': {
-                    templateUrl:'views/leftweather.html',
-                    controller: 'WeatherCtrl'
-                },
-                'rightWeather@weather': {
-                    templateUrl:'views/rightweather.html'
-                }*/
-            }
-        })
-        .state('finance', {
-            url: '/finance',
-            templateUrl: 'views/finance.html',
-            controller: 'StockListCtrl'
-        });
-
+    $stateProvider.state('home', {
+        url: '/home',
+        templateUrl: 'views/main_menu.html'
+    })
+    .state('about', {
+        url: '/about',
+        templateUrl: 'views/about.html'
+    })
+    .state('weather', {
+        url: '/weather',
+        templateUrl: 'views/weather.html',
+        controller: 'WeatherCtrl'
+    })
+    .state('finance', {
+        url: '/finance',
+        templateUrl: 'views/finance.html',
+        controller: 'StockListCtrl'
     });
-}());
+});

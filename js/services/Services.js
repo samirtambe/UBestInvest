@@ -1,4 +1,4 @@
-angular.module('TambeTech').service('QuandlSvc', ['$scope', '$http', '$q', function($scope, $http, $q) {
+angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http, $q) {
 
     return ({
         getQuandlData: getQuandlData
@@ -23,17 +23,16 @@ angular.module('TambeTech').service('QuandlSvc', ['$scope', '$http', '$q', funct
 
             request = $http({
                 method: "GET",
-                url: qnStr
+                url: qnStr,
+                data: {}
             });
 
         return (request.then(handleSuccess, handleError));
 
     }
 
-// ---
 // PRIVATE METHODS.
-// ---
-// I transform the error response, unwrapping the application dta from
+// I transform the error response, unwrapping the application data from
 // the API response payload.
 
     function handleError( response ) {
@@ -42,7 +41,7 @@ angular.module('TambeTech').service('QuandlSvc', ['$scope', '$http', '$q', funct
         // server (or what not handles properly - ex. server error), then we
         // may have to normalize it on our end, as best we can.
 
-        if (! angular.isObject( response.data ) || ! response.data.message) {
+        if (!angular.isObject( response.data ) || !response.data.message) {
             return( $q.reject( "An unknown error occurred." ) );
         }
         // Otherwise, use expected error message.
@@ -52,6 +51,7 @@ angular.module('TambeTech').service('QuandlSvc', ['$scope', '$http', '$q', funct
     // I transform the successful response, unwrapping the application data
     // from the API response payload.
     function handleSuccess( response ) {
+        console.log("handleSuccess data length.. - " +response.length);
         return( response.data );
     }
 

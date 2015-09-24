@@ -1,5 +1,5 @@
 (function() {
-    angular.module('Sapp').directive('stockGraph', function($window) {
+    angular.module('TambeTech').directive('stockGraph', function($window) {
 
         console.log("stockGraph Directive");
 

@@ -4,27 +4,20 @@ angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http,
         getQuandlData: getQuandlData
     });
 
-    function getQuandlData(params) {
+    function getQuandlData(parm) {
 
-        var prefix = 'https://www.quandl.com/api/v1/datasets/WIKI/',
-            datatype = '.json?',
-            columns = 'column=4',
-            API_KEY = '&auth_token=kA5hVpUMRoQmJyRqFPvk',
-            qnStr = prefix +
-                params.investment.invSymbol +
-                datatype +
+        var datatype = '.json',
+            cols = '4',
+            QUANDL_API_KEY = 'kA5hVpUMRoQmJyRqFPvk',
+            urlBase = 'https://www.quandl.com/api/v1/datasets/WIKI/' +
+                        parm.investment.invSymbol + datatype,
 
-                columns +
-                '&trim_start=' +
-                params.endDate +
-                '&trim_end=' +
-                params.startDate +
-                API_KEY,
-
-            request = $http({
-                method: "GET",
-                url: qnStr,
-                data: {}
+            request = $http({ method: "GET", url: urlBase, params: {
+                    auth_token: QUANDL_API_KEY,
+                    column: cols,
+                    trim_end: parm.startDate,
+                    trim_start: parm.endDate
+                }
             });
 
         return (request.then(handleSuccess, handleError));
@@ -32,28 +25,25 @@ angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http,
     }
 
 // PRIVATE METHODS.
-// I transform the error response, unwrapping the application data from
-// the API response payload.
+// I transform error response, unwrapping the application data from API response payload.
 
-    function handleError( response ) {
-        // The API response from the server should be returned in a
-        // nomralized format. However, if the request was not handled by the
-        // server (or what not handles properly - ex. server error), then we
-        // may have to normalize it on our end, as best we can.
-
-        if (!angular.isObject( response.data ) || !response.data.message) {
+    function handleError(response ) {
+/*
+The API response from the server should be returned in a
+normalized format. However, if the request was not handled by the
+server (or what not handles properly - ex. server error), then we
+may have to normalize it on our end, as best we can.
+*/
+        if (!angular.isObject(response.data ) || !response.data.message) {
             return( $q.reject( "An unknown error occurred." ) );
         }
         // Otherwise, use expected error message.
-        return( $q.reject( response.data.message ) );
+        return($q.reject(response.data.message));
     }
 
     // I transform the successful response, unwrapping the application data
     // from the API response payload.
-    function handleSuccess( response ) {
-        console.log("handleSuccess data length.. - " +response.length);
-        return( response.data );
-    }
+    function handleSuccess(response) { return(response.data.data); }
 
 
 }]).factory('WeatherSvc', ['$resource', function($resource) {

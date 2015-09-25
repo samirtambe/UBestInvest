@@ -229,18 +229,7 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
     $scope.weatherParams.selectedLocation = $scope.locations[0];
 
     $scope.getWeather = function() {
-/*
-var currConditionsPromise = WeatherSvc($scope.weatherParams).query();
 
-currConditionsPromise.$promise.then(function(result){
-
-    $scope.weather = result.current_observation;
-})
-.catch(function(error) {
-    console.error('!!! - '+error);
-});
-
-*/
         WeatherSvc.getWeatherData($scope.weatherParams).then(function(result) {
             $scope.weather = result.current_observation;
         }).catch(function(error) {

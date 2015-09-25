@@ -201,8 +201,7 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
     };
 }])
 /***********************************************************************************************/
-/***********************************************************************************************/
-/***********************************************************************************************/
+
 /***********************************************************************************************/
 .controller('WeatherCtrl', ['$scope', 'WeatherSvc', function($scope, WeatherSvc) {
 
@@ -230,33 +229,34 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
     $scope.weatherParams.selectedLocation = $scope.locations[0];
 
     $scope.getWeather = function() {
+/*
+var currConditionsPromise = WeatherSvc($scope.weatherParams).query();
 
-        var currConditionsPromise = WeatherSvc($scope.weatherParams).query();
+currConditionsPromise.$promise.then(function(result){
 
-        currConditionsPromise.$promise.then(function(result){
+    $scope.weather = result.current_observation;
+})
+.catch(function(error) {
+    console.error('!!! - '+error);
+});
 
+*/
+        WeatherSvc.getWeatherData($scope.weatherParams).then(function(result) {
             $scope.weather = result.current_observation;
-        })
-        .catch(function(error) {
-            console.error('!!! - '+error);
+        }).catch(function(error) {
+            console.log("WeatherCtrl - Current Conditions - Catch: " + error);
         });
 
 
-        // change parameter for next request to be 3 day forcast
+        // Change parameter for next request to be 3 day forcast
         $scope.weatherParams.forecastType = "/forecast";
 
 
-        var forecastPromise = WeatherSvc($scope.weatherParams).query();
-
-        forecastPromise.$promise.then(function(result) {
-
-            //only the array part is needed
+        WeatherSvc.getWeatherData($scope.weatherParams).then(function(result) {
             $scope.threeForecast = result.forecast.simpleforecast.forecastday;
-        })
-        .catch(function(error) {
-            console.error('!!! - '+error);
+        }).catch(function(error) {
+            console.log("WeatherCtrl - 3 Day Forecast - Catch: " + error);
         });
-
 
         //revert back directly after the query has been sent
         $scope.weatherParams.forecastType = "/conditions";

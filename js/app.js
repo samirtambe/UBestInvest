@@ -1,4 +1,4 @@
-angular.module('TambeTech',['ui.router','ngResource']).config(
+angular.module('TambeTech',['ui.router']).config(
 
     function($stateProvider, $urlRouterProvider) {
 

@@ -1,8 +1,6 @@
 angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http, $q) {
 
-    return ({
-        getQuandlData: getQuandlData
-    });
+    return ({ getQuandlData: getQuandlData });
 
     function getQuandlData(parm) {
 
@@ -21,7 +19,6 @@ angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http,
             });
 
         return (request.then(handleSuccess, handleError));
-
     }
 
 // PRIVATE METHODS.
@@ -35,7 +32,7 @@ server (or what not handles properly - ex. server error), then we
 may have to normalize it on our end, as best we can.
 */
         if (!angular.isObject(response.data ) || !response.data.message) {
-            return( $q.reject( "An unknown error occurred." ) );
+            return( $q.reject( "QuandlSvc - An unknown error occurred." ) );
         }
         // Otherwise, use expected error message.
         return($q.reject(response.data.message));
@@ -43,23 +40,49 @@ may have to normalize it on our end, as best we can.
 
     // I transform the successful response, unwrapping the application data
     // from the API response payload.
+
     function handleSuccess(response) { return(response.data.data); }
 
+}]);
+/********************************************************************************************/
+angular.module('TambeTech').service('WeatherSvc', ['$http', '$q', function($http, $q) {
 
-}]).factory('WeatherSvc', ['$resource', function($resource) {
+    return ({ getWeatherData: getWeatherData });
 
-    return function(params) {
+    function getWeatherData(parm) {
 
-        var API_KEY = '6e5628e3bc5762cf',
+        var datatype = '.json',
+            WUNDERGROUND_API_KEY = '6e5628e3bc5762cf',
+            urlBase = 'http://api.wunderground.com/api/' +
+                    WUNDERGROUND_API_KEY +
+                    parm.forecastType +
+                    '/q/' +
+                    parm.selectedLocation.stateCityStr +
+                    datatype;
 
-        qryString = 'http://api.wunderground.com/api/' + API_KEY +
-            params.forecastType + '/q/' +
-            params.selectedLocation.stateCityStr + '.json';
+            request = $http({ method: "GET", url: urlBase, params: {}  });
 
-        //console.log(qryString);
+        return (request.then(handleSuccess, handleError));
+    }
 
-        return $resource(qryString,{ }, {
-            query: { method:'GET', params: {}, isArray:false }
-            });//resource
-    };// return
+// PRIVATE METHODS.
+// I transform error response, unwrapping the application data from API response payload.
+
+    function handleError(response ) {
+/*
+The API response from the server should be returned in a
+normalized format. However, if the request was not handled by the
+server (or what not handles properly - ex. server error), then we
+may have to normalize it on our end, as best we can.
+*/
+        if (!angular.isObject(response.data ) || !response.data.message) {
+            return( $q.reject( "WeatherSvc - An unknown error occurred." ) );
+        }
+        // Otherwise, use expected error message.
+        return($q.reject(response.data.message));
+    }
+
+    // I transform the successful response, unwrapping the application data
+    // from the API response payload.
+    function handleSuccess(response) { return(response.data); }
 }]);

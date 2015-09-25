@@ -22,4 +22,5 @@ angular.module('TambeTech',['ui.router','ngResource']).config(
         templateUrl: 'views/finance.html',
         controller: 'StockListCtrl'
     });
+
 });

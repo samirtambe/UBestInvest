@@ -163,9 +163,10 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
             padWithZero($scope.reqParams.howLongAgo.getDate().toString());
     };
 
-/**********************************************************************************/
     $scope.getGraph = function() {
+
         setBeginDate();
+
         formatDateShort();
 
         var parentDiv = document.getElementById('stockChartDiv');
@@ -175,25 +176,34 @@ angular.module('TambeTech').controller('StockListCtrl', ['$scope', 'QuandlSvc', 
             parentDiv.removeChild(childSVG);
         }
         catch(error) {
-            console.log("There is no SVG element to delete...OK");
+            console.log("No SVG element. Ok.");
         }
 
 
-        QuandlSvc.getQuandlData($scope.reqParams).then(function(data) {
+        QuandlSvc.getQuandlData($scope.reqParams)
+            .then(function(data) {
+
             $scope.graphData = data;
             createChart();
 
+        }).catch(function(error) {
+
+            console.log("StockListCtrl - Catch: " + error);
+
         }).finally(function() {
+
             $scope.reqParams.todayDate = new Date();
             $scope.reqParams.howLongAgo = new Date();
             $scope.reqParams.startDate = '';
             $scope.reqParams.endDate = '';
+
         });
-
     };
-/**********************************************************************************/
 }])
-
+/***********************************************************************************************/
+/***********************************************************************************************/
+/***********************************************************************************************/
+/***********************************************************************************************/
 .controller('WeatherCtrl', ['$scope', 'WeatherSvc', function($scope, WeatherSvc) {
 
     $scope.weatherParams = { forecastType: "/conditions"};

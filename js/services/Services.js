@@ -7,7 +7,7 @@ angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http,
         var datatype = '.json',
             cols = '4',
             QUANDL_API_KEY = 'kA5hVpUMRoQmJyRqFPvk',
-            urlBase = 'https://www.quandl.com/api/v1/datasets/WIKI/' +
+            urlBase = 'https://www.quandl.com/api/v3/datasets/WIKI/' +
                         parm.investment.invSymbol + datatype,
 
             request = $http({ method: "GET", url: urlBase, params: {
@@ -41,7 +41,7 @@ may have to normalize it on our end, as best we can.
     // I transform the successful response, unwrapping the application data
     // from the API response payload.
 
-    function handleSuccess(response) { return(response.data.data); }
+    function handleSuccess(response) { return(response.data.dataset.data); }
 
 }]);
 /********************************************************************************************/

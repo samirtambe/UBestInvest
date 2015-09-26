@@ -21,9 +21,9 @@ angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http,
         return (request.then(handleSuccess, handleError));
     }
 
-// PRIVATE METHODS.
-// I transform error response, unwrapping the application data from API response payload.
-
+/* PRIVATE METHODS.
+I transform error response, unwrapping the application data from API response payload.
+*/
     function handleError(response ) {
 /*
 The API response from the server should be returned in a

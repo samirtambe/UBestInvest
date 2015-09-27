@@ -1,6 +1,6 @@
 angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $q) {
 
-    function getData(parm) {
+    function getData(reqType, parm) {
 
         var format = '.json',
 
@@ -24,7 +24,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
 
             httpObj = { method: 'GET', url: '', params: {} };
 
-        switch(parm.reqType) {
+        switch(reqType) {
 
             case 'stock':
                 httpObj.url = urls.stock + parm.investment.invSymbol + format;
@@ -73,7 +73,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
 
                     var retObj;
 
-                    switch (parm.reqType) {
+                    switch (reqType) {
 
                         case 'stock':
                             retObj = response.data.dataset.data;
@@ -114,6 +114,19 @@ may have to normalize it on our end, as best we can. */
         return (request);
     }//GET DATA
 
-    return ({ getData: getData });
+    function getStockData (parm) { return getData('stock', parm); }
+    function getDowJonesData (parm) { return getData('dowjones', parm); }
+    function getSP500Data (parm) { return getData('sp500', parm); }
+    function getWeatherData (parm) { return getData('weather', parm); }
+    //function getNewsData (parm) { return getData('news', parm); }
+
+
+    return ({
+        getStockData: getStockData,
+        getDowJonesData: getDowJonesData,
+        getSP500Data: getSP500Data,
+        getWeatherData: getWeatherData
+        //,getNewsData: getNewsData
+    });
 
 }]);

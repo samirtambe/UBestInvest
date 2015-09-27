@@ -1,7 +1,5 @@
 angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $q) {
 
-    return ({ getData: getData });
-
     function getData(parm) {
 
         var format = '.json',
@@ -115,4 +113,7 @@ may have to normalize it on our end, as best we can. */
 
         return (request);
     }//GET DATA
+
+    return ({ getData: getData });
+
 }]);

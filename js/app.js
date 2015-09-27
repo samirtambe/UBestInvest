@@ -5,21 +5,27 @@ angular.module('TambeTech',['ui.router']).config(
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
-        .state('home',{
+        .state('home', {
         url:'/home',
-        templateUrl:'views/home.html',
-        controller:'HomeCtrl'
-    })
-        .state('about',{
+        views: {
+            'news@home': {
+                templateUrl:'views/news.html'//,
+                //controller:'NewsCtrl'
+            },
+            'markets@home': {
+                templateUrl:'views/markets.html',
+                controller:'MarketCtrl'
+            }
+        }
+    }).state('about',{
         url:'/about',
         templateUrl:'views/about.html'
-    })
-        .state('weather',{
+
+    }).state('weather',{
         url:'/weather',
         templateUrl:'views/weather.html',
         controller:'WeatherCtrl'
-    })
-    .state('finance',{
+    }).state('finance',{
         url:'/finance',
         templateUrl:'views/finance.html',
         controller:'StockViewCtrl'

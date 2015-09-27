@@ -1,88 +1,110 @@
-angular.module('TambeTech').service('QuandlSvc', ['$http', '$q', function($http, $q) {
+angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $q) {
 
-    return ({ getQuandlData: getQuandlData });
+    return ({ getData: getData });
 
-    function getQuandlData(parm) {
+    function getData(parm) {
 
-        var datatype = '.json',
-            cols = '4',
-            QUANDL_API_KEY = 'kA5hVpUMRoQmJyRqFPvk',
-            urlBase = 'https://www.quandl.com/api/v3/datasets/WIKI/' +
-                        parm.investment.invSymbol + datatype,
+        var format = '.json',
 
-            request = $http({ method: "GET", url: urlBase, params: {
-                    auth_token: QUANDL_API_KEY,
-                    column: cols,
+            StockColumnNum = '4',
+
+            apiKeys = {
+                quandl: 'kA5hVpUMRoQmJyRqFPvk',
+
+                wunderground: '6e5628e3bc5762cf'
+            },
+
+            urls = {
+                stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
+
+                dowjones: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_DJI.json',
+
+                sp500: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_GSPC.json',
+
+                weather: 'http://api.wunderground.com/api/'
+            },
+
+            httpObj = { method: 'GET', url: '', params: {} };
+
+        switch(parm.reqType) {
+
+            case 'stock':
+                httpObj.url = urls.stock + parm.investment.invSymbol + format;
+                httpObj.params = {
+                    auth_token: apiKeys.quandl,
+                    column: StockColumnNum,
                     trim_end: parm.startDate,
                     trim_start: parm.endDate
-                }
-            });
+                };
+                break;
 
-        return (request.then(handleSuccess, handleError));
-    }
 
-/* PRIVATE METHODS.
-I transform error response, unwrapping the application data from API response payload.
-*/
-    function handleError(response ) {
-/*
-The API response from the server should be returned in a
-normalized format. However, if the request was not handled by the
-server (or what not handles properly - ex. server error), then we
-may have to normalize it on our end, as best we can.
-*/
-        if (!angular.isObject(response.data ) || !response.data.message) {
-            return( $q.reject( "QuandlSvc - An unknown error occurred." ) );
-        }
-        // Otherwise, use expected error message.
-        return($q.reject(response.data.message));
-    }
+            case 'dowjones':
+                httpObj.url = urls.dowjones;
+                httpObj.params = {
+                    auth_token: apiKeys.quandl,
+                    column: StockColumnNum,
+                    trim_end: parm.startDate,
+                    trim_start: parm.endDate
+                };
+                break;
 
-    // I transform the successful response, unwrapping the application data
-    // from the API response payload.
 
-    function handleSuccess(response) { return(response.data.dataset.data); }
+            case 'sp500':
+                httpObj.url = urls.sp500;
+                httpObj.params = {
+                    auth_token: apiKeys.quandl,
+                    column: StockColumnNum,
+                    trim_end: parm.startDate,
+                    trim_start: parm.endDate
+                };
+                break;
 
-}]);
-/********************************************************************************************/
-angular.module('TambeTech').service('WeatherSvc', ['$http', '$q', function($http, $q) {
 
-    return ({ getWeatherData: getWeatherData });
-
-    function getWeatherData(parm) {
-
-        var datatype = '.json',
-            WUNDERGROUND_API_KEY = '6e5628e3bc5762cf',
-            urlBase = 'http://api.wunderground.com/api/' +
-                    WUNDERGROUND_API_KEY +
+            case 'weather':
+                httpObj.url = urls.weather +
+                    apiKeys.wunderground +
                     parm.forecastType +
                     '/q/' +
                     parm.selectedLocation.stateCityStr +
-                    datatype;
+                    format;
+                break;
+        }//SWITCH
 
-            request = $http({ method: "GET", url: urlBase, params: {}  });
 
-        return (request.then(handleSuccess, handleError));
-    }
+            request = $http(httpObj).then(
 
-// PRIVATE METHODS.
-// I transform error response, unwrapping the application data from API response payload.
+                // handles SUCCESS
+                function(response) {
 
-    function handleError(response ) {
-/*
-The API response from the server should be returned in a
+                    var retObj;
+
+                    switch (parm.reqType){
+                        case 'stock': retObj = response.data.dataset.data; break;
+                        case 'dowjones': retObj = response.data.dataset.data; break;
+                        case 'sp500': retObj = response.data.dataset.data; break;
+                        case 'weather': retObj = response.data.data; break;
+                    }
+
+                    return(response.data.dataset.data);
+            },
+                // handles ERROR
+/* The API response from the server should be returned in a
 normalized format. However, if the request was not handled by the
 server (or what not handles properly - ex. server error), then we
-may have to normalize it on our end, as best we can.
-*/
-        if (!angular.isObject(response.data ) || !response.data.message) {
-            return( $q.reject( "WeatherSvc - An unknown error occurred." ) );
-        }
-        // Otherwise, use expected error message.
-        return($q.reject(response.data.message));
-    }
+may have to normalize it on our end, as best we can. */
 
-    // I transform the successful response, unwrapping the application data
-    // from the API response payload.
-    function handleSuccess(response) { return(response.data); }
+                function(response ) {
+
+                    if (!angular.isObject(response.data ) ||
+                        !response.data.message) {
+                        return( $q.reject( "QuandlSvc - An unknown error occurred." ) );
+                    }
+
+// Otherwise, use expected error message.
+                    return($q.reject(response.data.message));
+                });//THEN
+
+        return (request);
+    }
 }]);

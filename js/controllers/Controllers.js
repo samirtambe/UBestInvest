@@ -12,7 +12,6 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
-        reqType: 'stock',
         symbol : $scope.stockSymbol,
         investment : $scope.investments[0],
         todayDate : new Date(),
@@ -173,7 +172,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$
         }
 
 
-        HttpSvc.getData($scope.reqParams)
+        HttpSvc.getStockData($scope.reqParams)
             .then(function(data) {
 
             $scope.graphData = data;
@@ -181,7 +180,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$
 
         }).catch(function(error) {
 
-            console.log("StockListCtrl - Catch: " + error);
+            console.log("StockViewCtrl - Catch: " + error);
 
         }).finally(function() {
 
@@ -204,8 +203,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$
 angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',function($scope, HttpSvc) {
 
     $scope.weatherParams = {
-        forecastType: '/conditions',
-        reqType: 'weather'
+        forecastType: '/conditions'
     };
 
     $scope.locations = [
@@ -231,7 +229,7 @@ angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',functio
 
     $scope.getWeather = function() {
 
-        HttpSvc.getData($scope.weatherParams).then(function(result) {
+        HttpSvc.getWeatherData($scope.weatherParams).then(function(result) {
             $scope.weather = result.current_observation;
         }).catch(function(error) {
             console.log("WeatherCtrl - Current Conditions - Catch: " + error);
@@ -242,7 +240,7 @@ angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',functio
         $scope.weatherParams.forecastType = "/forecast";
 
 
-        HttpSvc.getData($scope.weatherParams).then(function(result) {
+        HttpSvc.getWeatherData($scope.weatherParams).then(function(result) {
             $scope.threeForecast = result.forecast.simpleforecast.forecastday;
         }).catch(function(error) {
             console.log("WeatherCtrl - 3 Day Forecast - Catch: " + error);

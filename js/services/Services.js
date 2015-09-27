@@ -62,12 +62,8 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
 
 
             case 'weather':
-                httpObj.url = urls.weather +
-                    apiKeys.wunderground +
-                    parm.forecastType +
-                    '/q/' +
-                    parm.selectedLocation.stateCityStr +
-                    format;
+                httpObj.url = urls.weather + apiKeys.wunderground + parm.forecastType +
+                    '/q/' + parm.selectedLocation.stateCityStr + format;
                 break;
         }//SWITCH
 
@@ -79,14 +75,26 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
 
                     var retObj;
 
-                    switch (parm.reqType){
-                        case 'stock': retObj = response.data.dataset.data; break;
-                        case 'dowjones': retObj = response.data.dataset.data; break;
-                        case 'sp500': retObj = response.data.dataset.data; break;
-                        case 'weather': retObj = response.data.data; break;
+                    switch (parm.reqType) {
+
+                        case 'stock':
+                            retObj = response.data.dataset.data;
+                            break;
+
+                        case 'dowjones':
+                            retObj = response.data.dataset.data;
+                            break;
+
+                        case 'sp500':
+                            retObj = response.data.dataset.data;
+                            break;
+
+                        case 'weather':
+                            retObj = response.data;
+                            break;
                     }
 
-                    return(response.data.dataset.data);
+                    return(retObj);
             },
                 // handles ERROR
 /* The API response from the server should be returned in a
@@ -106,5 +114,5 @@ may have to normalize it on our end, as best we can. */
                 });//THEN
 
         return (request);
-    }
+    }//GET DATA
 }]);

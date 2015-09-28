@@ -6,7 +6,7 @@ angular.module('TambeTech',['ui.router']).config(
 
     $stateProvider
         .state('home', {
-            url:'/',
+            url:'/home',
             views: {
                 '': {
                     templateUrl:'views/home.html'

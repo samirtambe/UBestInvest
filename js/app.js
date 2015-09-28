@@ -6,15 +6,17 @@ angular.module('TambeTech',['ui.router']).config(
 
     $stateProvider
         .state('home', {
-        url:'/home',
-        views: {
+            url:'/',
+            views: {
+                '': {
+                    templateUrl:'views/home.html'
+                },
             'news@home': {
-                templateUrl:'views/news.html'//,
-                //controller:'NewsCtrl'
+                templateUrl: 'views/news.html'
             },
             'markets@home': {
-                templateUrl:'views/markets.html',
-                controller:'MarketCtrl'
+                templateUrl: 'views/markets.html',
+                controller: 'MarketCtrl'
             }
         }
     }).state('about',{

@@ -1,4 +1,4 @@
-angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$window', function($scope, HttpSvc, $window) {
+angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc,$window) {
 
     $scope.investments = [
         {invName: 'Altria Group', invSymbol: 'MO'},
@@ -15,7 +15,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$
         symbol : $scope.stockSymbol,
         investment : $scope.investments[0],
         todayDate : new Date(),
-        howLongAgo: new Date(), // just a dummy value, we need it to be a date object
+        howLongAgo: new Date(),
         duration: $scope.durations[0],
         startDate: '',
         endDate: ''
@@ -25,14 +25,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
 
-    var padWithZero = function (chk) {
-
-        if (chk.length == 1) { return ('0' + chk); }
-
-        else { return chk;  }
-
-    },
-        createChart = function() {
+    var createChart = function() {
 
             var margin = {top: 20,  right: 20,  bottom: 30,  left: 50 },
                 width = 960 - margin.left - margin.right,
@@ -103,63 +96,20 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', '$
               .attr("dy", ".71em")
               .style("text-anchor", "end")
               .text("U.S. Dollars");
-        },
-
-    setBeginDate = function() {
-
-        var dur = $scope.durations;
-
-        switch($scope.reqParams.duration) {
-
-            case dur[0]:
-                $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate()-7);
-                break;
-
-            case dur[1]:
-                $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate()-31);
-                break;
-
-            case dur[2]:
-                $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate() - 93);
-                break;
-
-            case dur[3]:
-                $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate()-186);
-                break;
-
-            case dur[4]:
-                $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate()-366);
-                break;
-
-            case dur[5]:
-                $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate()-1827);
-                break;
-
-            default:
-                $scope.reqParams.howLongAgo.setDate($scope.reqParams.todayDate.getDate()-7);
-        }
-
-    },
-    formatDateShort = function() {
-
-        $scope.reqParams.startDate = $scope.reqParams.todayDate.getFullYear() +
-            '-' +
-            padWithZero(($scope.reqParams.todayDate.getMonth() + 1).toString()) +
-            '-' +
-            padWithZero($scope.reqParams.todayDate.getDate().toString());
-
-        $scope.reqParams.endDate = $scope.reqParams.howLongAgo.getFullYear() +
-            '-' +
-            padWithZero(($scope.reqParams.howLongAgo.getMonth() + 1).toString()) +
-            '-' +
-            padWithZero($scope.reqParams.howLongAgo.getDate().toString());
-    };
+        };
 
     $scope.getGraph = function() {
 
-        setBeginDate();
+        $scope.reqParams.howLongAgo.setDate(
+            ChartSvc.calcBeginDate($scope)
+        );
 
-        formatDateShort();
+        var tframe = ChartSvc.formatDateShort($scope);
+
+        $scope.reqParams.startDate = tframe.start;
+
+        $scope.reqParams.endDate = tframe.end;
+
 
         var parentDiv = document.getElementById('stockChartDiv');
 
@@ -259,6 +209,6 @@ angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',functio
 
 
 /***********************************************************************************************/
-angular.module('TambeTech').controller('HomeCtrl',['$scope', 'HttpSvc', '$window', function($scope, HttpSvc, $window) {
+angular.module('TambeTech').controller('MarketCtrl',['$scope', 'HttpSvc', '$window', function($scope, HttpSvc, $window) {
 
 }]);

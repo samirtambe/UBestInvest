@@ -138,3 +138,89 @@ may have to normalize it on our end, as best we can. */
     });
 
 }]);
+/***********************************************************************************************/
+
+
+
+
+
+
+/***********************************************************************************************/
+angular.module('TambeTech').service('ChartSvc', [function() {
+
+    function padWithZero(chk) {
+
+        if (chk.length == 1) {
+            return ('0' + chk);
+        }
+
+        else {
+            return chk;
+        }
+    };
+
+    function calcBeginDate(scope) {
+
+        var dur = scope.durations,
+            retStartDate;
+
+        switch(scope.reqParams.duration) {
+
+            case dur[0]:
+                retStartDate = scope.reqParams.todayDate.getDate() - 7;
+
+                break;
+
+            case dur[1]:
+                retStartDate = scope.reqParams.todayDate.getDate() - 31;
+                break;
+
+            case dur[2]:
+                retStartDate = scope.reqParams.todayDate.getDate() - 93;
+                break;
+
+            case dur[3]:
+                retStartDate = scope.reqParams.todayDate.getDate() - 186;
+                break;
+
+            case dur[4]:
+                retStartDate = scope.reqParams.todayDate.getDate() - 366;
+                break;
+
+            case dur[5]:
+                retStartDate = scope.reqParams.todayDate.getDate() - 1827;
+                break;
+
+            default:
+                retStartDate = scope.reqParams.todayDate.getDate() - 7;
+        }
+        return retStartDate;
+    }
+
+    function formatDateShort(scope) {
+
+        var shortDate = {
+            start: '',
+            end: ''
+        };
+
+         shortDate.start = scope.reqParams.todayDate.getFullYear() +
+            '-' +
+            padWithZero((scope.reqParams.todayDate.getMonth() + 1).toString()) +
+            '-' +
+            padWithZero(scope.reqParams.todayDate.getDate().toString());
+
+         shortDate.end = scope.reqParams.howLongAgo.getFullYear() +
+            '-' +
+            padWithZero((scope.reqParams.howLongAgo.getMonth() + 1).toString()) +
+            '-' +
+            padWithZero(scope.reqParams.howLongAgo.getDate().toString());
+
+        return shortDate;
+    }
+
+    return({
+        calcBeginDate: calcBeginDate,
+        formatDateShort: formatDateShort
+    });
+}]);

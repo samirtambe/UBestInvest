@@ -15,8 +15,9 @@ angular.module('TambeTech',['ui.router']).config(
                 templateUrl: 'views/news.html'
             },
             'markets@home': {
-                templateUrl: 'views/markets.html',
-                controller: 'MarketCtrl'
+                templateUrl: 'views/markets.html'
+                //,
+                //controller: 'MarketCtrl'
             }
         }
     }).state('about',{

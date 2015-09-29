@@ -33,7 +33,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
                 httpObj.url = urls.stock + parm.investment.invSymbol + format;
                 httpObj.params = {
                     auth_token: apiKeys.quandl,
-                    column: StockColumnNum,
+                    column_index: StockColumnNum,
                     trim_end: parm.startDate,
                     trim_start: parm.endDate
                 };
@@ -44,7 +44,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
                 httpObj.url = urls.dowjones;
                 httpObj.params = {
                     auth_token: apiKeys.quandl,
-                    column: StockColumnNum,
+                    column_index: StockColumnNum,
                     trim_end: parm.startDate,
                     trim_start: parm.endDate
                 };
@@ -55,7 +55,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
                 httpObj.url = urls.sp500;
                 httpObj.params = {
                     auth_token: apiKeys.quandl,
-                    column: StockColumnNum,
+                    column_index: StockColumnNum,
                     trim_end: parm.startDate,
                     trim_start: parm.endDate
                 };

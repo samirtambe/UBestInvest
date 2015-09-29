@@ -142,6 +142,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
             .then(function(data) {
 
             $scope.graphData = data;
+console.log('stockCtrl len = '+ $scope.graphData.length);
             createChart();
 
         }).catch(function(error) {
@@ -232,7 +233,7 @@ angular.module('TambeTech').controller('MarketCtrl', ['$scope', '$window', 'Char
     1) use HttpSvc to to call quandl (use dowjones/sp500)
     2) plot chart
 */
-
+console.log('starting MarketCtrl');
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
@@ -245,6 +246,9 @@ angular.module('TambeTech').controller('MarketCtrl', ['$scope', '$window', 'Char
         endDate: ''
     };
 
+    //set it to an empty array so it will have length=0 for the watch collection
+    //statement to detect a change in lengths
+    $scope.graphData = [];
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
@@ -274,6 +278,7 @@ angular.module('TambeTech').controller('MarketCtrl', ['$scope', '$window', 'Char
         console.log("No SVG element. This is fine.");
     }
 
+    console.log('Getting Dow Jones Data using $http');
 
     HttpSvc.getDowJonesData($scope.reqParams)
         .then(function(data) {

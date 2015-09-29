@@ -1,4 +1,4 @@
-angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc,$window) {
+angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.investments = [
         {invName: 'Altria Group', invSymbol: 'MO'},
@@ -27,9 +27,18 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
 
     var createChart = function() {
 
-            var margin = {top: 20,  right: 20,  bottom: 30,  left: 50 },
-                width = 960 - margin.left - margin.right,
-                height = 500 - margin.top - margin.bottom,
+        var stkChrtDiv = document.getElementById("stockChartDiv"),
+            wide = stkChrtDiv.scrollWidth,
+            tall = stkChrtDiv.scrollHeight;
+
+        var margin = {
+            top: 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+            width = wide - margin.left - margin.right,
+            height = tall - margin.top - margin.bottom,
 
             parseDate = d3.time.format("%Y-%m-%d").parse,
 
@@ -42,16 +51,22 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
             yAxis = d3.svg.axis().scale(y).orient("left"),
 
             area = d3.svg.area()
-                .x(function(d) { return x(d.date); })
-                .y0(height)
-                .y1(function(d) { return y(d.close); }),
+                .x(function(d) {
+                    return x(d.date);
 
-            svg = d3.select("#stockChartDiv").append("svg")
-            .attr("id","theSVG")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-              .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
+                }).y0(height)
+
+                .y1(function(d) {
+                    return y(d.close);
+                }),
+
+            svg = d3.select("#stockChartDiv")
+                    .append("svg")
+                    .attr("id","theSVG")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
 
 
             data = [];
@@ -114,6 +129,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
         var parentDiv = document.getElementById('stockChartDiv');
 
         try {
+            console.log('Trying to remove SVG element');
             var childSVG = document.getElementById('theSVG');
             parentDiv.removeChild(childSVG);
         }
@@ -209,6 +225,72 @@ angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',functio
 
 
 /***********************************************************************************************/
-angular.module('TambeTech').controller('MarketCtrl',['$scope', 'HttpSvc', '$window', function($scope, HttpSvc, $window) {
+angular.module('TambeTech').controller('MarketCtrl', ['$scope', '$window', 'ChartSvc', 'HttpSvc', function($scope, $window, ChartSvc, HttpSvc) {
 
+/*
+    0) Get User Data and format it for the query to send to HttpSvc
+    1) use HttpSvc to to call quandl (use dowjones/sp500)
+    2) plot chart
+*/
+
+    $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
+
+    $scope.reqParams = {
+//        symbol : $scope.stockSymbol,
+//        investment : $scope.investments[0],
+        todayDate : new Date(),
+        howLongAgo: new Date(),
+        duration: $scope.durations[0],
+        startDate: '',
+        endDate: ''
+    };
+
+
+    $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
+
+    $scope.reqParams.howLongAgo
+       .setDate(  ChartSvc.calcBeginDate($scope)  );
+
+
+    var tframe = ChartSvc.formatDateShort($scope);
+
+
+    $scope.reqParams.startDate = tframe.start;
+
+
+    $scope.reqParams.endDate = tframe.end;
+
+
+    var parentDiv = document.getElementById('mktDiv');
+
+
+    try {
+        var childSVG = document.getElementById('leSVG');
+
+        parentDiv.removeChild(childSVG);
+    }
+    catch(error) {
+
+        console.log("No SVG element. This is fine.");
+    }
+
+
+    HttpSvc.getDowJonesData($scope.reqParams)
+        .then(function(data) {
+
+        $scope.graphData = data;
+        console.log('Received Data!');
+
+    }).catch(function(error) {
+
+        console.log("stockGraph Directive - Catch: " + error);
+
+    }).finally(function() {
+
+        $scope.reqParams.todayDate = new Date();
+        $scope.reqParams.howLongAgo = new Date();
+        $scope.reqParams.startDate = '';
+        $scope.reqParams.endDate = '';
+
+    });
 }]);

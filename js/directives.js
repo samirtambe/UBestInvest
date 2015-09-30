@@ -2,107 +2,94 @@ angular.module('TambeTech').directive('stockGraph', ['$parse', '$window', functi
 
    return {
        restrict: 'E',
-       template: "<svg id='leSVG' width='400' height='200'></svg>",
+       template: "<div id='mktDivDowJOnes' width='400' height='200'></div>",
        controller: 'MarketCtrl',
        link: function(scope, elem, attrs) {
 
-console.log('Directive scope > ' + scope.graphData);
-
            var exp = $parse(attrs.chartData),
 
-           grData = exp(scope),
+               grData = exp(scope);
 
-           padding = 20,
 
-           pathClass = "path",
+           var margin = {top: 10, right: 10, bottom: 30, left: 55},
 
-           xScale, yScale, xAxisGen, yAxisGen, lineFun,
+               width = 420 - margin.left - margin.right,
 
-           d3 = $window.d3,
+               height = 220 - margin.top - margin.bottom,
 
-           rawSvg = elem.find('svg'),
+               parseDate = d3.time.format("%Y-%m-%d").parse,
 
-           svg = d3.select(rawSvg[0]);
 
-console.log('Directive grData > ' + scope.graphData);
+               // create x-axis scale
+               x = d3.time.scale().range([0, width]),
 
-//           scope.$watchCollection(exp, function(newVal, oldVal){
-//               grData=newVal;
-//               redrawLineChart();
-//           });
+               // create y-axis scale
+               y = d3.scale.linear().range([height, 0]),
 
-           function setChartParameters(){
+               // orient x-axis
+               xAxis = d3.svg.axis().scale(x).orient("bottom"),
 
-               xScale = d3.scale.linear()
-                   .domain([grData[0].date, grData[grData.length-1].date])
-                   .range([padding + 5, rawSvg.attr("width") - padding]);
+               // orient y-axis
+               yAxis = d3.svg.axis().scale(y).orient("left"),
 
-               yScale = d3.scale.linear()
-                   .domain([0, d3.max(grData, function (d) {
-                       return d.sales;
-                   })])
-                   .range([rawSvg.attr("height") - padding, 0]);
+               area = d3.svg.area().x(function(d) {
+                   return x(d.date);
 
-               xAxisGen = d3.svg.axis()
-                   .scale(xScale)
-                   .orient("bottom")
-                   .ticks(grData.length - 1);
+               }).y0(height).y1(function(d) {
+                   return y(d.close);
+               }),
 
-               yAxisGen = d3.svg.axis()
-                   .scale(yScale)
-                   .orient("left")
-                   .ticks(5);
+               svg = d3.select("#mktDivDowJOnes")
+                        .append("svg")
+                        .attr("id","mktDowJonesSVG")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-               lineFun = d3.svg.line()
-                   .x(function (d) {
-                       return xScale(d.hour);
-                   })
-                   .y(function (d) {
-                       return yScale(d.sales);
-                   })
-                   .interpolate("basis");
-           }
+           var drawChart = function() {
 
-         function drawLineChart() {
+               var data = [];
 
-               setChartParameters();
+    // CONVERT AN LONG ARRAY OF ARRAYS into an array of objects
 
-               svg.append("svg:g")
-                   .attr("class", "x axis")
-                   .attr("transform", "translate(0,180)")
-                   .call(xAxisGen);
+               for (var cat = 0; cat < grData.length; cat++) {
+                        data.unshift(
+                            {
+                                date: grData[cat][0],//$scope.graphData[cat][0],
+                                close: grData[cat][1] //$scope.graphData[cat][1]
+                            }
+                        );
+                    }
 
-               svg.append("svg:g")
-                   .attr("class", "y axis")
-                   .attr("transform", "translate(20,0)")
-                   .call(yAxisGen);
+               data.forEach(function(d) {
+                   d.date = parseDate(d.date);
+                   d.close = +d.close;
+               });
 
-               svg.append("svg:path")
-                   .attr({
-                       d: lineFun(grData),
-                       "stroke": "blue",
-                       "stroke-width": 2,
-                       "fill": "none",
-                       "class": pathClass
-                   });
-           }
+               x.domain(d3.extent(data, function(d) { return d.date; } ) );
 
-           function redrawLineChart() {
+               y.domain([0, d3.max(data, function(d) { return d.close; } ) ] );
 
-               setChartParameters();
+               svg.append("path").datum(data).attr("class", "area").attr("d", area);
 
-               svg.selectAll("g.y.axis").call(yAxisGen);
+               // Drawing x-axis
+               svg.append("g").attr("class","x axis").attr("transform","translate(0,"+height+")")
+                   .call(xAxis);
 
-               svg.selectAll("g.x.axis").call(xAxisGen);
+               // Drawing y-axis
+               svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+                   .attr("transform", "rotate(-90)").attr("y", 6).attr("dy", ".71em")
+                   .style("text-anchor", "end").text("U.S. Dollars");
 
-               svg.selectAll("."+pathClass)
-                   .attr({
-                       d: lineFun(grData)
-                   });
-           }
+           };//drawChart
 
-           drawLineChart();
-       }
-   };
+           scope.$watchCollection(exp, function(newVal, oldVal) {
+
+               grData = newVal;
+               drawChart();
+           });
+
+       }// LINK FUNCTION
+   };// RETURN
 }]);
-//parseDate = d3.time.format("%Y-%m-%d").parse;

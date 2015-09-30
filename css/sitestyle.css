@@ -322,31 +322,3 @@ tr > td > i[class^="glyphicon"] {
 tr > td > span > i[class^="glyphicon"] {
     color: dodgerblue;
 }
-
-
-/*  USING min-width - it will do what is inside @media
-    while width is greater than what min-width is set to
-    in parenthesis
-*/
-#stockChartDiv {
-    width: auto;
-    height: 170px;
-}
-@media screen and (min-width: 768px) {
-    #stockChartDiv {
-        width: 540px;
-        height: 230px;
-    }
-}
-@media screen and (min-width: 992px) {
-    #stockChartDiv {
-        width: 780px;
-        height: 350px;
-    }
-}
-@media screen and (min-width: 1200px) {
-    #stockChartDiv {
-        width: 980px;
-        height:  500px;
-    }
-}

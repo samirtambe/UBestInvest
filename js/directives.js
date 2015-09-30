@@ -3,7 +3,6 @@ angular.module('TambeTech').directive('stockGraph', ['$parse', '$window', functi
    return {
        restrict: 'E',
        template: "<div id='mktDivDowJOnes' width='400' height='200'></div>",
-       controller: 'MarketCtrl',
        link: function(scope, elem, attrs) {
 
            var exp = $parse(attrs.chartData),
@@ -85,7 +84,7 @@ angular.module('TambeTech').directive('stockGraph', ['$parse', '$window', functi
            };//drawChart
 
            scope.$watchCollection(exp, function(newVal, oldVal) {
-
+console.log('change');
                grData = newVal;
                drawChart();
            });

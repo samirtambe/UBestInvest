@@ -228,17 +228,11 @@ angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',functio
 /***********************************************************************************************/
 angular.module('TambeTech').controller('MarketCtrl', ['$scope', '$window', 'ChartSvc', 'HttpSvc', function($scope, $window, ChartSvc, HttpSvc) {
 
-/*
-    0) Get User Data and format it for the query to send to HttpSvc
-    1) use HttpSvc to to call quandl (use dowjones/sp500)
-    2) plot chart
-*/
-console.log('starting MarketCtrl');
+
+
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
-//        symbol : $scope.stockSymbol,
-//        investment : $scope.investments[0],
         todayDate : new Date(),
         howLongAgo: new Date(),
         duration: $scope.durations[0],
@@ -269,22 +263,18 @@ console.log('starting MarketCtrl');
 
 
     try {
-        var childSVG = document.getElementById('leSVG');
 
-        parentDiv.removeChild(childSVG);
+        parentDiv.removeChild(document.getElementById('leSVG'));
     }
     catch(error) {
 
-        console.log("No SVG element. This is fine.");
+        console.log("Informational: No SVG element to remove.");
     }
 
-    console.log('Getting Dow Jones Data using $http');
-
-    HttpSvc.getDowJonesData($scope.reqParams)
-        .then(function(data) {
+    HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
 
         $scope.graphData = data;
-        console.log('Received Data!');
+        console.log('Data Received: Dow Jones');
 
     }).catch(function(error) {
 

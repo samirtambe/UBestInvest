@@ -142,7 +142,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
             .then(function(data) {
 
             $scope.graphData = data;
-console.log('stockCtrl len = '+ $scope.graphData.length);
+
             createChart();
 
         }).catch(function(error) {
@@ -226,8 +226,7 @@ angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',functio
 
 
 /***********************************************************************************************/
-angular.module('TambeTech').controller('MarketCtrl', ['$scope', '$window', 'ChartSvc', 'HttpSvc', function($scope, $window, ChartSvc, HttpSvc) {
-
+angular.module('TambeTech').controller('MarketCtrl', ['$scope',  'ChartSvc', 'HttpSvc', function($scope,  ChartSvc, HttpSvc) {
 
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
@@ -235,57 +234,67 @@ angular.module('TambeTech').controller('MarketCtrl', ['$scope', '$window', 'Char
     $scope.reqParams = {
         todayDate : new Date(),
         howLongAgo: new Date(),
-        duration: $scope.durations[0],
+        duration: $scope.durations[5],
         startDate: '',
         endDate: ''
     };
 
-    //set it to an empty array so it will have length=0 for the watch collection
-    //statement to detect a change in lengths
-    $scope.graphData = [];
-
+    //$scope.graphData = [];
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
     $scope.reqParams.howLongAgo
        .setDate(  ChartSvc.calcBeginDate($scope)  );
 
-
     var tframe = ChartSvc.formatDateShort($scope);
-
 
     $scope.reqParams.startDate = tframe.start;
 
-
     $scope.reqParams.endDate = tframe.end;
-
 
     var parentDiv = document.getElementById('mktDiv');
 
+    try { parentDiv.removeChild(document.getElementById('leSVG')); }
 
-    try {
+    catch(error) {}
 
-        parentDiv.removeChild(document.getElementById('leSVG'));
-    }
-    catch(error) {
+    $scope.populateDowJones = function() {
 
-        console.log("Informational: No SVG element to remove.");
-    }
+        HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
 
-    HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
+            $scope.graphData = data;
+console.log('Dow Jones Data Received.' + $scope.graphData[0]);
+        }).catch(function(error) {
 
-        $scope.graphData = data;
-        console.log('Data Received: Dow Jones');
+            console.log("stockGraph dow jones Directive - Catch: " + error);
 
-    }).catch(function(error) {
+        }).finally(function() {
 
-        console.log("stockGraph Directive - Catch: " + error);
+            $scope.reqParams.todayDate = new Date();
+            $scope.reqParams.howLongAgo = new Date();
+            $scope.reqParams.startDate = '';
+            $scope.reqParams.endDate = '';
 
-    }).finally(function() {
+        });
+    }//getMktData()
 
-        $scope.reqParams.todayDate = new Date();
-        $scope.reqParams.howLongAgo = new Date();
-        $scope.reqParams.startDate = '';
-        $scope.reqParams.endDate = '';
+    $scope.populateSP500 = function() {
 
-    });
+        HttpSvc.getSP500Data($scope.reqParams).then(function(data) {
+
+            $scope.graphData = data;
+console.log('SP500 Data Received.' + $scope.graphData[0]);
+        }).catch(function(error) {
+
+            console.log("stockGraph sp500 Directive - Catch: " + error);
+
+        }).finally(function() {
+
+            $scope.reqParams.todayDate = new Date();
+            $scope.reqParams.howLongAgo = new Date();
+            $scope.reqParams.startDate = '';
+            $scope.reqParams.endDate = '';
+
+        });
+    }//getSP500MktData()
+console.log('Initial run of MarketCtrl controller complete');
 }]);

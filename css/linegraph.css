@@ -38,6 +38,7 @@
 div.frontChartDiv {
     width: auto;
     height: 170px;
+    margin-bottom: 30px;
 }
 @media screen and (min-width: 992px) {
     div.frontChartDiv {

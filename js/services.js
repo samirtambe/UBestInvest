@@ -84,7 +84,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
                         break;
 
                     case 'stock':
-                        retObj = response.data.dataset.data;
+                        retObj = response.data.dataset;
                         break;
 
                     case 'dowjones':

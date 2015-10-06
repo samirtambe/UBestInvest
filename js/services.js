@@ -102,7 +102,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
 
                 return(retObj);
         },
-            // handles ERROR
+// ----------------- HANDLES ERROR ----------------------------
 /* The API response from the server should be returned in a
 normalized format. However, if the request was not handled by the
 server (or what not handles properly - ex. server error), then we
@@ -112,12 +112,16 @@ may have to normalize it on our end, as best we can. */
                 if (response.status == '400' &&
                     response.data.quandl_error.code == 'QECx01') {
 
-                    return($q.reject( "HttpSvc - " + response.data.quandl_error.message));
+                    console.log("HttpSvc - " + response.data.quandl_error.message);
+
+                    return($q.reject("Perhaps you forgot to enter the stock symbol."));
                 }
                 else if (response.status == '404' &&
                          response.data.quandl_error.code == 'QECx02') {
 
-                    return($q.reject( "HttpSvc - " + response.data.quandl_error.message));
+                    console.log( "HttpSvc - " + response.data.quandl_error.message);
+
+                    return($q.reject("Unable to find symbol."));
 
                 }
                 else if (!angular.isObject(response.data ) ||

@@ -1,19 +1,10 @@
 angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
-//    $scope.investments = [
-//        {invName: 'Altria Group', invSymbol: 'MO'},
-//        {invName: 'Apple Computers', invSymbol: 'AAPL'},
-//        {invName: 'Bank of America', invSymbol: 'BAC'},
-//        {invName: 'Google', invSymbol: 'GOOG'},
-//        {invName: 'Perrigo', invSymbol: 'PRGO'},
-//        {invName: 'Microsoft', invSymbol: 'MSFT'},
-//    ];
-
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
-        symbol : '',//$scope.stockSymbol,
-        investment : '',//$scope.investments[0],
+        symbol : '',
+        investment : '',
         todayDate : new Date(),
         howLongAgo: new Date(),
         duration: $scope.durations[0],
@@ -139,10 +130,10 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
 
 
         HttpSvc.getStockData($scope.reqParams)
-            .then(function(data) {
+            .then(function(dataset) {
 
-            $scope.graphData = data;
-
+            $scope.graphData = dataset.data;
+            $scope.reqParams.investment = dataset.name;
             createChart();
 
         }).catch(function(error) {
@@ -157,6 +148,9 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
             $scope.reqParams.endDate = '';
 
         });
+    };
+    $scope.showCompanyList = function(){
+        console.log('showCompanyList');
     };
 }]);
 /***********************************************************************************************/
@@ -262,7 +256,7 @@ angular.module('TambeTech').controller('MarketCtrl', ['$scope',  'ChartSvc', 'Ht
         HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
 
             $scope.graphData = data;
-console.log('Dow Jones Data Received.' + $scope.graphData[0]);
+//console.log('Dow Jones Data Received.' + $scope.graphData[0]);
         }).catch(function(error) {
 
             console.log("stockGraph dow jones Directive - Catch: " + error);
@@ -282,7 +276,7 @@ console.log('Dow Jones Data Received.' + $scope.graphData[0]);
         HttpSvc.getSP500Data($scope.reqParams).then(function(data) {
 
             $scope.graphData = data;
-console.log('SP500 Data Received.' + $scope.graphData[0]);
+//console.log('SP500 Data Received.' + $scope.graphData[0]);
         }).catch(function(error) {
 
             console.log("stockGraph sp500 Directive - Catch: " + error);

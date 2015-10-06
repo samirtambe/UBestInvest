@@ -1,17 +1,26 @@
 angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $q) {
+/*
+    When adding functionality:
+        1) ADD additional variables
+        2) ADD API Keys
+        3) ADD URLs
+        4) ADD to params switch
+        5) ADD to return data switch
+        6) ADD to wrapper function
 
+*/
     function getData(reqType, parm) {
-
+/* * * * * * * * * * * * * * * * VARIABLES * * * * * * * * * * * * * * * * * * * * * * * * * * */
         var format = '.json',
 
             StockColumnNum = '4',
-
+/* * * * * * * * * * * * * * * * API KEYS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             apiKeys = {
                 quandl: 'kA5hVpUMRoQmJyRqFPvk',
 
                 wunderground: '6e5628e3bc5762cf'
             },
-
+/* * * * * * * * * * * * * * * * URLS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             urls = {
                 stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
 
@@ -74,12 +83,12 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
 
         request = $http(httpObj).then(
 
-            // handles SUCCESS
+/* * * * * * CALLBACK FOR SUCCESS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
             function(response) {
 
                 var retObj;
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * DATA SEGMENT SWITCH * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * RETURN DATA SWITCH * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
                 switch (reqType) {
@@ -107,7 +116,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
 
                 return(retObj);
         },
-// ----------------- HANDLES ERROR ----------------------------
+/* * * * * * CALLBACK FOR FAILURE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* The API response from the server should be returned in a
 normalized format. However, if the request was not handled by the
 server (or what not handles properly - ex. server error), then we
@@ -140,7 +149,9 @@ may have to normalize it on our end, as best we can. */
 
         return (request);
     }//GET DATA
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     function getStockData (parm) { return getData('stock', parm); }
     function getDowJonesData (parm) { return getData('dowjones', parm); }
     function getSP500Data (parm) { return getData('sp500', parm); }

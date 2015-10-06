@@ -26,8 +26,8 @@ angular.module('TambeTech',['ui.router']).config(
         url:'/weather',
         templateUrl:'views/weather.html',
         controller:'WeatherCtrl'
-    }).state('finance',{
-        url:'/finance',
+    }).state('research',{
+        url:'/research',
         templateUrl:'views/finance.html',
         controller:'StockViewCtrl'
     });

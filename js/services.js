@@ -23,7 +23,9 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
             },
 
             httpObj = { method: 'GET', url: '', params: {} };
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * PARAMS SWITCH * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         switch(reqType) {
 
             case 'news':
@@ -76,6 +78,9 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
             function(response) {
 
                 var retObj;
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * DATA SEGMENT SWITCH * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
                 switch (reqType) {
 

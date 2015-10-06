@@ -120,3 +120,24 @@ angular.module('TambeTech').directive('stockGraph', [function() {
        }// LINK FUNCTION
    };// RETURN
 }]);
+/*********************************************************************************************/
+
+
+
+
+
+
+/*********************************************************************************************/
+angular.module('TambeTech').directive('errorModal', [function() {
+    return {
+        restrict: 'E',
+        scope: {
+            info: '='
+        },
+        templateUrl: 'views/invErrModal.html',
+        controller: 'MarketCtrl',
+        link: function(scope, elem, attrs) {
+
+        }
+    };
+}]);

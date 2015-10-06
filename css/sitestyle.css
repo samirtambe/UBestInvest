@@ -322,3 +322,9 @@ tr > td > i[class^="glyphicon"] {
 tr > td > span > i[class^="glyphicon"] {
     color: dodgerblue;
 }
+.techGalleryImg {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}

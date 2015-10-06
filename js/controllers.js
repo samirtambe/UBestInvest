@@ -1,19 +1,19 @@
 angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
-    $scope.investments = [
-        {invName: 'Altria Group', invSymbol: 'MO'},
-        {invName: 'Apple Computers', invSymbol: 'AAPL'},
-        {invName: 'Bank of America', invSymbol: 'BAC'},
-        {invName: 'Google', invSymbol: 'GOOG'},
-        {invName: 'Perrigo', invSymbol: 'PRGO'},
-        {invName: 'Microsoft', invSymbol: 'MSFT'},
-    ];
+//    $scope.investments = [
+//        {invName: 'Altria Group', invSymbol: 'MO'},
+//        {invName: 'Apple Computers', invSymbol: 'AAPL'},
+//        {invName: 'Bank of America', invSymbol: 'BAC'},
+//        {invName: 'Google', invSymbol: 'GOOG'},
+//        {invName: 'Perrigo', invSymbol: 'PRGO'},
+//        {invName: 'Microsoft', invSymbol: 'MSFT'},
+//    ];
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
-        symbol : $scope.stockSymbol,
-        investment : $scope.investments[0],
+        symbol : '',//$scope.stockSymbol,
+        investment : '',//$scope.investments[0],
         todayDate : new Date(),
         howLongAgo: new Date(),
         duration: $scope.durations[0],
@@ -129,12 +129,12 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
         var parentDiv = document.getElementById('stockChartDiv');
 
         try {
-            console.log('Trying to remove SVG element');
+            //console.log('Trying to remove SVG element');
             var childSVG = document.getElementById('theSVG');
             parentDiv.removeChild(childSVG);
         }
         catch(error) {
-            console.log("No SVG element. Ok.");
+            //console.log("No SVG element. Ok.");
         }
 
 

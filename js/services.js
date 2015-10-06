@@ -30,7 +30,7 @@ angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $
                 break;
 
             case 'stock':
-                httpObj.url = urls.stock + parm.investment.invSymbol + format;
+                httpObj.url = urls.stock + parm.symbol + format;
                 httpObj.params = {
                     auth_token: apiKeys.quandl,
                     column_index: StockColumnNum,
@@ -108,14 +108,24 @@ normalized format. However, if the request was not handled by the
 server (or what not handles properly - ex. server error), then we
 may have to normalize it on our end, as best we can. */
 
-            function(response ) {
+            function(response) {
+                if (response.status == '400' &&
+                    response.data.quandl_error.code == 'QECx01') {
 
-                if (!angular.isObject(response.data ) ||
-                    !response.data.message) {
+                    return($q.reject( "HttpSvc - " + response.data.quandl_error.message));
+                }
+                else if (response.status == '404' &&
+                         response.data.quandl_error.code == 'QECx02') {
+
+                    return($q.reject( "HttpSvc - " + response.data.quandl_error.message));
+
+                }
+                else if (!angular.isObject(response.data ) ||
+                         !response.data.message) {
                     return( $q.reject( "HttpSvc - An unknown error occurred." ) );
                 }
 
-// Otherwise, use expected error message.
+                // Otherwise, use expected error message.
                 return($q.reject(response.data.message));
             });//THEN
 

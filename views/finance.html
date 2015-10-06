@@ -1,37 +1,51 @@
 <!-- Display a few graphs of the stocks -->
 <div class="col-xs-10 col-xs-offset-1">
-<h3>Graph of Investment</h3>
+    <h3>Graph of Investment</h3>
 
     <div class="form-inline">
 
-    <div class="form-group" >
-        <label for="investSelect">Choose Investment:</label>
-        <select name="investSelect" id="investSelect" class="form-control"
-              ng-options="inv.invName for inv in investments track by inv.invSymbol"
-              ng-model="reqParams.investment" >
-        </select>
-    </div>
+        <div class="form-group" >
 
-    <div class="form-group">
-        <label ng-repeat="tf in durations" for="{{ tf }}" class="radio-inline">
-            <input type="radio"
-                   ng-model = "reqParams.duration"
-                   ng-value = "tf"
-                   id = "{{ tf }}">{{ tf }}
-        </label>
-<!--        NG-VALUE is the magic that changes the value of chosen.timeframe on each
-            click of the radio button with value of tf (from the list of 'durations'
+            <label for="investSelect">Enter Symbol:</label>
+            <input type="text"
+                   name="invInputField"
+                   id="investSelect"
+                   class="form-control"
+                   ng-model="reqParams.symbol">
+
+<!--
+            <select name="investSelect" id="investSelect" class="form-control"
+                  ng-options="inv.invName for inv in investments track by inv.invSymbol"
+                  ng-model="reqParams.investment" >
+            </select>
 -->
+
+        </div>
+
+        <div class="form-group">
+
+            <label ng-repeat="tf in durations" for="{{ tf }}" class="radio-inline">
+
+                <input type="radio"
+                       ng-model = "reqParams.duration"
+                       ng-value = "tf"
+                       id = "{{ tf }}">{{ tf }}
+            </label>
+    <!--        NG-VALUE is the magic that changes the value of chosen.timeframe on each
+                click of the radio button with value of tf (from the list of 'durations'
+    -->
+        </div>
+
+        <button id="getGraphBtn"
+                type="submit"
+                class="btn btn-primary"
+                ng-click="getGraph()" >
+            Create Chart
+        </button>
+
     </div>
-    <button id="getGraphBtn"
-            type="submit"
-            class="btn btn-primary"
-            ng-click="getGraph()" >
-        Create Chart
-    </button>
-</div>
 
-<h4><strong>Symbol:</strong> {{ reqParams.investment.invSymbol }}</h4>
+    <h4><strong>Symbol:</strong> {{ reqParams.symbol }}</h4>
 
-<div id="stockChartDiv"></div>
+    <div id="stockChartDiv"></div>
 </div>

@@ -104,50 +104,51 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
               .text("U.S. Dollars");
         };
 
-    $scope.getGraph = function() {
+    $scope.getGraph = function(validForm) {
 
-        $scope.reqParams.howLongAgo.setDate(
-            ChartSvc.calcBeginDate($scope)
-        );
+        if (validForm == true) {
 
-        var tframe = ChartSvc.formatDateShort($scope);
+            $scope.reqParams.howLongAgo.setDate(ChartSvc.calcBeginDate($scope));
 
-        $scope.reqParams.startDate = tframe.start;
+            var tframe = ChartSvc.formatDateShort($scope);
 
-        $scope.reqParams.endDate = tframe.end;
+            $scope.reqParams.startDate = tframe.start;
 
-
-        var parentDiv = document.getElementById('stockChartDiv');
-
-        try {
-            //console.log('Trying to remove SVG element');
-            var childSVG = document.getElementById('theSVG');
-            parentDiv.removeChild(childSVG);
-        }
-        catch(error) {
-            //console.log("No SVG element. Ok.");
-        }
+            $scope.reqParams.endDate = tframe.end;
 
 
-        HttpSvc.getStockData($scope.reqParams)
-            .then(function(dataset) {
+            var parentDiv = document.getElementById('stockChartDiv');
 
-            $scope.graphData = dataset.data;
-            $scope.reqParams.investment = dataset.name;
-            createChart();
+            try {
+                //console.log('Trying to remove SVG element');
+                var childSVG = document.getElementById('theSVG');
+                parentDiv.removeChild(childSVG);
+            }
+            catch(error) {
+                //console.log("No SVG element. Ok.");
+            }
 
-        }).catch(function(error) {
 
-            console.log("StockViewCtrl - Catch: " + error);
+            HttpSvc.getStockData($scope.reqParams)
+                .then(function(dataset) {
 
-        }).finally(function() {
+                $scope.graphData = dataset.data;
+                $scope.reqParams.investment = dataset.name;
+                createChart();
 
-            $scope.reqParams.todayDate = new Date();
-            $scope.reqParams.howLongAgo = new Date();
-            $scope.reqParams.startDate = '';
-            $scope.reqParams.endDate = '';
+            }).catch(function(error) {
 
-        });
+                console.log("StockViewCtrl - Catch: " + error);
+
+            }).finally(function() {
+
+                $scope.reqParams.todayDate = new Date();
+                $scope.reqParams.howLongAgo = new Date();
+                $scope.reqParams.startDate = '';
+                $scope.reqParams.endDate = '';
+
+            });
+        }// if formValid
     };
     $scope.showCompanyList = function(){
         console.log('showCompanyList');

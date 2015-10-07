@@ -1,4 +1,4 @@
-angular.module('TambeTech',['ui.router']).config(
+angular.module('UBestInvest',['ui.router']).config(
 
     function($stateProvider, $urlRouterProvider) {
 

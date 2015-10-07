@@ -32,18 +32,22 @@
             </div><!-- input-group -->
         </form><!-- form-group -->
 
-        <span ng-show="rsForm.rsInvestInput.$error.maxlength && !rsForm.rsInvestInput.$pristine"
-              class="help-block">Investment symbol is too long</span>
-
         <div class="form-group">
-
+            <select name="investSelect" id="investSelect" class="form-control"
+                  ng-options="timespan for timespan in durations track by timespan"
+                  ng-model="reqParams.duration" >
+            </select>
+<!--
             <label ng-repeat="tf in durations" for="{{ tf }}" class="radio-inline">
 
                 <input type="radio" ng-model = "reqParams.duration" id = "{{ tf }}"
                         ng-value = "tf">{{ tf }}
             </label>
+-->
 
         </div><!-- form-group -->
+        <span ng-show="rsForm.rsInvestInput.$error.maxlength && !rsForm.rsInvestInput.$pristine"
+              class="help-block">Investment symbol is too long</span>
 
     </div><!-- form-inline -->
 

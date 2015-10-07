@@ -1,4 +1,4 @@
-angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
+angular.module('UBestInvest').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -162,7 +162,7 @@ angular.module('TambeTech').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'C
 
 
 /***********************************************************************************************/
-angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',function($scope, HttpSvc) {
+angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',function($scope, HttpSvc) {
 
     $scope.weatherParams = {
         forecastType: '/conditions'
@@ -221,7 +221,7 @@ angular.module('TambeTech').controller('WeatherCtrl',['$scope','HttpSvc',functio
 
 
 /***********************************************************************************************/
-angular.module('TambeTech').controller('MarketCtrl', ['$scope',  'ChartSvc', 'HttpSvc', function($scope,  ChartSvc, HttpSvc) {
+angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', 'HttpSvc', function($scope,  ChartSvc, HttpSvc) {
 
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];

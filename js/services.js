@@ -1,4 +1,4 @@
-angular.module('TambeTech').service('HttpSvc', ['$http', '$q', function($http, $q) {
+angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http, $q) {
 /*
     When adding functionality:
         1) ADD additional variables
@@ -176,7 +176,7 @@ may have to normalize it on our end, as best we can. */
 
 
 /***********************************************************************************************/
-angular.module('TambeTech').service('ChartSvc', [function() {
+angular.module('UBestInvest').service('ChartSvc', [function() {
 
     function padWithZero(chk) {
 

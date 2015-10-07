@@ -1,4 +1,4 @@
-angular.module('TambeTech').directive('stockGraph', [function() {
+angular.module('UBestInvest').directive('stockGraph', [function() {
 
    return {
        restrict: 'E',
@@ -128,16 +128,35 @@ angular.module('TambeTech').directive('stockGraph', [function() {
 
 
 /*********************************************************************************************/
-angular.module('TambeTech').directive('errorModal', [function() {
+angular.module('UBestInvest').directive('errorModal', [function() {
     return {
-        restrict: 'E',
-        scope: {
-            info: '='
-        },
         templateUrl: 'views/invErrModal.html',
-        controller: 'MarketCtrl',
-        link: function(scope, elem, attrs) {
+        restrict: 'E',
+        replace:true,
+        scope:true,
+        link: function postLink(scope, element, attrs) {
 
+            scope.title = attrs.title;
+
+            scope.$watch(attrs.visible, function(value) {
+
+                if(value == true) { $(element).modal('show'); }
+                else { $(element).modal('hide'); }
+            });
+
+            $(element).on('shown.bs.modal', function() {
+
+                scope.$apply(function() {
+
+                    scope.$parent[attrs.visible] = true;
+                });
+            });
+
+            $(element).on('hidden.bs.modal', function(){
+                scope.$apply(function() {
+                    scope.$parent[attrs.visible] = false;
+                });
+            });
         }
     };
 }]);

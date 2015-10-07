@@ -2,7 +2,7 @@
 <div class="col-xs-10 col-xs-offset-1">
     <h3>Investment Research</h3>
 
-    <div class = "form-inline">
+    <div id="formWrapperDiv" class = "form-inline">
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
             <label class="sr-only" for = "rsInvestInput">Enter Symbol</label>
             <div class = "input-group">
@@ -36,13 +36,6 @@
                   ng-options="timespan for timespan in durations track by timespan"
                   ng-model="reqParams.duration" >
             </select>
-<!--
-            <label ng-repeat="tf in durations" for="{{ tf }}" class="radio-inline">
-
-                <input type="radio" ng-model = "reqParams.duration" id = "{{ tf }}"
-                        ng-value = "tf">{{ tf }}
-            </label>
--->
 
         </div><!-- form-group -->
         <span ng-show="rsForm.rsInvestInput.$error.maxlength && !rsForm.rsInvestInput.$pristine"

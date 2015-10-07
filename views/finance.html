@@ -3,7 +3,7 @@
     <h3>Investment Research</h3>
 
     <div class = "form-inline">
-        <div class = "form-group" >
+        <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
             <label class="sr-only" for = "rsInvestInput">Enter Symbol</label>
             <div class = "input-group">
                 <div class="input-group-addon"
@@ -12,20 +12,28 @@
                 </div>
                 <input type = "text"
                        id = "rsInvestInput"
+                       name = "rsInvestInput"
                        class = "form-control"
+                       required
+                       ng-minlength="1"
+                       ng-maxlength="7"
                        ng-model = "reqParams.symbol">
 
                 <div class = "input-group-btn">
+<!-- ***************** SUBMIT BUTTON ***************************** -->
                     <button id = "getGraphBtn"
                             type = "submit"
                             class = "btn btn-default"
-                            ng-click = "getGraph()">
+                            ng-disabled="rsForm.$invalid">
                         <i class = "glyphicon glyphicon-search"></i>
                     </button>
 
                 </div><!-- input-group-btn -->
             </div><!-- input-group -->
-        </div><!-- form-group -->
+        </form><!-- form-group -->
+
+        <span ng-show="rsForm.rsInvestInput.$error.maxlength && !rsForm.rsInvestInput.$pristine"
+              class="help-block">Investment symbol is too long</span>
 
         <div class="form-group">
 
@@ -34,11 +42,10 @@
                 <input type="radio" ng-model = "reqParams.duration" id = "{{ tf }}"
                         ng-value = "tf">{{ tf }}
             </label>
-    <!--        NG-VALUE changes value of chosen.timeframe on each
-                click of the radio button with value of tf (from the list of 'durations'
-    -->
-        </div>
-    </div>
+
+        </div><!-- form-group -->
+
+    </div><!-- form-inline -->
 
     <h4>{{ reqParams.investment }}</h4>
     <div id="stockChartDiv"></div>

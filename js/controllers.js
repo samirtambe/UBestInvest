@@ -1,4 +1,8 @@
-angular.module('UBestInvest').controller('StockViewCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
+angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
+
+    $scope.showErrModal = false;
+
+    $scope.errorModalDetails = null;
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -136,9 +140,16 @@ angular.module('UBestInvest').controller('StockViewCtrl', ['$scope', 'HttpSvc', 
                 $scope.reqParams.investment = dataset.name;
                 createChart();
 
-            }).catch(function(error) {
+            }).catch(function(errObj) {
 
-                console.log("StockViewCtrl - Catch: " + error);
+                console.log("ResearchCtrl CATCH:" +
+                            "\n\tHTTP: " + errObj.httpStatus +
+                            "\n\tQUANDL Code: " + errObj.apiErrCode +
+                            "\n\tQUANDL Message: " + errObj.apiErrMsg +
+                            "\n\tModal Message: " + errObj.details);
+
+                $scope.errorModalDetails = errObj.details;
+                $scope.showErrModal = true;
 
             }).finally(function() {
 

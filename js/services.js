@@ -31,7 +31,18 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 weather: 'http://api.wunderground.com/api/'
             },
 
-            httpObj = { method: 'GET', url: '', params: {} };
+            httpObj = {
+                method: 'GET',
+                url: '',
+                params: {}
+            },
+
+            errorObject = {
+                details: null,
+                apiErrCode: null,
+                apiErrMsg: null,
+                httpStatus: null
+            };
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * PARAMS SWITCH * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -126,25 +137,42 @@ may have to normalize it on our end, as best we can. */
                 if (response.status == '400' &&
                     response.data.quandl_error.code == 'QECx01') {
 
-                    console.log("HttpSvc - " + response.data.quandl_error.message);
+                    errorObject.details = "Perhaps you forgot to enter the stock symbol.";
+                    errorObject.apiErrCode = response.data.quandl_error.code;
+                    errorObject.apiErrMsg = response.data.quandl_error.message;
+                    errorObject.httpStatus = response.status;
 
-                    return($q.reject("Perhaps you forgot to enter the stock symbol."));
+                    return($q.reject(errorObject));
                 }
                 else if (response.status == '404' &&
                          response.data.quandl_error.code == 'QECx02') {
 
-                    console.log( "HttpSvc - " + response.data.quandl_error.message);
+                    errorObject.details = "Unable to find symbol.";
+                    errorObject.apiErrCode = response.data.quandl_error.code;
+                    errorObject.apiErrMsg = response.data.quandl_error.message;
+                    errorObject.httpStatus = response.status;
 
-                    return($q.reject("Unable to find symbol."));
+                    return($q.reject(errorObject));
 
                 }
                 else if (!angular.isObject(response.data ) ||
                          !response.data.message) {
-                    return( $q.reject( "HttpSvc - An unknown error occurred." ) );
+
+                    errorObject.details = "An unknown error occurred.";
+                    errorObject.apiErrCode = null;
+                    errorObject.apiErrMsg = null;
+                    errorObject.httpStatus = response.status;
+
+                    return( $q.reject(errorObject) );
                 }
 
                 // Otherwise, use expected error message.
-                return($q.reject(response.data.message));
+                errorObject.details = response.data.message;
+                errorObject.apiErrCode = null;
+                errorObject.apiErrMsg = null;
+                errorObject.httpStatus = response.status;
+
+                return($q.reject(errorObject));
             });//THEN
 
         return (request);
@@ -152,12 +180,25 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    function getStockData (parm) { return getData('stock', parm); }
-    function getDowJonesData (parm) { return getData('dowjones', parm); }
-    function getSP500Data (parm) { return getData('sp500', parm); }
-    function getWeatherData (parm) { return getData('weather', parm); }
-    function getNewsData (parm) { return getData('news', parm); }
+    function getStockData (parm) {
+        return getData('stock', parm);
+    }
 
+    function getDowJonesData (parm) {
+        return getData('dowjones', parm);
+    }
+
+    function getSP500Data (parm) {
+        return getData('sp500', parm);
+    }
+
+    function getWeatherData (parm) {
+        return getData('weather', parm);
+    }
+
+    function getNewsData (parm) {
+        return getData('news', parm);
+    }
 
     return ({
         getStockData: getStockData,

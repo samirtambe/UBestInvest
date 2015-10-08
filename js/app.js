@@ -29,6 +29,6 @@ angular.module('UBestInvest',['ui.router']).config(
     }).state('research',{
         url:'/research',
         templateUrl:'views/finance.html',
-        controller:'StockViewCtrl'
+        controller:'ResearchCtrl'
     });
 });

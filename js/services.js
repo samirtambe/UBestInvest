@@ -123,6 +123,10 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                     return data;
                 };
 */
+                httpObj.headers = {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET'
+                };
                 httpObj.url = urls.nslist;
                 break;
 

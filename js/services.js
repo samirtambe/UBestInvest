@@ -113,9 +113,6 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
             case 'nslist':
-                console.log('dd-' + document.domain);
-                document.domain = 's3.amazonaws.com';
-                console.log('dd c-' + document.domain);
                 httpObj.url = urls.nslist;
                 break;
 

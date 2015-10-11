@@ -164,15 +164,13 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.showCompanyList = function() {
 
-        console.log('ResearchCtrl: showCompanyList() == Domain:' + document.domain);
-
         HttpSvc.getNameSymbolList(null).then(function (data) {
-            console.log("There it is === === " + data);
+            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tTHEN():\n\t\t\t" + data);
         }).catch(function(data) {
 
-            console.log("ResearchCtrl scl CATCH:\n\tHTTPSVC: "+ data );
+            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tCATCH():\n\t\t\t" + data);
         });
-        console.log('showCompanyList ending');
+
     };
 }]);
 /***********************************************************************************************/

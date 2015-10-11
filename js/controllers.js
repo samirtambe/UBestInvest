@@ -161,9 +161,11 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
             });
         }// if formValid
     };
+
     $scope.showCompanyList = function() {
 
         console.log('showCompanyList starting');
+
         HttpSvc.getNameSymbolList(null).then(function (data) {
             console.log("There it is === === " + data);
         }).catch(function(data) {
@@ -310,5 +312,5 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
 
         });
     }//getSP500MktData()
-console.log('Initial run of MarketCtrl controller complete');
+
 }]);

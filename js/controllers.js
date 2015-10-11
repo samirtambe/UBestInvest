@@ -165,10 +165,12 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.showCompanyList = function() {
 
         HttpSvc.getNameSymbolList(null).then(function (data) {
-            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tTHEN():\n\t\t\t" + data);
+
+            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tTHEN(): " + data);
+
         }).catch(function(data) {
 
-            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tCATCH():\n\t\t\t" + data);
+            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tCATCH(): " + data);
         });
 
     };

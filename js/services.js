@@ -113,6 +113,8 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
             case 'nslist':
+                console.log('dd-'+document.domain);
+                //document.domain = '';
                 httpObj.url = urls.nslist;
                 break;
 

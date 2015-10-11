@@ -6,9 +6,8 @@
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
             <label class="sr-only" for = "rsInvestInput">Enter Symbol</label>
             <div class = "input-group">
-                <div class="input-group-addon"
-                     ng-mouseover="showCompanyList()">
-                    (?)&nbsp;Symbol
+                <div class="input-group-addon">
+                    <a href="#"ng-click="showCompanyList()">Symbol</a>
                 </div>
                 <input type = "text"
                        id = "rsInvestInput"
@@ -23,8 +22,7 @@
                     <button id = "getGraphBtn"
                             type = "submit"
                             class = "btn btn-default"
-                            ng-disabled="rsForm.$invalid">
-                        <i class = "glyphicon glyphicon-search"></i>
+                            ng-disabled="rsForm.$invalid">Go
                     </button>
 
                 </div><!-- input-group-btn -->

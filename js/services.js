@@ -113,6 +113,16 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
             case 'nslist':
+/*
+                httpObj.transformRequest = function(data, getHeaders) {
+
+                    var headers = getHeaders();
+
+                    headers['Content-Type'] = "application/x-www-form-urlencoded; charset=utf-8";
+
+                    return data;
+                };
+*/
                 httpObj.url = urls.nslist;
                 break;
 

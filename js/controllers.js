@@ -164,7 +164,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.showCompanyList = function() {
 
-        console.log('showCompanyList starting');
+        console.log('ResearchCtrl: showCompanyList() == Domain:' + document.domain);
 
         HttpSvc.getNameSymbolList(null).then(function (data) {
             console.log("There it is === === " + data);

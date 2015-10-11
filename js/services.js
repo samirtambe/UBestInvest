@@ -1,50 +1,73 @@
 angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http, $q) {
 /*
     When adding functionality:
-        1) ADD additional variables
-        2) ADD API Keys
-        3) ADD URLs
-        4) ADD to params switch
-        5) ADD to return data switch
-        6) ADD to wrapper function
-
+        - Create unique return reference function to EXPOSE private function
+          in final return
+        - Create WRAPPER function with unique parameter to getData
+        - Create a return data switch
+        - ADD to URL PARAMETER CONSTRUCTION switch
+        - ADD additional variables
+        - ADD API Keys
+        - ADD URLs to URLS object
+        - ADD to callback for failure
 */
     function getData(reqType, parm) {
 /* * * * * * * * * * * * * * * * VARIABLES * * * * * * * * * * * * * * * * * * * * * * * * * * */
         var format = '.json',
 
             StockColumnNum = '4',
+
+
 /* * * * * * * * * * * * * * * * API KEYS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             apiKeys = {
                 quandl: 'kA5hVpUMRoQmJyRqFPvk',
 
                 wunderground: '6e5628e3bc5762cf'
             },
+
+
+
 /* * * * * * * * * * * * * * * * URLS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             urls = {
+
+                news: 'TBA',
+
                 stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
 
                 dowjones: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_DJI.json',
 
                 sp500: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_GSPC.json',
 
-                weather: 'http://api.wunderground.com/api/'
+                weather: 'http://api.wunderground.com/api/',
+
+                nslist:
+                'https://s3.amazonaws.com/quandl-static-content/Ticker+CSV%27s/WIKI_tickers.csv'
             },
 
+
+
+/* * * * * * * * * * * * * * * * HTTP OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             httpObj = {
                 method: 'GET',
                 url: '',
                 params: {}
             },
 
+
+
+/* * * * * * * * * * * * * * * * ERROR OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             errorObject = {
                 details: null,
                 apiErrCode: null,
                 apiErrMsg: null,
                 httpStatus: null
             };
+
+
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * PARAMS SWITCH * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * URL PARAMETER CONSTRUCTION SWITCH * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         switch(reqType) {
 
@@ -88,6 +111,11 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 httpObj.url = urls.weather + apiKeys.wunderground + parm.forecastType +
                     '/q/' + parm.selectedLocation.stateCityStr + format;
                 break;
+
+            case 'nslist':
+                httpObj.url = urls.nslist;
+                break;
+
         }//SWITCH
 
 
@@ -122,6 +150,10 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                     case 'weather':
                         retObj = response.data;
+                        break;
+
+                    case 'nslist':
+                        retObj = response;
                         break;
                 }
 
@@ -178,7 +210,7 @@ may have to normalize it on our end, as best we can. */
         return (request);
     }//GET DATA
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     function getStockData (parm) {
         return getData('stock', parm);
@@ -200,12 +232,20 @@ may have to normalize it on our end, as best we can. */
         return getData('news', parm);
     }
 
+    function getNameSymbolList(parm) {
+        return getData('nslist', parm);
+    }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     return ({
         getStockData: getStockData,
         getDowJonesData: getDowJonesData,
         getSP500Data: getSP500Data,
         getWeatherData: getWeatherData,
-        getNewsData: getNewsData
+        getNewsData: getNewsData,
+        getNameSymbolList: getNameSymbolList
     });
 
 }]);
@@ -294,4 +334,15 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
         calcBeginDate: calcBeginDate,
         formatDateShort: formatDateShort
     });
+}]);
+
+
+
+/***********************************************************************************************/
+angular.module('UBestInvest').service('ToJsonSvc', [function() {
+    //delete first 16 chars (quandl code,name)
+    //get rid of WIKI/ for each name value pair
+
+    // USE http://jsfiddle.net/sturtevant/AZFvQ/ as your inspiration
+
 }]);

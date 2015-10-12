@@ -152,7 +152,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                         break;
 
                     case 'nslist':
-                        retObj = response;
+                        retObj = response.data.pairs;
                         break;
                 }
 

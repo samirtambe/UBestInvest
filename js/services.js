@@ -112,7 +112,6 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
             case 'nslist':
-                httpObj.headers['Accept'] = "text/csv; charset=utf-8";
                 httpObj.headers['Content-Type'] = "text/csv; charset=utf-8";
                 httpObj.url = urls.nslist;
                 break;

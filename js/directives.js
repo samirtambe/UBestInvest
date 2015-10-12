@@ -136,8 +136,6 @@ angular.module('UBestInvest').directive('errorModal', [function() {
         scope:true,
         link: function postLink(scope, element, attrs) {
 
-            //scope.title = attrs.title;
-
             scope.$watch(attrs.visible, function(value) {
 
                 if(value == true) { $(element).modal('show'); }
@@ -168,8 +166,6 @@ angular.module('UBestInvest').directive('companyListModal', [function() {
         replace:true,
         scope:true,
         link: function postLink(scope, element, attrs) {
-
-            //scope.title = attrs.title;
 
             scope.$watch(attrs.visible, function(value) {
 

@@ -40,7 +40,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 weather: 'http://api.wunderground.com/api/',
 
-                nslist: 'https://tambetech.cardbycloud.com/rsc/tickers.csv'
+                nslist: 'https://tambetech.cardbycloud.com/rsc/nslist.json'
             },
 
 
@@ -112,7 +112,6 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
             case 'nslist':
-                httpObj.headers['Content-Type'] = "text/csv; charset=utf-8";
                 httpObj.url = urls.nslist;
                 break;
 

@@ -9,8 +9,10 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
-        symbol : '',
-        investment : '',
+        pair: {
+            symbol : undefined,
+            name : undefined
+        },
         todayDate : new Date(),
         howLongAgo: new Date(),
         duration: $scope.durations[0],
@@ -21,6 +23,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     HttpSvc.getNameSymbolList(null).then(function (data) {
 
         $scope.symbolNameList = data;
+        $scope.reqParams.pair.symbol = $scope.symbolNameList[0].symbol;
+        $scope.reqParams.pair.name = $scope.symbolNameList[0].name;
 
     }).catch(function(data) {
 
@@ -142,20 +146,16 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
             var parentDiv = document.getElementById('stockChartDiv');
 
             try {
-                //console.log('Trying to remove SVG element');
                 var childSVG = document.getElementById('theSVG');
                 parentDiv.removeChild(childSVG);
             }
-            catch(error) {
-                //console.log("No SVG element. Ok.");
-            }
+            catch(error) {}
 
 
             HttpSvc.getStockData($scope.reqParams)
                 .then(function(dataset) {
 
                 $scope.graphData = dataset.data;
-                $scope.reqParams.investment = dataset.name;
                 createChart();
 
             }).catch(function(errObj) {
@@ -178,15 +178,6 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
             });
         }// if formValid
-    };
-
-    $scope.showCompanyList = function() {
-
-
-    };
-    $scope.setSymbol = function() {
-        $scope.reqParams.symbol = $scope.pair.symbol;//undefined
-        console.log('setting symbol => '+$scope.reqParams.symbol);
     };
 }]);
 /***********************************************************************************************/
@@ -264,12 +255,11 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
     $scope.reqParams = {
         todayDate : new Date(),
         howLongAgo: new Date(),
-        duration: $scope.durations[5],
+        duration: $scope.durations[1],
         startDate: '',
         endDate: ''
     };
 
-    //$scope.graphData = [];
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
     $scope.reqParams.howLongAgo
@@ -292,7 +282,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
         HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
 
             $scope.graphData = data;
-//console.log('Dow Jones Data Received.' + $scope.graphData[0]);
+
         }).catch(function(error) {
 
             console.log("stockGraph dow jones Directive - Catch: " + error);
@@ -312,7 +302,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
         HttpSvc.getSP500Data($scope.reqParams).then(function(data) {
 
             $scope.graphData = data;
-//console.log('SP500 Data Received.' + $scope.graphData[0]);
+
         }).catch(function(error) {
 
             console.log("stockGraph sp500 Directive - Catch: " + error);

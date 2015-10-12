@@ -7,14 +7,16 @@
                         data-dismiss="modal">
                     &times;
                 </button>
-                <h4 class="modal-title">List of Companies</h4>
+                <h4 class="modal-title">Company Listing</h4>
             </div>
             <div class="modal-body">
-                <select name="compListSelect" id="compListSelect" class="form-control"
-                      ng-options="cmp for cmp in pairList track by cmp"
-                      ng-model="reqParams.symbol" >
+                <select name="compListSelect"
+                        id="compListSelect"
+                        class="form-control"
+                        ng-options="cmp.name for cmp in pairList track by cmp.symbol"
+                        ng-model="pair"
+                        ng-change="setSymbol()">
                 </select>
-                <p ng-repeat="cmp in pairList track by cmp">{{cmp.name}} {{cmp.symbol}}</p>
             </div>
         </div>
     </div>

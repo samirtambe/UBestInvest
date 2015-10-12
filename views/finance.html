@@ -4,17 +4,9 @@
 
     <div id="formWrapperDiv" class = "form-inline">
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
-            <label for = "rsInvestInput">Select Investment</label>
+            <label for = "compSelect">Select Investment</label>
             <div class = "input-group">
-<!--
-                <input type = "text"
-                       id = "rsInvestInput"
-                       name = "rsInvestInput"
-                       class = "form-control"
-                       required
-                       ng-maxlength="7"
-                       ng-model = "reqParams.symbol">
--->
+
                 <select name="compSelect" id="compSelect" class="form-control"
                       ng-options="pair.name for pair in symbolNameList track by pair.symbol"
                       ng-model="reqParams.pair" >

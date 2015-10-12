@@ -166,7 +166,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.showCompanyList = function() {
 
         HttpSvc.getNameSymbolList(null).then(function (data) {
-
+            for (var jvl=0;jvl<10;jvl++){console.log(data.pairs[jvl].name);}
             $scope.pairList = data.pairs;
             $scope.showCompListModal = true;
 

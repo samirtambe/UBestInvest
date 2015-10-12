@@ -1,9 +1,10 @@
 angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.showErrModal = false;
-    $scope.showCompListModal = false;
 
-    $scope.errorModalDetails = null;
+    $scope.errorModalDetails = undefined;
+    $scope.pair = undefined;
+    $scope.symbolNameList = undefined;
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -16,6 +17,22 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         startDate: '',
         endDate: ''
     };
+
+    HttpSvc.getNameSymbolList(null).then(function (data) {
+
+        $scope.symbolNameList = data;
+
+    }).catch(function(data) {
+
+        $scope.showErrModal = true;
+
+        console.log("ResearchCtrl - Loading datalist - CATCH(): ");
+        console.log(data.details);
+
+        for (key in data) {
+            console.log('=' + key);
+        }
+    });
 
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
@@ -165,23 +182,11 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.showCompanyList = function() {
 
-        HttpSvc.getNameSymbolList(null).then(function (data) {
-            for (var jvl=0;jvl<10;jvl++){console.log(data[jvl].name);}
-            $scope.pairList = data.pairs;
-            $scope.showCompListModal = true;
 
-        }).catch(function(data) {
-
-            $scope.showErrModal = true;
-
-            console.log("ResearchCtrl: showCompanyList(): CATCH(): ");
-            console.log(data.details);
-
-            for (key in data) {
-                console.log('=' + key);
-            }
-        });
-
+    };
+    $scope.setSymbol = function() {
+        $scope.reqParams.symbol = $scope.pair.symbol;//undefined
+        console.log('setting symbol => '+$scope.reqParams.symbol);
     };
 }]);
 /***********************************************************************************************/

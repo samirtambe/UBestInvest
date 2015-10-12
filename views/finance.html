@@ -4,11 +4,8 @@
 
     <div id="formWrapperDiv" class = "form-inline">
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
-            <label class="sr-only" for = "rsInvestInput">Enter Symbol</label>
+            <label for = "rsInvestInput">Select Investment</label>
             <div class = "input-group">
-                <div class="input-group-addon">
-                    <a href="#"ng-click="showCompanyList()">Symbol</a>
-                </div>
 <!--
                 <input type = "text"
                        id = "rsInvestInput"
@@ -16,18 +13,12 @@
                        class = "form-control"
                        required
                        ng-maxlength="7"
-                       ng-model = "reqParams.symbol"
-                       list="nameSymbolHelp">
+                       ng-model = "reqParams.symbol">
 -->
-                <input type = "text" id = "rsInvestInput" name = "rsInvestInput"
-                       class = "form-control" required ng-maxlength="7"
-                       ng-model="reqParams.symbol" list="nameSymbolHelp">
-
-                <datalist id="nameSymbolHelp">
-                    <select>
-                        <option ng-repeat="app in symbolNameList" value="{{app}}"></option>
-                    </select>
-                </datalist>
+                <select name="compSelect" id="compSelect" class="form-control"
+                      ng-options="pair.name for pair in symbolNameList track by pair.symbol"
+                      ng-model="reqParams.pair" >
+                </select>
 
                 <div class = "input-group-btn">
 <!-- ***************** SUBMIT BUTTON ***************************** -->
@@ -39,27 +30,22 @@
                 </div><!-- input-group-btn -->
             </div><!-- input-group -->
         </form><!-- form-group -->
-<!--
-<input type="text" id="guitarlist" name="guitarlist" placeholder="Select Guitar" list="guitardata" />
-<datalist id="guitardata"></datalist>
 
--->
         <div class="form-group">
             <select name="investSelect" id="investSelect" class="form-control"
                   ng-options="timespan for timespan in durations track by timespan"
                   ng-model="reqParams.duration" >
             </select>
-
         </div><!-- form-group -->
-
-        <span ng-show="rsForm.rsInvestInput.$error.maxlength && !rsForm.rsInvestInput.$pristine"
-              class="help-block">Investment symbol is too long</span>
 
     </div><!-- form-inline -->
 
     <error-modal visible="showErrModal"></error-modal>
 
-    <h4>{{ reqParams.investment }}</h4>
+    <h4>{{ reqParams.pair.name }}
+        <span ng-if="reqParams.pair.symbol">
+            - Symbol: {{ reqParams.pair.symbol }}</span>
+    </h4>
 
     <div id="stockChartDiv"></div>
 </div>

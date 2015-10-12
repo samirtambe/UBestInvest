@@ -1,6 +1,7 @@
 angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.showErrModal = false;
+    $scope.showCompListModal = false;
 
     $scope.errorModalDetails = null;
 
@@ -167,7 +168,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         HttpSvc.getNameSymbolList(null).then(function (data) {
 
             console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tTHEN(): " + data);
-
+            $scope.showCompListModal = true;
         }).catch(function(data) {
 
             console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tCATCH(): ");

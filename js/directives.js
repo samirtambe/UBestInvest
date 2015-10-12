@@ -136,7 +136,40 @@ angular.module('UBestInvest').directive('errorModal', [function() {
         scope:true,
         link: function postLink(scope, element, attrs) {
 
-            scope.title = attrs.title;
+            //scope.title = attrs.title;
+
+            scope.$watch(attrs.visible, function(value) {
+
+                if(value == true) { $(element).modal('show'); }
+                else { $(element).modal('hide'); }
+            });
+
+            $(element).on('shown.bs.modal', function() {
+
+                scope.$apply(function() {
+
+                    scope.$parent[attrs.visible] = true;
+                });
+            });
+
+            $(element).on('hidden.bs.modal', function(){
+                scope.$apply(function() {
+                    scope.$parent[attrs.visible] = false;
+                });
+            });
+        }
+    };
+}]);
+
+angular.module('UBestInvest').directive('companyListModal', [function() {
+    return {
+        templateUrl: 'views/compListModal.html',
+        restrict: 'E',
+        replace:true,
+        scope:true,
+        link: function postLink(scope, element, attrs) {
+
+            //scope.title = attrs.title;
 
             scope.$watch(attrs.visible, function(value) {
 

@@ -74,7 +74,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
             case 'stock':
-                httpObj.url = urls.stock + parm.symbol + format;
+                httpObj.url = urls.stock + parm.pair.symbol + format;
                 httpObj.params = {
                     auth_token: apiKeys.quandl,
                     column_index: StockColumnNum,

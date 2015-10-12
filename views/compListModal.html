@@ -10,7 +10,11 @@
                 <h4 class="modal-title">List of Companies</h4>
             </div>
             <div class="modal-body">
-                <p>Hello CLient </p>
+                <select name="compListSelect" id="compListSelect" class="form-control"
+                      ng-options="cmp for cmp in pairList track by cmp"
+                      ng-model="reqParams.symbol" >
+                </select>
+                <p ng-repeat="cmp in pairList track by cmp">{{cmp.name}} {{cmp.symbol}}</p>
             </div>
         </div>
     </div>

@@ -41,7 +41,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 weather: 'http://api.wunderground.com/api/',
 
                 nslist:
-                'https://s3.amazonaws.com/quandl-static-content/Ticker+CSV%27s/WIKI_tickers.csv'
+                'https://tambetech.cardbycloud.com/rsc/tickers.csv'
             },
 
 
@@ -113,20 +113,6 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
             case 'nslist':
-/*
-                httpObj.transformRequest = function(data, getHeaders) {
-
-                    var headers = getHeaders();
-
-                    headers['Content-Type'] = "application/x-www-form-urlencoded; charset=utf-8";
-
-                    return data;
-                };
-*/
-                httpObj.headers = {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET'
-                };
                 httpObj.url = urls.nslist;
                 break;
 

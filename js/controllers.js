@@ -170,7 +170,10 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
         }).catch(function(data) {
 
-            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tCATCH(): " + data);
+            console.log("ResearchCtrl:\n\tshowCompanyList():\n\t\tCATCH(): ");
+            for (key in data) {
+                console.log('=' + key);
+            }
         });
 
     };

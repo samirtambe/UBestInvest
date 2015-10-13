@@ -255,7 +255,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
     $scope.reqParams = {
         todayDate : new Date(),
         howLongAgo: new Date(),
-        duration: $scope.durations[1],
+        duration: $scope.durations[3],
         startDate: '',
         endDate: ''
     };

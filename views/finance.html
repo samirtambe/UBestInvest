@@ -3,31 +3,35 @@
     <h3>Investment Research</h3>
 
     <div id="formWrapperDiv" class = "form-inline">
+
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
+
             <label for = "compSelect">Select Investment</label>
+
             <div class = "input-group">
 
                 <select name="compSelect" id="compSelect" class="form-control"
                       ng-options="pair.name for pair in symbolNameList track by pair.symbol"
-                      ng-model="reqParams.pair" >
-                </select>
+                      ng-model="reqParams.pair" ></select>
 
                 <div class = "input-group-btn">
-<!-- ***************** SUBMIT BUTTON ***************************** -->
-                    <button id = "getGraphBtn"
-                            type = "submit"
-                            class = "btn btn-default"
-                            ng-disabled="rsForm.$invalid">Go
-                    </button>
+
+                    <button id = "getGraphBtn" type = "submit" class = "btn btn-default"
+                            ng-disabled="rsForm.$invalid">Go</button>
+
                 </div><!-- input-group-btn -->
+
             </div><!-- input-group -->
+
         </form><!-- form-group -->
 
         <div class="form-group">
+
             <select name="investSelect" id="investSelect" class="form-control"
                   ng-options="timespan for timespan in durations track by timespan"
                   ng-model="reqParams.duration" >
             </select>
+
         </div><!-- form-group -->
 
     </div><!-- form-inline -->

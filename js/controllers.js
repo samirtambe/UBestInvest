@@ -59,13 +59,13 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
             parseDate = d3.time.format("%Y-%m-%d").parse,
 
-            x = d3.time.scale().range([0, width]),
+            xScale = d3.time.scale().range([0, width]),
 
-            y = d3.scale.linear().range([height, 0]),
+            yScale = d3.scale.linear().range([height, 0]),
 
-            xAxis = d3.svg.axis().scale(x).orient("bottom"),
+            xAxis = d3.svg.axis().scale(xScale).orient("bottom"),
 
-            yAxis = d3.svg.axis().scale(y).orient("left"),
+            yAxis = d3.svg.axis().scale(yScale).orient("left"),
 
             area = d3.svg.area()
                 .x(function(d) {

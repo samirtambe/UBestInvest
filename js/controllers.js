@@ -60,9 +60,9 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
             parseDate = d3.time.format("%Y-%m-%d").parse,
 
-            xScale = d3.time.scale().range([0, width]),
+            x = d3.time.scale().range([0, width]),
 
-            yScale = d3.scale.linear().range([height, 0]),
+            y = d3.scale.linear().range([height, 0]),
 
             xAxis = d3.svg.axis().scale(xScale).orient("bottom"),
 
@@ -106,9 +106,9 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
                 d.close = +d.close;
             });
 
-            xScale.domain(d3.extent(data, function(d) { return d.date; }));
+            x.domain(d3.extent(data, function(d) { return d.date; }));
 
-            yScale.domain([0, d3.max(data, function(d) { return d.close; })]);
+            y.domain([0, d3.max(data, function(d) { return d.close; })]);
 
             svg.append("path")
               .datum(data)

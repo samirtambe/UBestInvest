@@ -106,9 +106,9 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
                 d.close = +d.close;
             });
 
-            x.domain(d3.extent(data, function(d) { return d.date; }));
+            xScale.domain(d3.extent(data, function(d) { return d.date; }));
 
-            y.domain([0, d3.max(data, function(d) { return d.close; })]);
+            yScale.domain([0, d3.max(data, function(d) { return d.close; })]);
 
             svg.append("path")
               .datum(data)

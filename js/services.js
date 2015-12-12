@@ -231,7 +231,7 @@ may have to normalize it on our end, as best we can. */
         return getData('news', parm);
     }
 
-    function getNameSymbolList(parm) {
+    function getSymbols(parm) {
         return getData('nslist', parm);
     }
 
@@ -239,12 +239,12 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     return ({
-        getStockData: getStockData,
         getDowJonesData: getDowJonesData,
-        getSP500Data: getSP500Data,
-        getWeatherData: getWeatherData,
         getNewsData: getNewsData,
-        getNameSymbolList: getNameSymbolList
+        getSP500Data: getSP500Data,
+        getStockData: getStockData,
+        getSymbols: getSymbols,
+        getWeatherData: getWeatherData
     });
 
 }]);

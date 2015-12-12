@@ -6,13 +6,14 @@
 
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
 
-            <label for = "compSelect">Select Investment</label>
+            <label for="compSelect">Select Investment</label>
 
             <div class = "input-group">
 
-                <select name="compSelect" id="compSelect" class="form-control"
-                      ng-options="pair.name for pair in symbolNameList track by pair.symbol"
-                      ng-model="reqParams.pair" ></select>
+                <input name="compSelect" id="compSelect" class="form-control" type="text"
+                       ng-model="reqParams.pair.symbol">
+
+                <datalist id="theList"></datalist>
 
                 <div class = "input-group-btn">
 

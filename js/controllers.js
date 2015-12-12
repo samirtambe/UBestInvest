@@ -20,12 +20,9 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         endDate: ''
     };
 
-/*    loading the 0th entry in the name/symbol list to be visible  */
     HttpSvc.getNameSymbolList(null).then(function (data) {
 
         $scope.symbolNameList = data;
-        $scope.reqParams.pair.symbol = $scope.symbolNameList[0].symbol;
-        $scope.reqParams.pair.name = $scope.symbolNameList[0].name;
 
     }).catch(function(data) {
 

@@ -19,8 +19,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         startDate: '',
         endDate: ''
     };
-
-    HttpSvc.getNameSymbolList(null).then(function (data) {
+/*
+    HttpSvc.getSymbols(null).then(function (data) {
 
         $scope.symbolNameList = data;
 
@@ -35,7 +35,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
             console.log('=' + key);
         }
     });
-
+*/
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 

@@ -1,8 +1,11 @@
 angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.showErrModal = false;
+    $scope.showListModal = false;
 
     $scope.errorModalDetails = undefined;
+    $scope.listModalArray = undefined;
+
     $scope.pair = undefined;
     $scope.symbolNameList = undefined;
 
@@ -19,10 +22,16 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         startDate: '',
         endDate: ''
     };
-/*
+    $scope.showSymbols = function() {
+        $scope.showListModal = true;
+    };
+/* ******************************************************************************
+    Getting stock symbol/name of stock investment list data
+    *****************************************************************************
+*/
     HttpSvc.getSymbols(null).then(function (data) {
 
-        $scope.symbolNameList = data;
+        $scope.listModalArray = data;
 
     }).catch(function(data) {
 
@@ -35,7 +44,6 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
             console.log('=' + key);
         }
     });
-*/
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 

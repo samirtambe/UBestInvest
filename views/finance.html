@@ -11,7 +11,7 @@
             <div class = "input-group">
                 <div class = "input-group-btn">
 
-                    <button id = "nslistBtn" type = "button" class = "btn btn-default">
+                    <button ng-click="showSymbols()" id="nslistBtn" type="button" class="btn btn-default">
                         <i class="glyphicon glyphicon-question-sign"></i>
                     </button>
 
@@ -43,7 +43,7 @@
     </div><!-- form-inline -->
 
     <error-modal visible="showErrModal"></error-modal>
-
+    <list-modal visible=""></list-modal>
     <h4>{{ reqParams.pair.name }}
         <span ng-if="reqParams.pair.symbol">
             - Symbol: {{ reqParams.pair.symbol }}</span>

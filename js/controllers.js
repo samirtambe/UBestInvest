@@ -32,7 +32,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     HttpSvc.getSymbols(null).then(function (data) {
 
         $scope.listModalArray = data;
-
+        console.log('INFO: Downloaded Investment List...');
     }).catch(function(data) {
 
         $scope.showErrModal = true;

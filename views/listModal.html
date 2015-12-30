@@ -10,8 +10,8 @@
                 <h4 class="modal-title">Available Stock Investments</h4>
             </div>
             <div class="modal-body">
-                <select ng-model="selectedItem"
-                        ng-options="stock.name for stock in listModalArray">
+                <select ng-model="pair.symbol"
+                        ng-options="pair.name for pair in listModalArray">
                 </select>
                 <button type="button"
                         class="btn btn-primary"

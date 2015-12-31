@@ -6,16 +6,13 @@
 
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
 
-            <label for="compSelect">Select Investment</label>
+            <label for="compSelect">Select Investment&nbsp;
+                <span ng-click="showSymbols()">
+                    <i class="glyphicon glyphicon-question-sign"></i>
+                </span>
+            </label>
 
             <div class = "input-group">
-                <div class = "input-group-btn">
-
-                    <button ng-click="showSymbols()" id="nslistBtn" type="button" class="btn btn-default">
-                        <i class="glyphicon glyphicon-question-sign"></i>
-                    </button>
-
-                </div><!-- input-group-btn -->
 
                 <input name="compSelect"
                        id="compSelect"

@@ -13,6 +13,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
                            'J','K','L','M','N','O','P','Q','R',
                            'S','T','U','V','W','X','Y','Z'];
 
+    $scope.alphaPrefix = undefined;
+
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {

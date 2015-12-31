@@ -11,7 +11,9 @@
             </div>
             <div class="modal-body">
                 <h5>Starts with</h5>
-                <a href="#" ng-click="" ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;</a>
+                <a href="#"
+                   ng-click=""
+                   ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;&nbsp;</a>
 
                 <select ng-model="reqParams.pair"
                         ng-options="pair.name for pair in listModalArray">

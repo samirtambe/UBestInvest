@@ -12,17 +12,19 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
-        pair: {
-            symbol : undefined,
-            name : undefined
-        },
+
+        pair: {symbol : undefined, name : undefined },
         todayDate : new Date(),
         howLongAgo: new Date(),
         duration: $scope.durations[0],
         startDate: '',
         endDate: ''
     };
+    $(".btn").mouseup(function() {
+         $(this).blur();
+    });
     $scope.showSymbols = function() {
+
         $scope.showListModal = true;
     };
 /* ******************************************************************************

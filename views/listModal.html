@@ -1,29 +1,33 @@
 <div class="modal fade">
+
     <div class="modal-dialog">
+
         <div class="modal-content">
+
             <div class="modal-header bg-info">
-                <button type="button"
-                        class="close"
-                        data-dismiss="modal">
-                    &times;
-                </button>
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
                 <h4 class="modal-title">Available Stock Investments</h4>
+
             </div>
+
             <div class="modal-body">
+
                 <h5>Starts with</h5>
-                <a href="#"
-                   ng-click=""
+
+                <a href="#" ng-click=""
                    ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;&nbsp;</a>
 
                 <select ng-model="reqParams.pair"
                         ng-options="pair.name for pair in listModalArray">
                 </select>
-                <button type="button"
-                        class="btn btn-primary"
-                        data-dismiss="modal">
+
+                <button type="button" class="btn btn-primary" data-dismiss="modal">
                     Select
                 </button>
-            </div>
-        </div>
-    </div>
-</div>
+
+            </div><!-- modal-body -->
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal fade -->

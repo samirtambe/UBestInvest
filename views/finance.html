@@ -17,12 +17,17 @@
 
                 </div><!-- input-group-btn -->
 
-                <input name="compSelect" id="compSelect" class="form-control" type="text"
+                <input name="compSelect"
+                       id="compSelect"
+                       class="form-control"
+                       type="text"
                        ng-model="reqParams.pair.symbol">
 
                 <div class = "input-group-btn">
 
-                    <button id = "getGraphBtn" type = "submit" class = "btn btn-primary"
+                    <button id = "getGraphBtn"
+                            type = "submit"
+                            class = "btn btn-primary"
                             ng-disabled="rsForm.$invalid">Go</button>
 
                 </div><!-- input-group-btn -->
@@ -43,11 +48,10 @@
     </div><!-- form-inline -->
 
     <error-modal visible="showErrModal"></error-modal>
+
     <list-modal visible="showListModal"></list-modal>
-    <h4>{{ reqParams.pair.name }}
-        <span ng-if="reqParams.pair.symbol">
-            - Symbol: {{ reqParams.pair.symbol }}</span>
-    </h4>
+
+    <h4 ng-if="reqParams.pair.name">{{ reqParams.pair.name }}</h4>
 
     <div id="stockChartDiv"></div>
 </div>

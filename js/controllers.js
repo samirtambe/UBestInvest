@@ -22,6 +22,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     };
     $(".btn").mouseup(function() {
          $(this).blur();
+        console.log("blurring...");
     });
     $scope.showSymbols = function() {
 

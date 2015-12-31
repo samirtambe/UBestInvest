@@ -10,9 +10,8 @@
                 <h4 class="modal-title">Available Stock Investments</h4>
             </div>
             <div class="modal-body">
-                <select ng-model="alphaPrefix">
-                    <option ng-repeat="letter in alphabetArray" value="{{ letter }}">{{ letter }}</option>
-                </select>
+                <h5>Starts with</h5>
+                <a href="#" ng-click="" ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;</a>
 
                 <select ng-model="reqParams.pair"
                         ng-options="pair.name for pair in listModalArray">

@@ -23,9 +23,11 @@
                                class="form-control"
                                type="text"
                                placeholder="Enter Investment Name"
-                               list="listModalArray">
+                               list="dlinv">
 
-                        <datalist id="listModalArray"></datalist>
+                        <datalist id="dlinv">
+                            <option  data-ng-repeat="inv in investmentArray" value="{{ttl}}">
+                        </datalist>
 
                         <div class = "input-group-btn">
 

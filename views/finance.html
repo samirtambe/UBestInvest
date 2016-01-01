@@ -16,13 +16,14 @@
                        list="dlinv"
                        placeholder="Enter Symbol">
 
-                <datalist id="dlinv">
-                    <option ng-repeat="inv in investmentsArray" value="{{ inv.symbol }}">
-                        {{inv.name}}
-                    </option>
-                </datalist>
 
                 <div class = "input-group-btn">
+
+                    <button id = "getGraphBtn"
+                            type = "submit"
+                            class = "btn btn-default">
+                        <i class="glyphicon glyphicon-question-sign"></i>
+                    </button>
 
                     <button id = "getGraphBtn"
                             type = "submit"
@@ -47,6 +48,7 @@
     </div><!-- form-inline -->
 
     <error-modal visible="showErrModal"></error-modal>
+    <list-modal visible="showListModal"></list-modal>
 
     <h4>Loaded = {{ nslistLoaded }}</h4>
     <h4 ng-if="reqParams.pair.name">{{ reqParams.pair.name }}</h4>

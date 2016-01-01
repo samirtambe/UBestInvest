@@ -23,7 +23,8 @@
                                class="form-control"
                                type="text"
                                placeholder="Enter Investment Name"
-                               list="dlinv">
+                               list="dlinv"
+                               ng-model="reqParams.pair.name">
 
                         <datalist id="dlinv">
                             <option ng-repeat="inv in investmentArray" value="{{ inv.symbol }}">

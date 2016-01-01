@@ -33,7 +33,9 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
          $(this).blur();
         console.log("ResearchCtrl: blurring...");
     });
-
+    $scope.triggerListModal = function() {
+        $scope.showListModal = true;
+    };
 /* ******************************************************************************
     Getting stock symbol/name of stock investment list data
     *****************************************************************************

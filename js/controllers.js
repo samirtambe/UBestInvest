@@ -19,6 +19,9 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         startDate: '',
         endDate: ''
     };
+
+    $scope.nslistLoaded = false;
+
     $(".btn").mouseup(function() {
          $(this).blur();
         console.log("blurring...");
@@ -36,6 +39,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
         $scope.listModalArray = data;
         console.log('INFO: Downloaded Investment List...');
+        $scope.nslistLoaded = true;
+
     }).catch(function(data) {
 
         $scope.showErrModal = true;

@@ -23,8 +23,9 @@
                                class="form-control"
                                type="text"
                                ng-model="reqParams.pair.name"
-                               placeholder="Enter Investment Name">
-
+                               placeholder="Enter Investment Name"
+                               list="listModalArray">
+                        <datalist id="listModalArray"></datalist>
                         <div class = "input-group-btn">
 
                             <button id = "getGraphBtn"

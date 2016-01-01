@@ -27,7 +27,7 @@
                                ng-model="reqParams.pair.name">
 
                         <datalist id="dlinv">
-                            <option ng-repeat="inv in investmentsArray" value="{{ inv.symbol }}">
+                            <option ng-repeat="inv.name in investmentsArray" value="{{ inv.symbol }}">
                                 {{ inv.name }}
                             </option>
                         </datalist>

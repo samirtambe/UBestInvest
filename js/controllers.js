@@ -7,13 +7,6 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.listModalArray = undefined;
 
     $scope.pair = undefined;
-    $scope.symbolNameList = undefined;
-
-    $scope.alphabetArray = ['A','B','C','D','E','F','G','H','I',
-                           'J','K','L','M','N','O','P','Q','R',
-                           'S','T','U','V','W','X','Y','Z'];
-
-    $scope.alphaPrefix = undefined;
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -34,6 +27,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
         $scope.showListModal = true;
     };
+
 /* ******************************************************************************
     Getting stock symbol/name of stock investment list data
     *****************************************************************************

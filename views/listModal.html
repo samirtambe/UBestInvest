@@ -15,9 +15,11 @@
             <div class="modal-body">
 
                 <h5>Select letter that Investment name starts with:</h5>
-
-                <a href="#" ng-click=""
-                   ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;&nbsp;</a>
+                <p>
+                    <a href="#"
+                       ng-click=""
+                       ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;&nbsp;</a>
+                </p>
 
                 <select ng-model="reqParams.pair"
                         ng-options="pair.name for pair in listModalArray" size="5">

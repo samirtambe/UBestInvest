@@ -1,7 +1,6 @@
 angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.showErrModal = false;
-    $scope.showListModal = false;
 
     $scope.errorModalDetails = undefined;
     $scope.investmentsArray = undefined;
@@ -26,10 +25,6 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
          $(this).blur();
         console.log("blurring...");
     });
-    $scope.showSymbols = function() {
-
-        $scope.showListModal = true;
-    };
 
 /* ******************************************************************************
     Getting stock symbol/name of stock investment list data

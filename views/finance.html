@@ -6,13 +6,6 @@
 
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
 
-            <button type="button"
-                    id="invSymbolLookupBtn"
-                    class="btn btn-default"
-                    ng-click="showSymbols()"><i class="glyphicon glyphicon-search"></i>
-                Select Investment
-            </button>
-
             <div class = "input-group">
 
                 <input name="compSelect"
@@ -20,7 +13,14 @@
                        class="form-control"
                        type="text"
                        ng-model="reqParams.pair.symbol"
+                       list="dlinv"
                        placeholder="Enter Symbol">
+
+                <datalist id="dlinv">
+                    <option ng-repeat="inv in investmentsArray" value="{{ inv.name }}">
+                        {{inv.}}
+                    </option>
+                </datalist>
 
                 <div class = "input-group-btn">
 

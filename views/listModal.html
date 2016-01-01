@@ -13,22 +13,32 @@
             </div>
 
             <div class="modal-body">
+                <form name="filterForm" class="form-group" novalidate>
 
-                <h5>Select letter that Investment name starts with:</h5>
-                <p>
-                    <a href="#"
-                       ng-click=""
-                       ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;&nbsp;</a>
-                </p>
+                    <h5>Start typing the Investment Name:</h5>
+                    <div class = "input-group">
 
-                <select ng-model="reqParams.pair"
-                        ng-options="pair.name for pair in listModalArray" size="5">
-                </select>
+                        <input name="investmentInputFilter"
+                               id="investmentInputFilter"
+                               class="form-control"
+                               type="text"
+                               ng-model="reqParams.pair.name"
+                               placeholder="Enter Investment Name">
 
-                <button type="button" class="btn btn-primary" data-dismiss="modal">
-                    Select
-                </button>
+                        <div class = "input-group-btn">
 
+                            <button id = "getGraphBtn"
+                                    type = "submit"
+                                    class = "btn btn-primary"
+                                    ng-disabled="rsForm.$invalid"
+                                    data-dismiss="modal">
+                                <i class="glyphicon glyphicon-filter"></i>
+                            </button>
+
+                        </div><!-- input-group-btn -->
+
+                    </div><!-- input-group -->
+                </form>
             </div><!-- modal-body -->
         </div><!-- modal-content -->
     </div><!-- modal-dialog -->

@@ -20,7 +20,7 @@
                    ng-repeat="letter in alphabetArray">{{ letter }}&nbsp;&nbsp;</a>
 
                 <select ng-model="reqParams.pair"
-                        ng-options="pair.name for pair in listModalArray">
+                        ng-options="pair.name for pair in listModalArray" size="5">
                 </select>
 
                 <button type="button" class="btn btn-primary" data-dismiss="modal">

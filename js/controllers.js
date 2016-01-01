@@ -4,7 +4,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.showListModal = false;
 
     $scope.errorModalDetails = undefined;
-    $scope.listModalArray = undefined;
+    $scope.investmentsArray = undefined;
 
     $scope.pair = undefined;
 
@@ -37,8 +37,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 */
     HttpSvc.getSymbols(null).then(function (data) {
 
-        $scope.listModalArray = data;
-        console.log('INFO: Downloaded Investment List...');
+        $scope.investmentsArray = data;
+
         $scope.nslistLoaded = true;
 
     }).catch(function(data) {

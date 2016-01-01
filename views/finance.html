@@ -12,13 +12,13 @@
                        id="compSelect"
                        class="form-control"
                        type="text"
-                       ng-model="reqParams.pair.symbol"
+                       ng-model="reqParams.pair"
                        list="dlinv"
                        placeholder="Enter Symbol">
 
                 <datalist id="dlinv">
-                    <option ng-repeat="inv in investmentsArray" value="{{ inv.name }}">
-                        {{inv}}
+                    <option ng-repeat="inv in investmentsArray" value="{{ inv }}">
+                        {{inv.name}}
                     </option>
                 </datalist>
 

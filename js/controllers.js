@@ -1,6 +1,14 @@
 angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.showErrModal = false;
+    $scope.showListModal = false;
+
+    $scope.alphabet=[
+        "a","b","c","d","e","f","g","h",
+        "i","j","k","l","m","n","o","p",
+        "q","r","s","t","u","v","w","x",
+        "y","z"
+    ];
 
     $scope.errorModalDetails = undefined;
     $scope.investmentsArray = undefined;
@@ -23,7 +31,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $(".btn").mouseup(function() {
          $(this).blur();
-        console.log("blurring...");
+        console.log("ResearchCtrl: blurring...");
     });
 
 /* ******************************************************************************
@@ -198,6 +206,11 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
 /***********************************************************************************************/
 angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',function($scope, HttpSvc) {
+
+    $(".btn").mouseup(function() {
+         $(this).blur();
+        console.log("WeatherCtrl: blurring...");
+    });
 
     $scope.weatherParams = {
         forecastType: '/conditions'

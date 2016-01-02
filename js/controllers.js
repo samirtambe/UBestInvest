@@ -11,6 +11,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     ];
     $scope.selectedPrefix = undefined;
 
+    $scope.refreshedSubset = undefined;
+
     $scope.errorModalDetails = undefined;
 
     $scope.investmentsArray = undefined;

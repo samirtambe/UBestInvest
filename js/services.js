@@ -40,7 +40,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 weather: 'http://api.wunderground.com/api/',
 
-                nslist: 'http://ubestinvest.cardbycloud.com/rsc/nslist.new.json'
+                nslist: 'http://ubestinvest.cardbycloud.com/rsc/nslist.json'
             },
 
 

@@ -9,8 +9,10 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         "q","r","s","t","u","v","w","x",
         "y","z"
     ];
+    $scope.selectedPrefix = undefined;
 
     $scope.errorModalDetails = undefined;
+
     $scope.investmentsArray = undefined;
 
     $scope.pair = undefined;
@@ -33,8 +35,14 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
          $(this).blur();
         console.log("ResearchCtrl: blurring...");
     });
+
     $scope.triggerListModal = function() {
         $scope.showListModal = true;
+    };
+
+    $scope.getInvSubset = function(){
+        console.log('getInvSubset()...');
+
     };
 /* ******************************************************************************
     Getting stock symbol/name of stock investment list data

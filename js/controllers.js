@@ -167,7 +167,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.getGraph = function(validForm) {
 
         if (validForm == true) {
-
+console.log('calculating begin date svc'+ChartSvc.calcBeginDate($scope));
             $scope.reqParams.howLongAgo.setDate(ChartSvc.calcBeginDate($scope));
 
             var tframe = ChartSvc.formatDateShort($scope);

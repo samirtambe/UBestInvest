@@ -1,14 +1,9 @@
 angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
 
     $scope.showErrModal = false;
+
     $scope.showListModal = false;
 
-    $scope.alphabet=[
-        "a","b","c","d","e","f","g","h",
-        "i","j","k","l","m","n","o","p",
-        "q","r","s","t","u","v","w","x",
-        "y","z"
-    ];
     $scope.selectedPrefix = undefined;
 
     $scope.refreshedSubset = undefined;
@@ -17,7 +12,17 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.investmentsArray = undefined;
 
+    $scope.nslistLoaded = false;
+
     $scope.pair = undefined;
+
+    $scope.alphabet=[
+        "a","b","c","d","e","f","g","h",
+        "i","j","k","l","m","n","o","p",
+        "q","r","s","t","u","v","w","x",
+        "y","z"
+    ];
+
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -31,11 +36,9 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         endDate: ''
     };
 
-    $scope.nslistLoaded = false;
 
     $(".btn").mouseup(function() {
          $(this).blur();
-        console.log("ResearchCtrl: blurring...");
     });
 
     $scope.triggerListModal = function() {

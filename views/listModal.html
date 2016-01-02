@@ -18,8 +18,8 @@
                        ng-click="getInvSubset()"
                        ng-model="selectedPrefix">{{letter}}&nbsp;</a>
                 </div>
-                Selected Prefix = {{selectedPrefix}}
-                <div ng-if="selectedPrefix">
+                Selected Prefix = {{ selectedPrefix }}
+                <div>
                     <select ng-options="item.name for item in investmentsArray['selectedPrefix']">
                     </select>
                 </div>

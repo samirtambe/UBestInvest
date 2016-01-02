@@ -278,7 +278,6 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
 
             case dur[0]:
                 retStartDate = scope.reqParams.todayDate.getDate() - 7;
-console.log('reStartDate ='+ retStartDate);
                 break;
 
             case dur[1]:
@@ -314,11 +313,15 @@ console.log('reStartDate ='+ retStartDate);
             end: ''
         };
 
+console.log('today year'+scope.reqParams.todayDate.getFullYear());
+
          shortDate.start = scope.reqParams.todayDate.getFullYear() +
             '-' +
             padWithZero((scope.reqParams.todayDate.getMonth() + 1).toString()) +
             '-' +
             padWithZero(scope.reqParams.todayDate.getDate().toString());
+
+console.log('ago year'+scope.reqParams.howLongAgo.getFullYear());
 
          shortDate.end = scope.reqParams.howLongAgo.getFullYear() +
             '-' +

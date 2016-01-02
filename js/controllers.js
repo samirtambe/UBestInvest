@@ -4,7 +4,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.showListModal = false;
 
-    $scope.selectedPrefix = undefined;
+    $scope.spfx = undefined;
 
     $scope.refreshedSubset = undefined;
 
@@ -46,8 +46,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     };
 
     $scope.getInvSubset = function() {
-        console.log('selectedPrefix = ' + $scope.selectedPrefix);
-//        var sp = $scope.selectedPrefix;
+        console.log('spfx = ' + $scope.spfx);
+//        var sp = $scope.spfx;
 //        $scope.refreshedSubset = $scope.investmentsArray[sp];
 //        console.log($scope.investmentsArray[sp]);
     };

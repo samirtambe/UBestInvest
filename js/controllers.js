@@ -42,9 +42,10 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         $scope.showListModal = true;
     };
 
-    $scope.getInvSubset = function(){
-        $scope.refreshedSubset = $scope.investmentsArray[$scope.selectedPrefix];
-        console.log($scope.investmentsArray[$scope.selectedPrefix]);
+    $scope.getInvSubset = function() {
+        var sp = $scope.selectedPrefix;
+        $scope.refreshedSubset = $scope.investmentsArray[sp];
+        console.log($scope.investmentsArray[sp]);
     };
 /* ******************************************************************************
     Getting stock symbol/name of stock investment list data

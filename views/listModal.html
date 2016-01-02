@@ -13,7 +13,7 @@
                 <h4>Choose first letter of Investment</h4>
                 <select>
                     <option ng-repeat="letter in alphabet"
-                            ng-model="selectedPrefix">{{letter}}</option>
+                            ng-model="selectedPrefix" value="{{letter}}">{{letter}}</option>
                 </select>
                 Selected Prefix = {{ selectedPrefix }}
                 <div>

@@ -10,12 +10,11 @@
                 <h4 class="modal-title">Investment Symbol Lookup</h4>
             </div>
             <div class="modal-body">
+
                 <h4>Choose first letter of Investment</h4>
+
                 <select ng-model="spfx" ng-change="getInvSubset()">
                     <option ng-repeat="letter in alphabet" value="{{letter}}">{{letter}}</option>
-                </select>
-                <br>
-                <select ng-options="item.name for item in refreshedSubset">
                 </select>
 
             </div>

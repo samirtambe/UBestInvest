@@ -14,10 +14,10 @@
                 <select ng-model="spfx" ng-change="getInvSubset()">
                     <option ng-repeat="letter in alphabet" value="{{letter}}">{{letter}}</option>
                 </select>
-                <div>
-                    <select ng-options="item.name for item in refreshedSubset">
-                    </select>
-                </div>
+                <br>
+                <select ng-options="item.name for item in refreshedSubset">
+                </select>
+
             </div>
         </div>
     </div>

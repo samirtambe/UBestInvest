@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <h4>Choose first letter of Investment</h4>
-                <select ng-model="selectedPrefix" ng-change="getInvSubset()">
+                <select ng-model="spfx" ng-change="getInvSubset()">
                     <option ng-repeat="letter in alphabet" value="{{letter}}">{{letter}}</option>
                 </select>
                 <div>

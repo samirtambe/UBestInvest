@@ -43,8 +43,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     };
 
     $scope.getInvSubset = function(){
-        console.log('getInvSubset()...');
-
+        $scope.refreshedSubset = $scope.investmentsArray[$scope.selectedPrefix]
+        console.log($scope.investmentsArray[$scope.selectedPrefix]);
     };
 /* ******************************************************************************
     Getting stock symbol/name of stock investment list data

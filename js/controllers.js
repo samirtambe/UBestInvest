@@ -171,7 +171,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
             $scope.reqParams.howLongAgo.setDate(ChartSvc.calcBeginDate($scope));
 
             var tframe = ChartSvc.formatDateShort($scope);
-
+            console.log('startdate = '+ tframe.start);
+            console.log('enddate = '+ tframe.end);
             $scope.reqParams.startDate = tframe.start;
 
             $scope.reqParams.endDate = tframe.end;

@@ -11,9 +11,9 @@
             </div>
             <div class="modal-body">
                 <h4>Choose first letter of Investment</h4>
-                <select>
+                <select ng-model="selectedPrefix">
                     <option ng-repeat="letter in alphabet"
-                            ng-model="selectedPrefix" value="{{letter}}">{{letter}}</option>
+                            value="{{letter}}">{{letter}}</option>
                 </select>
                 Selected Prefix = {{ selectedPrefix }}
                 <div>

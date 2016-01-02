@@ -11,10 +11,11 @@
             </div>
             <div class="modal-body">
 
-                <h4>Choose first letter of Investment</h4>
+                <h4>Select a company</h4>
 
-                <select ng-model="spfx" ng-change="getInvSubset()">
-                    <option ng-repeat="letter in alphabet" value="{{letter}}">{{letter}}</option>
+                <select ng-model="reqParams.pair.symbol"
+                        ng-change=""
+                        ng-options="item.name for item in investmentsArray">
                 </select>
 
             </div>

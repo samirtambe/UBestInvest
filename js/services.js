@@ -278,7 +278,7 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
 
             case dur[0]:
                 retStartDate = scope.reqParams.todayDate.getDate() - 7;
-
+console.log('reStartDate ='+ retStartDate);
                 break;
 
             case dur[1]:

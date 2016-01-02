@@ -11,13 +11,10 @@
             </div>
             <div class="modal-body">
                 <h4>Choose first letter of Investment</h4>
-                <div>
-                    <a href="#"
-                       ng-repeat="letter in alphabet"
-                       type="button"
-                       ng-click="getInvSubset()"
-                       ng-model="selectedPrefix">{{letter}}&nbsp;</a>
-                </div>
+                <select>
+                    <option ng-repeat="letter in alphabet"
+                            ng-model="selectedPrefix">{{letter}}</option>
+                </select>
                 Selected Prefix = {{ selectedPrefix }}
                 <div>
                     <select ng-options="item.name for item in investmentsArray['selectedPrefix']">

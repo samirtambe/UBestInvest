@@ -15,7 +15,7 @@
 
                 <select ng-model="reqParams.pair.symbol"
                         ng-change=""
-                        ng-options="item for item in investmentsArray">
+                        ng-options="item as item.name for item in investmentsArray track by item.symbol">
                 </select>
 
             </div>

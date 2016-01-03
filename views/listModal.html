@@ -13,10 +13,18 @@
 
                 <h4>Select a company</h4>
 
-                <select ng-model="reqParams.pair"
-                        ng-change=""
-                        ng-options="item as item.name for item in investmentsArray track by item.symbol">
-                </select>
+                <form name="rsSymbolHelp"
+                      id="rsSymbolHelp"
+                      class="form-group"
+                      ng-submit="getGraph(rsForm.$valid)"
+                      novalidate>
+
+                    <select class="form-control"
+                            ng-model="reqParams.pair"
+                            ng-options="item as item.name for item in investmentsArray track by item.symbol"
+                            data-dismiss="modal">
+                    </select>
+                </form>
 
             </div>
         </div>

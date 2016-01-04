@@ -20,6 +20,7 @@
                     <select class="form-control"
                             ng-model="reqParams.pair"
                             ng-options="item as item.name for item in investmentsArray track by item.symbol"
+                            ng-change="showListModal=false;getGraph(true);"
                             >
                     </select>
                 </form>

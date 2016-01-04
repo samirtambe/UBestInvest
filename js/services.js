@@ -231,7 +231,7 @@ may have to normalize it on our end, as best we can. */
         return getData('news', parm);
     }
 
-    function getNameSymbolList(parm) {
+    function getSymbols(parm) {
         return getData('nslist', parm);
     }
 
@@ -239,12 +239,12 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     return ({
-        getStockData: getStockData,
         getDowJonesData: getDowJonesData,
-        getSP500Data: getSP500Data,
-        getWeatherData: getWeatherData,
         getNewsData: getNewsData,
-        getNameSymbolList: getNameSymbolList
+        getSP500Data: getSP500Data,
+        getStockData: getStockData,
+        getSymbols: getSymbols,
+        getWeatherData: getWeatherData
     });
 
 }]);
@@ -271,14 +271,12 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
 
     function calcBeginDate(scope) {
 
-        var dur = scope.durations,
-            retStartDate;
-
+        var dur = scope.durations,retStartDate;
+//console.log('cbd='+scope.reqParams.todayDate.getDate());
         switch(scope.reqParams.duration) {
 
             case dur[0]:
                 retStartDate = scope.reqParams.todayDate.getDate() - 7;
-
                 break;
 
             case dur[1]:
@@ -314,11 +312,15 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
             end: ''
         };
 
+
+
          shortDate.start = scope.reqParams.todayDate.getFullYear() +
             '-' +
             padWithZero((scope.reqParams.todayDate.getMonth() + 1).toString()) +
             '-' +
             padWithZero(scope.reqParams.todayDate.getDate().toString());
+
+
 
          shortDate.end = scope.reqParams.howLongAgo.getFullYear() +
             '-' +

@@ -3,16 +3,14 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.showErrModal = false;
 
     $scope.errorModalDetails = undefined;
+
     $scope.pair = undefined;
-    $scope.symbolNameList = undefined;
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
     $scope.reqParams = {
-        pair: {
-            symbol : undefined,
-            name : undefined
-        },
+
+        pair: {symbol : undefined, name : undefined },
         todayDate : new Date(),
         howLongAgo: new Date(),
         duration: $scope.durations[0],
@@ -20,24 +18,10 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
         endDate: ''
     };
 
-    HttpSvc.getNameSymbolList(null).then(function (data) {
 
-        $scope.symbolNameList = data;
-        $scope.reqParams.pair.symbol = $scope.symbolNameList[0].symbol;
-        $scope.reqParams.pair.name = $scope.symbolNameList[0].name;
-
-    }).catch(function(data) {
-
-        $scope.showErrModal = true;
-
-        console.log("ResearchCtrl - Loading datalist - CATCH(): ");
-        console.log(data.details);
-
-        for (key in data) {
-            console.log('=' + key);
-        }
+    $(".btn").mouseup(function() {
+         $(this).blur();
     });
-
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
@@ -59,13 +43,13 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
             parseDate = d3.time.format("%Y-%m-%d").parse,
 
-            xScale = d3.time.scale().range([0, width]),
+            x = d3.time.scale().range([0, width]),
 
-            yScale = d3.scale.linear().range([height, 0]),
+            y = d3.scale.linear().range([height, 0]),
 
-            xAxis = d3.svg.axis().scale(xScale).orient("bottom"),
+            xAxis = d3.svg.axis().scale(x).orient("bottom"),
 
-            yAxis = d3.svg.axis().scale(yScale).orient("left"),
+            yAxis = d3.svg.axis().scale(y).orient("left").innerTickSize(-width),
 
             area = d3.svg.area()
                 .x(function(d) {
@@ -133,11 +117,12 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
     $scope.getGraph = function(validForm) {
 
         if (validForm == true) {
-
+//console.log('calculating begin date svc'+ChartSvc.calcBeginDate($scope));
             $scope.reqParams.howLongAgo.setDate(ChartSvc.calcBeginDate($scope));
 
             var tframe = ChartSvc.formatDateShort($scope);
-
+//console.log('startdate = '+ tframe.start);
+//console.log('enddate = '+ tframe.end);
             $scope.reqParams.startDate = tframe.start;
 
             $scope.reqParams.endDate = tframe.end;
@@ -156,6 +141,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
                 .then(function(dataset) {
 
                 $scope.graphData = dataset.data;
+                $scope.reqParams.pair.name = dataset.name;
                 createChart();
 
             }).catch(function(errObj) {
@@ -189,6 +175,11 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
 /***********************************************************************************************/
 angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',function($scope, HttpSvc) {
+
+    $(".btn").mouseup(function() {
+         $(this).blur();
+        console.log("WeatherCtrl: blurring...");
+    });
 
     $scope.weatherParams = {
         forecastType: '/conditions'

@@ -333,3 +333,7 @@ div.techGalleryImg > a > img {
     width: 140px;
 
 }
+#rsSymbolHelp > select.form-control {
+    background-color: aqua;
+    width: 125px;
+}

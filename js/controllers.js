@@ -2,12 +2,6 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.showErrModal = false;
 
-    $scope.showListModal = false;
-
-    $scope.spfx = undefined;
-
-    $scope.refreshedSubset = undefined;
-
     $scope.errorModalDetails = undefined;
 
     $scope.investmentsArray = undefined;
@@ -41,16 +35,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
          $(this).blur();
     });
 
-    $scope.triggerListModal = function() {
-        $scope.showListModal = true;
-    };
 
-    $scope.getInvSubset = function() {
-        console.log('spfx = ' + $scope.spfx);
-//        var sp = $scope.spfx;
-//        $scope.refreshedSubset = $scope.investmentsArray[sp];
-//        console.log($scope.investmentsArray[sp]);
-    };
 /* ******************************************************************************
     Getting stock symbol/name of stock investment list data
     *****************************************************************************

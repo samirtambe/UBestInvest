@@ -272,7 +272,7 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
     function calcBeginDate(scope) {
 
         var dur = scope.durations,retStartDate;
-console.log('cbd='+scope.reqParams.todayDate.getDate())
+//console.log('cbd='+scope.reqParams.todayDate.getDate());
         switch(scope.reqParams.duration) {
 
             case dur[0]:

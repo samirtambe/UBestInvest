@@ -4,19 +4,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.errorModalDetails = undefined;
 
-    $scope.investmentsArray = undefined;
-
-    $scope.nslistLoaded = false;
-
     $scope.pair = undefined;
-
-    $scope.alphabet=[
-        "a","b","c","d","e","f","g","h",
-        "i","j","k","l","m","n","o","p",
-        "q","r","s","t","u","v","w","x",
-        "y","z"
-    ];
-
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -33,29 +21,6 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $(".btn").mouseup(function() {
          $(this).blur();
-    });
-
-
-/* ******************************************************************************
-    Getting stock symbol/name of stock investment list data
-    *****************************************************************************
-*/
-    HttpSvc.getSymbols(null).then(function (data) {
-
-        $scope.investmentsArray = data;
-
-        $scope.nslistLoaded = true;
-
-    }).catch(function(data) {
-
-        $scope.showErrModal = true;
-
-        console.log("ResearchCtrl - Loading datalist - CATCH(): ");
-        console.log(data.details);
-
-        for (key in data) {
-            console.log('=' + key);
-        }
     });
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);

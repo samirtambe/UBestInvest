@@ -141,6 +141,7 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
                 .then(function(dataset) {
 
                 $scope.graphData = dataset.data;
+                $scope.reqParams.pair.name = dataset.name;
                 createChart();
 
             }).catch(function(errObj) {

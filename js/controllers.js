@@ -275,7 +275,8 @@ angular.module('UBestInvest').controller('MarketCtrl',
 
     $scope.populateDowJones = function() {
 
-        SpinSvc.startSpinning(spinnerObject).then(function(){
+        SpinSvc.startSpinning(spinnerObject).then(function(mod) {
+            spinnerObject = mod;
             console.log('Started spinner');
         });
 

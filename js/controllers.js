@@ -8,6 +8,8 @@ angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', '
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
+    var spinnerObject;
+
     $scope.reqParams = {
 
         pair: {symbol : undefined, name : undefined },
@@ -238,8 +240,11 @@ angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',funct
 
 
 /***********************************************************************************************/
-angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', 'HttpSvc', function($scope,  ChartSvc, HttpSvc) {
+angular.module('UBestInvest').controller('MarketCtrl',
+        ['$scope',  'ChartSvc', 'HttpSvc', 'SpinSvc'
+         function($scope,  ChartSvc, HttpSvc, SpinSvc) {
 
+    var spinnerObject;
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -270,6 +275,10 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
 
     $scope.populateDowJones = function() {
 
+        SpinSvc.startSpinning(spinnerObject).then(function(){
+            console.log('Started spinner');
+        });
+
         HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
 
             $scope.graphData = data;
@@ -278,6 +287,11 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
 
             console.log("stockGraph dow jones Directive - Catch: " + error);
 
+            SpinSvc.stopSpinning(spinnerObject).then(function() {
+                console.log('Catch: Stopped spinner');
+            });
+
+
         }).finally(function() {
 
             $scope.reqParams.todayDate = new Date();
@@ -285,10 +299,19 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
             $scope.reqParams.startDate = '';
             $scope.reqParams.endDate = '';
 
+            SpinSvc.stopSpinning(spinnerObject).then(function() {
+                console.log('Stopped spinner');
+            });
+
+
         });
     }//getMktData()
 
     $scope.populateSP500 = function() {
+
+        SpinSvc.startSpinning(spinnerObject).then(function(){
+            console.log('Started spinner');
+        });
 
         HttpSvc.getSP500Data($scope.reqParams).then(function(data) {
 
@@ -298,12 +321,21 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope',  'ChartSvc', '
 
             console.log("stockGraph sp500 Directive - Catch: " + error);
 
+            SpinSvc.stopSpinning(spinnerObject).then(function() {
+                console.log('Catch: Stopped spinner');
+            });
+
+
         }).finally(function() {
 
             $scope.reqParams.todayDate = new Date();
             $scope.reqParams.howLongAgo = new Date();
             $scope.reqParams.startDate = '';
             $scope.reqParams.endDate = '';
+
+            SpinSvc.stopSpinning(spinnerObject).then(function() {
+                console.log('Stopped spinner');
+            });
 
         });
     }//getSP500MktData()

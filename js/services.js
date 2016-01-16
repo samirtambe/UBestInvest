@@ -370,7 +370,8 @@ angular.module('UBestInvest').service('SpinSvc', [function() {
             hwaccel: false, // Whether to use hardware acceleration
             position: 'absolute' // Element positioning
         },
-        target = document.getElementById('theBodyTag'),
+        target = document.getElementById('theBodyTag');
+
         return new Spinner(spinOptions).spin(target);
     }
 

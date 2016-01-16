@@ -346,7 +346,7 @@ angular.module('UBestInvest').service('SpinSvc', [function() {
 //    or that the content is still loading.
 
 
-    function start(spinner) {
+    function start() {
 
         var spinOptions = {
             lines: 13, // The number of lines to draw
@@ -371,11 +371,12 @@ angular.module('UBestInvest').service('SpinSvc', [function() {
             position: 'absolute' // Element positioning
         },
         target = document.getElementById('theBodyTag'),
-        spinner = new Spinner(spinOptions).spin(target);
+        return new Spinner(spinOptions).spin(target);
     }
 
     function stop(spinner) {
         spinner.stop();
+        return spinner;
     }
 
     return ({

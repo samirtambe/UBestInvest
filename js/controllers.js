@@ -241,7 +241,7 @@ angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',funct
 
 /***********************************************************************************************/
 angular.module('UBestInvest').controller('MarketCtrl',
-        ['$scope',  'ChartSvc', 'HttpSvc', 'SpinSvc'
+        ['$scope',  'ChartSvc', 'HttpSvc', 'SpinSvc',
          function($scope,  ChartSvc, HttpSvc, SpinSvc) {
 
     var spinnerObject;

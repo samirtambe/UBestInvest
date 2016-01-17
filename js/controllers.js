@@ -297,11 +297,11 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
 
     $scope.populateDowJones = function() {
 
-var spinner;
-SpinnerSvc.getNewSpinner().then(function(spinObj) {
-    spinner = spinObj;
-    console.log('DJ: Starting Spinner');
-});
+    var spinner;
+    SpinnerSvc.getNewSpinner().then(function(spinObj) {
+        spinner = spinObj;
+        console.log('DJ: Starting Spinner');
+    });
 //spinner = new Spinner(opts).spin(target);
 
         HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {

@@ -339,7 +339,7 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
 
 angular.module('UBestInvest').service('SpinnerSvc', [function() {
 
-    function start() {
+    function getNewSpinner() {
 
         var opts = {
 
@@ -377,7 +377,7 @@ angular.module('UBestInvest').service('SpinnerSvc', [function() {
 //    }
 
     return ({
-        getNewSpinner: start
+        getNewSpinner: getNewSpinner
 //        ,stop: stop
     });
 }]);

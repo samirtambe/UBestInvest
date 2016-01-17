@@ -339,7 +339,7 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
 
 angular.module('UBestInvest').service('SpinnerSvc', [function() {
 
-    function start(spinner) {
+    function start() {
 
         var opts = {
 
@@ -367,16 +367,17 @@ angular.module('UBestInvest').service('SpinnerSvc', [function() {
 
         var target = document.getElementById('theBodyTag');
 
-        spinner = new Spinner(opts).spin(target);
+        //spinner = new Spinner(opts).spin(target);
+        return new Spinner(opts).spin(target);
 
     }
 
-    function stop(spinner) {
-        spinner.stop();
-    }
+//    function stop(spinner) {
+//        spinner.stop();
+//    }
 
     return ({
-        start: start,
-        stop: stop
+        getNewSpinner: start
+//        ,stop: stop
     });
 }]);

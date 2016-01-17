@@ -375,9 +375,8 @@ angular.module('UBestInvest').service('SpinnerSvc', [function() {
         spinner.stop();
     }
 
-    return {
+    return ({
         start: start,
         stop: stop
-
-    };
+    });
 }]);

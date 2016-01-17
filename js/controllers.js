@@ -312,6 +312,8 @@ SpinnerSvc.getNewSpinner().then(function(spinObj) {
 
             console.log("stockGraph dow jones Directive - Catch: " + error);
 spinner.stop();
+console.log('c: stopping spinner');
+
 
         }).finally(function() {
 
@@ -320,6 +322,7 @@ spinner.stop();
             $scope.reqParams.startDate = '';
             $scope.reqParams.endDate = '';
 spinner.stop();
+console.log('f: stopping spinner');
 
         });
     }//getMktData()
@@ -341,6 +344,7 @@ SpinnerSvc.getNewSpinner().then(function(spinObj) {
             console.log("stockGraph sp500 Directive - Catch: " + error);
 
 spinner.stop();
+console.log('c: stopping spinner');
 
         }).finally(function() {
 
@@ -350,6 +354,7 @@ spinner.stop();
             $scope.reqParams.endDate = '';
 
 spinner.stop();
+console.log('f: stopping spinner');
 
         });
     }//getSP500MktData()

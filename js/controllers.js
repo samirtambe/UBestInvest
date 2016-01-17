@@ -298,7 +298,10 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
     $scope.populateDowJones = function() {
 
 var spinner;
-SpinnerSvc.start(spinner).then(function() {console.log('DJ: Starting Spinner');});
+SpinnerSvc.getNewSpinner().then(function(spinObj) {
+    spinner = spinObj;
+    console.log('DJ: Starting Spinner');
+});
 //spinner = new Spinner(opts).spin(target);
 
         HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
@@ -308,8 +311,7 @@ SpinnerSvc.start(spinner).then(function() {console.log('DJ: Starting Spinner');}
         }).catch(function(error) {
 
             console.log("stockGraph dow jones Directive - Catch: " + error);
-SpinnerSvc.stop(spinner).then(function(){console.log('DJ: Catch: Stopping Spinner');})
-//spinner.stop();
+spinner.stop();
 
         }).finally(function() {
 
@@ -317,15 +319,17 @@ SpinnerSvc.stop(spinner).then(function(){console.log('DJ: Catch: Stopping Spinne
             $scope.reqParams.howLongAgo = new Date();
             $scope.reqParams.startDate = '';
             $scope.reqParams.endDate = '';
-SpinnerSvc.stop(spinner).then(function(){console.log('DJ: Finally: Stopping Spinner');})
-//spinner.stop();
+spinner.stop();
 
         });
     }//getMktData()
 
     $scope.populateSP500 = function() {
 var spinner;
-SpinnerSvc.start(spinner).then(function(){console.log('SP500: Starting Spinner');});
+SpinnerSvc.getNewSpinner().then(function(spinObj) {
+    spinner = spinObj;
+    console.log('DJ: Starting Spinner');
+});
 //        spinner = new Spinner(opts).spin(target);
 
         HttpSvc.getSP500Data($scope.reqParams).then(function(data) {
@@ -336,8 +340,7 @@ SpinnerSvc.start(spinner).then(function(){console.log('SP500: Starting Spinner')
 
             console.log("stockGraph sp500 Directive - Catch: " + error);
 
-SpinnerSvc.stop(spinner).then(function(){console.log('sp500: Catch: Stopping Spinner');})
-//spinner.stop();
+spinner.stop();
 
         }).finally(function() {
 
@@ -346,8 +349,7 @@ SpinnerSvc.stop(spinner).then(function(){console.log('sp500: Catch: Stopping Spi
             $scope.reqParams.startDate = '';
             $scope.reqParams.endDate = '';
 
-SpinnerSvc.stop(spinner).then(function(){console.log('sp500: Finally: Stopping Spinner');})
-//spinner.stop();
+spinner.stop();
 
         });
     }//getSP500MktData()

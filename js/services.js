@@ -367,17 +367,10 @@ angular.module('UBestInvest').service('SpinnerSvc', [function() {
 
         var target = document.getElementById('theBodyTag');
 
-        //spinner = new Spinner(opts).spin(target);
         return new Spinner(opts).spin(target);
-
     }
-
-//    function stop(spinner) {
-//        spinner.stop();
-//    }
 
     return ({
         getNewSpinner: getNewSpinner
-//        ,stop: stop
     });
 }]);

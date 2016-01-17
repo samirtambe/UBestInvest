@@ -296,8 +296,9 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
     catch(error) {}
 
     $scope.populateDowJones = function() {
+
 var spinner;
-SpinnerSvc.start(spinner).then(function(){console.log('DJ: Starting Spinner');});
+SpinnerSvc.start(spinner).then(function() {console.log('DJ: Starting Spinner');});
 //spinner = new Spinner(opts).spin(target);
 
         HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {

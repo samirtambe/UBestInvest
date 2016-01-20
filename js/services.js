@@ -366,6 +366,8 @@ angular.module('UBestInvest').service('SpinnerSvc', [function() {
 
         var target = document.getElementById('theBodyTag');
 
+        return new Spinner(opts).spin(target);
+
     }
 
     return {

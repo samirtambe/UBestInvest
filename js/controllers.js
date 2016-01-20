@@ -324,7 +324,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
     }//getMktData()
 
     $scope.populateSP500 = function() {
-        var spinner = new Spinner(opts).spin(target);
+        var spinner = SpinnerSvc.getSpinner();
 
         HttpSvc.getSP500Data($scope.reqParams).then(function(data) {
 

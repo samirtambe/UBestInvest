@@ -1,4 +1,6 @@
-angular.module('UBestInvest').controller('ResearchCtrl', ['$scope', 'HttpSvc', 'ChartSvc', '$window', function($scope, HttpSvc, ChartSvc, $window) {
+angular.module('UBestInvest').controller('ResearchCtrl',
+    ['$scope', 'HttpSvc', 'ChartSvc', '$window', 'SpinnerSvc',
+     function($scope, HttpSvc, ChartSvc, $window, SpinnerSvc) {
 
     $scope.showErrModal = false;
 

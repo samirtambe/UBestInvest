@@ -240,6 +240,7 @@ angular.module('UBestInvest').controller('WeatherCtrl',
         $scope.weatherParams.forecastType = "/conditions";
 
         spinner.stop();
+        console.log('w: spinner stopped')
     };// getWeather()
 }]);
 /***********************************************************************************************/

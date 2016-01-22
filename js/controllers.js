@@ -218,9 +218,13 @@ angular.module('UBestInvest').controller('WeatherCtrl',
         var spinner = SpinnerSvc.getSpinner();
 
         HttpSvc.getWeatherData($scope.weatherParams).then(function(result) {
+
             $scope.weather = result.current_observation;
+
         }).catch(function(error) {
+
             console.log("WeatherCtrl - Current Conditions - Catch: " + error);
+
             spinner.stop();
         });
 
@@ -230,9 +234,13 @@ angular.module('UBestInvest').controller('WeatherCtrl',
 
 
         HttpSvc.getWeatherData($scope.weatherParams).then(function(result) {
+
             $scope.threeForecast = result.forecast.simpleforecast.forecastday;
+
         }).catch(function(error) {
+
             console.log("WeatherCtrl - 3 Day Forecast - Catch: " + error);
+
             spinner.stop();
         });
 
@@ -240,7 +248,7 @@ angular.module('UBestInvest').controller('WeatherCtrl',
         $scope.weatherParams.forecastType = "/conditions";
 
         spinner.stop();
-        console.log('w: spinner stopped');
+
     };// getWeather()
 }]);
 /***********************************************************************************************/
@@ -294,7 +302,6 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
 
             console.log("stockGraph dow jones Directive - Catch: " + error);
             spinner.stop();
-            console.log('c: stopping spinner');
 
 
         }).finally(function() {
@@ -305,7 +312,6 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
             $scope.reqParams.endDate = '';
 
             spinner.stop();
-            console.log('f: stopping spinner');
 
         });
     }//getMktData()
@@ -321,7 +327,6 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
 
             console.log("stockGraph sp500 Directive - Catch: " + error);
             spinner.stop();
-            console.log('c: stopping spinner');
 
         }).finally(function() {
 
@@ -331,7 +336,6 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
             $scope.reqParams.endDate = '';
 
             spinner.stop();
-            console.log('f: stopping spinner');
 
         });
     }//getSP500MktData()

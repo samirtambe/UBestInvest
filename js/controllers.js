@@ -180,7 +180,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
 /***********************************************************************************************/
 angular.module('UBestInvest').controller('WeatherCtrl',
-    ['$scope','HttpSvc', 'SpinnerSvc'
+    ['$scope','HttpSvc', 'SpinnerSvc',
      function($scope, HttpSvc, SpinnerSvc) {
 
     $(".btn").mouseup(function() {

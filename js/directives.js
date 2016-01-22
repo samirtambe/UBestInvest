@@ -122,6 +122,7 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
            };//drawChart
 
+/************************* Beginning of the LINK FUNCTION ************************** */
            var grData = [];
 
            if (attrs.graphdata == 'dowjones') {

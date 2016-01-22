@@ -44,8 +44,13 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
                    parseDate = d3.time.format("%Y-%m-%d").parse,
 
+
+
+
+
                    // create x-axis scale
-                   x = d3.time.scale().range([0, width]),
+                   //x = d3.time.scale().range([0, width]),
+                   x = d3.scale().linear().range([0, width]),
 
                    // create y-axis scale
                    y = d3.scale.linear().range([height, 0]),
@@ -55,6 +60,11 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
                    // orient y-axis
                    yAxis = d3.svg.axis().scale(y).orient("left"),
+
+
+
+
+
 
                    area = d3.svg.area().x(function(d) {
                        return x(d.date);

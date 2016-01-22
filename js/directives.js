@@ -1,12 +1,18 @@
 angular.module('UBestInvest').directive('stockGraph', [function() {
 
    return {
+
        restrict: 'E',
+
        scope: {
-           ctype: '@'
+
+           graphdata: '@'
        },
+
        template: '<div class="frontChartDiv"></div>',
+
        controller: 'MarketCtrl',
+
        link: function(scope, elem, attrs) {
 
            var drawChart = function() {
@@ -15,11 +21,13 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
                var aChartDiv = '';
 
-               if (attrs.ctype == 'dowjones') {
+               if (attrs.graphdata == 'dowjones') {
+
                    aChartDiv = chrtDivs[0];
                    aChartDiv.id = 'frontMktDowJonesDiv';
                }
-               else if(attrs.ctype == 'sp500') {
+               else if(attrs.graphdata == 'sp500') {
+
                    aChartDiv = chrtDivs[1];
                    aChartDiv.id = 'frontMktSP500Div';
                }
@@ -100,34 +108,35 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
            var grData = [];
 
-           if (attrs.ctype == 'dowjones') {
+           if (attrs.graphdata == 'dowjones') {
                scope.populateDowJones();
            }
-           else if(attrs.ctype == 'sp500') {
+           else if(attrs.graphdata == 'sp500') {
                scope.populateSP500();
            }
-
-
 
            // Remember watch does not go very deep it only checks reference
            // 'graphData' refers to $scope.graphData in the MarketCtrl
            scope.$watch('graphData', function(newVal) {
+
                if (newVal) {
+
                    grData = newVal;
+
                    drawChart();
                }
            });
        }// LINK FUNCTION
    };// RETURN
 }]);
-/*********************************************************************************************/
-
-
-
-
 
 
 /*********************************************************************************************/
+
+
+/*********************************************************************************************/
+
+
 angular.module('UBestInvest').directive('errorModal', [function() {
     return {
         templateUrl: 'views/invErrModal.html',

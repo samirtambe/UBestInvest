@@ -64,11 +64,12 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                    }),
 
                    svg = d3.select('#'+aChartDiv.id)
-                            .append("svg")
-                            .attr("width", width + margin.left + margin.right)
-                            .attr("height", height + margin.top + margin.bottom)
-                            .append("g")
-                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                    .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform",
+                          "translate(" + margin.left + "," + margin.top + ")");
 
 
                var data = [];
@@ -148,10 +149,11 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 }]);
 
 
-/*********************************************************************************************/
 
 
-/*********************************************************************************************/
+/*************************************************************************************/
+
+
 
 
 angular.module('UBestInvest').directive('errorModal', [function() {

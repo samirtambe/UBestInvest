@@ -105,13 +105,13 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
                    // Drawing x-axis
                    svg.append("g")
-                       .attr("class","xaxis")
+                       .attr("class","x-axis")
                        .attr("transform","translate(0,"+height+")")
                        .call(xAxis);
 
                    // Drawing y-axis
                    svg.append("g")
-                       .attr("class", "yaxis")
+                       .attr("class", "y-axis")
                        .call(yAxis)
                        .append("text")
                        .attr("transform", "rotate(-90)")

@@ -50,7 +50,7 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
                    // create x-axis scale
                    //x = d3.time.scale().range([0, width]),
-                   x = d3.scale().linear().range([0, width]),
+                   x = d3.scale.linear().range([0, width]),
 
                    // create y-axis scale
                    y = d3.scale.linear().range([height, 0]),

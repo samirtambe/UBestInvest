@@ -179,7 +179,9 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
 
 /***********************************************************************************************/
-angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',function($scope, HttpSvc) {
+angular.module('UBestInvest').controller('WeatherCtrl',
+    ['$scope','HttpSvc', 'SpinnerSvc'
+     function($scope, HttpSvc, SpinnerSvc) {
 
     $(".btn").mouseup(function() {
          $(this).blur();
@@ -213,10 +215,13 @@ angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',funct
 
     $scope.getWeather = function() {
 
+        var spinner = SpinnerSvc.getSpinner();
+
         HttpSvc.getWeatherData($scope.weatherParams).then(function(result) {
             $scope.weather = result.current_observation;
         }).catch(function(error) {
             console.log("WeatherCtrl - Current Conditions - Catch: " + error);
+            spinner.stop();
         });
 
 
@@ -228,11 +233,13 @@ angular.module('UBestInvest').controller('WeatherCtrl',['$scope','HttpSvc',funct
             $scope.threeForecast = result.forecast.simpleforecast.forecastday;
         }).catch(function(error) {
             console.log("WeatherCtrl - 3 Day Forecast - Catch: " + error);
+            spinner.stop();
         });
 
         //revert back directly after the query has been sent
         $scope.weatherParams.forecastType = "/conditions";
 
+        spinner.stop();
     };// getWeather()
 }]);
 /***********************************************************************************************/

@@ -211,6 +211,21 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    function getHomeGraphData (homeGraphType, parm) {
+
+        switch (homeGraphType) {
+
+            case 'dowjones':
+                return getData('dowjones', parm);
+                break;
+
+            case 'sp500':
+                return getData('sp500', parm);
+                break;
+
+        }//switch
+    }//getHomeGraphData
+
     function getStockData (parm) {
         return getData('stock', parm);
     }
@@ -239,6 +254,7 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     return ({
+        getHomeGraphData: getHomeGraphData,
         getDowJonesData: getDowJonesData,
         getNewsData: getNewsData,
         getSP500Data: getSP500Data,

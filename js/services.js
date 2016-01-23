@@ -100,7 +100,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 httpObj.url = urls.nasdaq;
                 httpObj.params = {
                     auth_token: apiKeys.quandl,
-                    column_index: StockColumnNum,
+                    column_index: '1', // The '1'st column which is called 'Index Value'
                     trim_end: parm.startDate,
                     trim_start: parm.endDate
                 };

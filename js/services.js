@@ -33,8 +33,8 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 news: 'TBA',
 
                 stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
-//dowjones: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_DJI.json',
-                dowjones: 'https://www.quandl.com/api/v3/datasets/BCB/UDJIAD1.json',
+
+                dowjones: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_DJI.json',
 
                 sp500: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_GSPC.json',
 

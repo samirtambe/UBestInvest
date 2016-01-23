@@ -230,14 +230,6 @@ may have to normalize it on our end, as best we can. */
         return getData('stock', parm);
     }
 
-    function getDowJonesData (parm) {
-        return getData('dowjones', parm);
-    }
-
-    function getSP500Data (parm) {
-        return getData('sp500', parm);
-    }
-
     function getWeatherData (parm) {
         return getData('weather', parm);
     }
@@ -255,9 +247,7 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     return ({
         getHomeGraphData: getHomeGraphData,
-        getDowJonesData: getDowJonesData,
         getNewsData: getNewsData,
-        getSP500Data: getSP500Data,
         getStockData: getStockData,
         getSymbols: getSymbols,
         getWeatherData: getWeatherData

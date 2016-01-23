@@ -36,6 +36,8 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 dowjones: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_DJI.json',
 
+                nasdaq: 'https://www.quandl.com/api/v3/datasets/NASDAQOMX/COMP.json',
+
                 sp500: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_GSPC.json',
 
                 weather: 'http://api.wunderground.com/api/',
@@ -94,6 +96,16 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 };
                 break;
 
+            case 'nasdaq':
+                httpObj.url = urls.nasdaq;
+                httpObj.params = {
+                    auth_token: apiKeys.quandl,
+                    column_index: StockColumnNum,
+                    trim_end: parm.startDate,
+                    trim_start: parm.endDate
+                };
+                break;
+
 
             case 'sp500':
                 httpObj.url = urls.sp500;
@@ -140,6 +152,10 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                         break;
 
                     case 'dowjones':
+                        retObj = response.data.dataset.data;
+                        break;
+
+                    case 'nasdaq': /* *** THIS MAY CHANGE *** */
                         retObj = response.data.dataset.data;
                         break;
 
@@ -217,6 +233,10 @@ may have to normalize it on our end, as best we can. */
 
             case 'dowjones':
                 return getData('dowjones', parm);
+                break;
+
+            case 'nasdaq':
+                return getData('nasdaq', parm);
                 break;
 
             case 'sp500':

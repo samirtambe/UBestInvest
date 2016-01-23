@@ -84,7 +84,6 @@ angular.module('UBestInvest').controller('ResearchCtrl',
                     }
                 );
             }
-            //console.log('Data Elements = ' + data.length);
 
             data.forEach(function(d) {
                 d.date = parseDate(d.date);
@@ -96,31 +95,32 @@ angular.module('UBestInvest').controller('ResearchCtrl',
             y.domain([0, d3.max(data, function(d) { return d.close; })]);
 
             svg.append("path")
-              .datum(data)
-              .attr("class", "area")
-              .attr("d", area);
+                .datum(data)
+                .attr("class", "area")
+                .attr("d", area);
 
             svg.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + height + ")")
                 .call(xAxis)
-                .selectAll("text")                  // NEW
-                .style("text-anchor", "end")        // NEW
-                .attr("dx", "-.8em")                // NEW
-               .attr("dy", ".15em")                // NEW
-               .attr("transform", function(d) {    // NEW
-                    return "rotate(-45)"});        // NEW
+                .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", function(d) {
+                    return "rotate(-45)";
+                    });
 
 
             svg.append("g")
-              .attr("class", "y axis")
-              .call(yAxis)
+                .attr("class", "y axis")
+                .call(yAxis)
                 .append("text")
-              .attr("transform", "rotate(-90)")
-              .attr("y", 6)
-              .attr("dy", ".71em")
-              .style("text-anchor", "end")
-              .text("U.S. Dollars");
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("U.S. Dollars");
         };
 
     $scope.getGraph = function(validForm) {

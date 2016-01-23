@@ -65,7 +65,7 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                        return y(d.close);
                    }),
 
-                   tiltedText = d3.select('#'+aChartDiv.id),
+                   //tiltedText = d3.select('#'+aChartDiv.id),
 
                    svg = d3.select('#'+aChartDiv.id)
                     .append("svg")

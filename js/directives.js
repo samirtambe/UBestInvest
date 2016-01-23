@@ -135,10 +135,10 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
            var grData = [];
 
            if (attrs.graphdata == 'dowjones') {
-               scope.populateDowJones();
+               scope.populateHomeGraphs('dowjones');
            }
            else if(attrs.graphdata == 'sp500') {
-               scope.populateSP500();
+               scope.populateHomeGraphs('sp500');
            }
 
            // Remember watch does not go very deep it only checks reference

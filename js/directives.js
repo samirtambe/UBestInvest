@@ -95,10 +95,15 @@ console.log('chartDiv.scrollWidth = '+wide);
                    return d.date;
                } ) );
 
-               y.domain([0, d3.max(data, function(d) {
+//               y.domain([0, d3.max(data, function(d) {
+//                   return d.close;
+//               } ) ] );
 
-                   return d.close;
-               } ) ] );
+// y.domain([minimum_value, maximum_value]);
+               y.domain([   d3.min(data,  function(d) { return d.close; } )
+                   ,
+                   d3.max(data, function(d) {return d.close; } )
+               ]);
 
                svg.append("path")
                    .datum(data)

@@ -15,22 +15,35 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
        link: function(scope, elem, attrs) {
 
+
            var drawChart = function() {
+
 
                var chrtDivs = document.getElementsByClassName('frontChartDiv');
 
+
                var aChartDiv = '';
+
 
                if (attrs.graphdata == 'dowjones') {
 
                    aChartDiv = chrtDivs[0];
                    aChartDiv.id = 'frontMktDowJonesDiv';
                }
-               else if(attrs.graphdata == 'sp500') {
+
+               else if(attrs.graphdata == 'nasdaq') {
 
                    aChartDiv = chrtDivs[1];
+                   aChartDiv.id = 'frontMktNasdaqDiv';
+               }
+
+               else if(attrs.graphdata == 'sp500') {
+
+                   aChartDiv = chrtDivs[2];
                    aChartDiv.id = 'frontMktSP500Div';
                }
+
+
 
                var wide = aChartDiv.scrollWidth,
 
@@ -136,9 +149,15 @@ console.log('chartDiv.scrollWidth = '+wide);
            var grData = [];
 
            if (attrs.graphdata == 'dowjones') {
+
                scope.populateHomeGraphs('dowjones');
            }
-           else if(attrs.graphdata == 'sp500') {
+           else if (attrs.graphdata == 'nasdaq') {
+
+               scope.populateHomeGraphs('nasdaq');
+           }
+           else if (attrs.graphdata == 'sp500') {
+
                scope.populateHomeGraphs('sp500');
            }
 

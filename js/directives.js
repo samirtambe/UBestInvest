@@ -36,7 +36,7 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
                    tall = aChartDiv.scrollHeight,
 
-                   margin = {top: 10, right: 10, bottom: 30, left: 55},
+                   margin = {top: 10, right: 10, bottom: 60, left: 55},
 
                    width = 420 - margin.left - margin.right,
 

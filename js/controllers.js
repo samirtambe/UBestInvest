@@ -361,6 +361,6 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
 
             spinner.stop();
 
-    };
+    }
 
 }]);

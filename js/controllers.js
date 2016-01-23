@@ -49,9 +49,9 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
             y = d3.scale.linear().range([height, 0]),
 
-            xAxis = d3.svg.axis().scale(x).orient("bottom"),
+            xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5),
 
-            yAxis = d3.svg.axis().scale(y).orient("left").innerTickSize(-width),
+            yAxis = d3.svg.axis().scale(y).orient("left").ticks(5).innerTickSize(-width),
 
             area = d3.svg.area()
                 .x(function(d) {

@@ -289,56 +289,6 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
 
     catch(error) {}
 
-    $scope.populateDowJones = function() {
-
-        var spinner = SpinnerSvc.getSpinner();
-
-        HttpSvc.getDowJonesData($scope.reqParams).then(function(data) {
-
-            $scope.graphData = data;
-
-        }).catch(function(error) {
-
-            console.log("stockGraph dow jones Directive - Catch: " + error);
-            spinner.stop();
-
-
-        }).finally(function() {
-
-            $scope.reqParams.todayDate = new Date();
-            $scope.reqParams.howLongAgo = new Date();
-            $scope.reqParams.startDate = '';
-            $scope.reqParams.endDate = '';
-
-            spinner.stop();
-
-        });
-    }//populateDowJones()
-
-    $scope.populateSP500 = function() {
-        var spinner = SpinnerSvc.getSpinner();
-
-        HttpSvc.getSP500Data($scope.reqParams).then(function(data) {
-
-            $scope.graphData = data;
-
-        }).catch(function(error) {
-
-            console.log("stockGraph sp500 Directive - Catch: " + error);
-            spinner.stop();
-
-        }).finally(function() {
-
-            $scope.reqParams.todayDate = new Date();
-            $scope.reqParams.howLongAgo = new Date();
-            $scope.reqParams.startDate = '';
-            $scope.reqParams.endDate = '';
-
-            spinner.stop();
-
-        });
-    }//populateSP500()
-
     $scope.populateHomeGraphs = function(graphType) {
 
         var spinner = SpinnerSvc.getSpinner();

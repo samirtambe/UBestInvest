@@ -360,7 +360,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
             $scope.reqParams.endDate = '';
 
             spinner.stop();
-
+        });
     }
 
 }]);

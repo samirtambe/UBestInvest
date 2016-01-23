@@ -267,7 +267,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
     $scope.reqParams = {
         todayDate : new Date(),
         howLongAgo: new Date(),
-        duration: $scope.durations[3],
+        duration: $scope.durations[0],
         startDate: '',
         endDate: ''
     };
@@ -313,7 +313,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
             spinner.stop();
 
         });
-    }//getMktData()
+    }//populateDowJones()
 
     $scope.populateSP500 = function() {
         var spinner = SpinnerSvc.getSpinner();
@@ -337,6 +337,30 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
             spinner.stop();
 
         });
-    }//getSP500MktData()
+    }//populateSP500()
+
+    $scope.populateHomeGraphs = function(graphType) {
+
+        var spinner = SpinnerSvc.getSpinner();
+
+        HttpSvc.getHomeGraphData(graphType, $scope.reqParams).then(function(data) {
+
+            $scope.graphData = data;
+
+        }).catch(function(error) {
+
+            console.log("Catch-["+graphType+"]:"+error);
+            spinner.stop();
+
+        }).finally(function() {
+
+            $scope.reqParams.todayDate = new Date();
+            $scope.reqParams.howLongAgo = new Date();
+            $scope.reqParams.startDate = '';
+            $scope.reqParams.endDate = '';
+
+            spinner.stop();
+
+    };
 
 }]);

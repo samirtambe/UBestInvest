@@ -63,6 +63,8 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                        return y(d.close);
                    }),
 
+                   tiltedText = d3.select('#'+aChartDiv.id)
+
                    svg = d3.select('#'+aChartDiv.id)
                     .append("svg")
                     .attr("width", width + margin.left + margin.right)
@@ -108,7 +110,13 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                svg.append("g")
                    .attr("class","x axis")
                    .attr("transform","translate(0,"+height+")")
-                   .call(xAxis);
+                   .call(xAxis)
+                   .selectAll("text")                  // NEW
+                   .style("text-anchor", "end")        // NEW
+                   .attr("dx", "-.8em")                // NEW
+                   .attr("dy", ".15em")                // NEW
+                   .attr("transform", function(d) {    // NEW
+                        return "rotate(-45)"});        // NEW
 
                // Drawing y-axis
                svg.append("g")

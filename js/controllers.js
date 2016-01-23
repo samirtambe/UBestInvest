@@ -37,7 +37,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
         var margin = {
             top: 20,
             right: 20,
-            bottom: 30,
+            bottom: 80,
             left: 50
         },
             width = wide - margin.left - margin.right,

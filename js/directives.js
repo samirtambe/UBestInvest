@@ -65,19 +65,16 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                        return y(d.close);
                    }),
 
-                   //tiltedText = d3.select('#'+aChartDiv.id),
-
                    svg = d3.select('#'+aChartDiv.id)
                     .append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                     .append("g")
-                    .attr("transform",
-                          "translate(" + margin.left + "," + margin.top + ")");
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
 
 
-               var data = [];
-
+                   data = [];
+console.log('chartDiv.scrollWidth = '+wide);
     // CONVERT AN LONG ARRAY OF ARRAYS into an array of objects
 
                for (var cat = 0; cat < grData.length; cat++) {

@@ -58,8 +58,8 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
                    area = d3.svg.area().x(function(d) {
                        return x(d.date);
-
-                   }).y0(height).y1(function(d) {
+//                  }).y0(height).y1(function(d) {
+                   }).y0(10).y1(function(d) {
                        return y(d.close);
                    }),
 

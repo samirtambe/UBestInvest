@@ -51,10 +51,10 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                    y = d3.scale.linear().range([height, 0]),
 
                    // Orient x-axis
-                   xAxis = d3.svg.axis().scale(x).orient("bottom"),
+                   xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5),
 
                    // Orient y-axis
-                   yAxis = d3.svg.axis().scale(y).orient("left"),
+                   yAxis = d3.svg.axis().scale(y).orient("left").ticks(5),
 
                    area = d3.svg.area().x(function(d) {
                        return x(d.date);

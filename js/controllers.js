@@ -101,9 +101,16 @@ angular.module('UBestInvest').controller('ResearchCtrl',
               .attr("d", area);
 
             svg.append("g")
-              .attr("class", "x axis")
-              .attr("transform", "translate(0," + height + ")")
-              .call(xAxis);
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                .selectAll("text")                  // NEW
+                .style("text-anchor", "end")        // NEW
+                .attr("dx", "-.8em")                // NEW
+               .attr("dy", ".15em")                // NEW
+               .attr("transform", function(d) {    // NEW
+                    return "rotate(-45)"});        // NEW
+
 
             svg.append("g")
               .attr("class", "y axis")

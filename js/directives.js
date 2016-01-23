@@ -111,12 +111,13 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                    .attr("class","x axis")
                    .attr("transform","translate(0,"+height+")")
                    .call(xAxis)
-                   .selectAll("text")                  // NEW
-                   .style("text-anchor", "end")        // NEW
-                   .attr("dx", "-.8em")                // NEW
-                   .attr("dy", ".15em")                // NEW
-                   .attr("transform", function(d) {    // NEW
-                        return "rotate(-45)"});        // NEW
+                   .selectAll("text")
+                   .style("text-anchor", "end")
+                   .attr("dx", "-.8em")
+                   .attr("dy", ".15em")
+                   .attr("transform", function(d) {
+                        return "rotate(-45)";
+               });
 
                // Drawing y-axis
                svg.append("g")

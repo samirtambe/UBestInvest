@@ -309,7 +309,7 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
 
         }).catch(function(error) {
 
-            console.log("Catch-["+graphType+"]:"+error);
+            console.log("Catch - [ "+graphType+" ]: " + error);
             spinner.stop();
 
         }).finally(function() {
@@ -322,5 +322,4 @@ angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'H
             spinner.stop();
         });
     }
-
 }]);

@@ -399,21 +399,21 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             case 'dowjones':
                 idxGrphDiv = indexGraphDivs[0];
-                idxGrphDiv.id = 'frontMktDowJonesDiv';
+                idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
                 break;
 
             case 'nasdaq':
                 idxGrphDiv = indexGraphDivs[1];
-                idxGrphDiv.id = 'frontMktNasdaqDiv';
+                idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
                 break;
 
             case 'sp500':
                 idxGrphDiv = indexGraphDivs[2];
-                idxGrphDiv.id = 'frontMktSP500Div';
+                idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
                 break;

@@ -506,8 +506,8 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
     graph
 */
         y.domain([
-            lowestCloseValue - (0.1 * lowestCloseValue),
-            highestCloseValue + (0.2 * highestCloseValue)
+            lowestCloseValue - (0.2 * lowestCloseValue),
+            highestCloseValue + (0.1 * highestCloseValue)
         ]);
 
         svg.append("path")

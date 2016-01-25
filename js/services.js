@@ -434,10 +434,10 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
             margin = { top: 10, right: 10, bottom: 80, left: 55 },
 
 
-            width = 420 - margin.left - margin.right,
+            width = 400 - margin.left - margin.right,
 
 
-            height = 220 - margin.top - margin.bottom,
+            height = 200 - margin.top - margin.bottom,
 
 
             parseDate = d3.time.format("%Y-%m-%d").parse,

@@ -1,4 +1,5 @@
-angular.module('UBestInvest').directive('stockGraph', [function() {
+angular.module('UBestInvest').directive('stockGraph',
+    ['GraphSvc', function(GraphSvc) {
 
    return {
 
@@ -6,7 +7,7 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
 
        scope: {
 
-           graphdata: '@'
+           graphtype: '@'
        },
 
        template: '<div class="frontChartDiv"></div>',
@@ -25,19 +26,19 @@ angular.module('UBestInvest').directive('stockGraph', [function() {
                var aChartDiv = '';
 
 
-               if (attrs.graphdata == 'dowjones') {
+               if (attrs.graphtype == 'dowjones') {
 
                    aChartDiv = chrtDivs[0];
                    aChartDiv.id = 'frontMktDowJonesDiv';
                }
 
-               else if(attrs.graphdata == 'nasdaq') {
+               else if(attrs.graphtype == 'nasdaq') {
 
                    aChartDiv = chrtDivs[1];
                    aChartDiv.id = 'frontMktNasdaqDiv';
                }
 
-               else if(attrs.graphdata == 'sp500') {
+               else if(attrs.graphtype == 'sp500') {
 
                    aChartDiv = chrtDivs[2];
                    aChartDiv.id = 'frontMktSP500Div';
@@ -148,15 +149,15 @@ console.log('chartDiv.scrollWidth = '+wide);
 /************************* Beginning of the LINK FUNCTION ************************** */
            var grData = [];
 
-           if (attrs.graphdata == 'dowjones') {
+           if (attrs.graphtype == 'dowjones') {
 
                scope.populateHomeGraphs('dowjones');
            }
-           else if (attrs.graphdata == 'nasdaq') {
+           else if (attrs.graphtype == 'nasdaq') {
 
                scope.populateHomeGraphs('nasdaq');
            }
-           else if (attrs.graphdata == 'sp500') {
+           else if (attrs.graphtype == 'sp500') {
 
                scope.populateHomeGraphs('sp500');
            }
@@ -169,11 +170,11 @@ console.log('chartDiv.scrollWidth = '+wide);
 
                    grData = newVal;
 
-                   drawChart();
+                   GraphSvc.createGraph(attrs.graphtype, grData);
                }
            });
-       }// LINK FUNCTION
-   };// RETURN
+       }
+   };
 }]);
 
 

@@ -146,6 +146,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
             try {
                 var childSVG = document.getElementById('theSVG');
                 parentDiv.removeChild(childSVG);
+console.log('ResearchCtrl: Attempting to remove the childSVG...');
             }
             catch(error) {}
 

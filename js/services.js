@@ -509,14 +509,15 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
         });
 
         // Drawing y-axis
-        svg.append("g").attr("class", "y axis")
-           .call(yAxis)
-           .append("text")
-           .attr("transform", "rotate(-90)")
-           .attr("y", 6)
-           .attr("dy", ".71em")
-           .style("text-anchor", "end")
-           .text(displayUnit);
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text(displayUnit);
 
         return svg;
     }

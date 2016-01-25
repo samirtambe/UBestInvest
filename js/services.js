@@ -384,7 +384,13 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             displayUnit = undefined,
 
-            idSVG = undefined;
+            idSVG = undefined,
+
+            lowestCloseValue = undefined,
+
+            highestCloseValue = undefined,
+
+            diffMinMax = undefined;
 
 
         switch (graphType) {
@@ -485,15 +491,30 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
         });
 
-        x.domain(d3.extent(data, function(d) {
-
-           return d.date;
-        } ) );
+// Set domain range of values for X-Axis
+        x.domain(d3.extent(data, function(d) {  return d.date;  } ) );
 
 
-        y.domain([   d3.min(data,  function(d) { return d.close; } )
-           ,
-           d3.max(data, function(d) {return d.close; } )
+// Find the lowest closing price from the data array
+        lowestCloseValue = d3.min(data, function(d) { return d.close; } );
+
+
+// Find the highest closing price from the data array
+        highestCloseValue = d3.max(data, function(d) { return d.close; } );
+
+
+// Calculate difference between highest closing price and lowest closing price
+        diffMinMax = highestCloseValue - lowestCloseValue;
+
+
+/* Set domain range of values for Y-Axis to be 15% higher and lower
+    than the highest and lowest closing price so to prevent the
+    highest/lowest close price to be at the absolute top/bottom of the
+    graph
+*/
+        y.domain([
+            diffMinMax - (0.15 * diffMinMax),
+            diffMinMax + (0.15 * diffMinMax)
         ]);
 
         svg.append("path")

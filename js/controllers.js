@@ -144,11 +144,11 @@ angular.module('UBestInvest').controller('ResearchCtrl',
             var parentDiv = document.getElementById('stockChartDiv');
 
             try {
-console.log('ResearchCtrl Before: Attempting to remove the childSVG...');
                 var childSVG = document.getElementById('theSVG');
+
                 parentDiv.removeChild(childSVG);
             }
-            catch(error) {console.log('CATCH: The childSVG does not exist.');}
+            catch(error) {}
 
 
             HttpSvc.getStockData($scope.reqParams)

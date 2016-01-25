@@ -127,9 +127,8 @@ angular.module('UBestInvest').controller('ResearchCtrl',
         };
 
     $scope.getGraph = function(validForm) {
-console.log('validForm = '+validForm);
+
         if (validForm == true) {
-console.log('inside if');
 
             var spinner = SpinnerSvc.getSpinner();//starts spinning
 
@@ -145,9 +144,10 @@ console.log('inside if');
             var parentDiv = document.getElementById('stockChartDiv');
 
             try {
+console.log('ResearchCtrl Before: Attempting to remove the childSVG...');
                 var childSVG = document.getElementById('theSVG');
                 parentDiv.removeChild(childSVG);
-console.log('ResearchCtrl: Attempting to remove the childSVG...');
+console.log('ResearchCtrl After: Attempting to remove the childSVG...');
             }
             catch(error) {}
 

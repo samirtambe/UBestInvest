@@ -170,6 +170,7 @@ console.log('chartDiv.scrollWidth = '+wide);
 
                    grData = newVal;
 
+                   //drawChart();
                    GraphSvc.createGraph(attrs.graphtype, grData);
                }
            });

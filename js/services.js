@@ -388,9 +388,7 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             lowestCloseValue = undefined,
 
-            highestCloseValue = undefined,
-
-            diffMinMax = undefined;
+            highestCloseValue = undefined;
 
 
         switch (graphType) {
@@ -503,18 +501,14 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
         highestCloseValue = d3.max(data, function(d) { return d.close; } );
 
 
-// Calculate difference between highest closing price and lowest closing price
-        diffMinMax = highestCloseValue - lowestCloseValue;
-
-
 /* Set domain range of values for Y-Axis to be 15% higher and lower
     than the highest and lowest closing price so to prevent the
     highest/lowest close price to be at the absolute top/bottom of the
     graph
 */
         y.domain([
-            diffMinMax - (0.15 * diffMinMax),
-            diffMinMax + (0.15 * diffMinMax)
+            lowestCloseValue - (0.15 * lowestCloseValue),
+            highestCloseValue + (0.15 * highestCloseValue)
         ]);
 
         svg.append("path")

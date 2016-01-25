@@ -181,14 +181,14 @@ angular.module('UBestInvest').controller('ResearchCtrl',
         }// if formValid
     };
 }]);
-/***********************************************************************************************/
 
 
 
 
 
 
-/***********************************************************************************************/
+
+
 angular.module('UBestInvest').controller('WeatherCtrl',
     ['$scope','HttpSvc', 'SpinnerSvc',
      function($scope, HttpSvc, SpinnerSvc) {
@@ -261,15 +261,18 @@ angular.module('UBestInvest').controller('WeatherCtrl',
 
     };// getWeather()
 }]);
-/***********************************************************************************************/
 
 
 
 
 
 
-/***********************************************************************************************/
-angular.module('UBestInvest').controller('MarketCtrl', ['$scope', 'ChartSvc', 'HttpSvc', 'SpinnerSvc',
+
+
+
+
+angular.module('UBestInvest').controller('MarketCtrl',
+    ['$scope', 'ChartSvc', 'HttpSvc', 'SpinnerSvc',
         function($scope, ChartSvc, HttpSvc, SpinnerSvc) {
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];

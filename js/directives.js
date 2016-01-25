@@ -16,18 +16,9 @@ angular.module('UBestInvest').directive('stockGraph',['GraphSvc', function(Graph
 
            var grData = [];
 
-           if (attrs.graphtype == 'dowjones') {
-
-               scope.populateHomeGraphs('dowjones');
-           }
-           else if (attrs.graphtype == 'nasdaq') {
-
-               scope.populateHomeGraphs('nasdaq');
-           }
-           else if (attrs.graphtype == 'sp500') {
-
-               scope.populateHomeGraphs('sp500');
-           }
+           if (attrs.graphtype == 'dowjones') { scope.populateHomeGraphs('dowjones');}
+           else if (attrs.graphtype == 'nasdaq') { scope.populateHomeGraphs('nasdaq'); }
+           else if (attrs.graphtype == 'sp500') { scope.populateHomeGraphs('sp500'); }
 
            // Remember watch does not go very deep it only checks reference
            // 'graphData' refers to $scope.graphData in the MarketCtrl

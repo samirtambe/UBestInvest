@@ -455,7 +455,7 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
             }),
 
             svg = d3.select('#'+idxGrphDiv.id);
-
+console.log('idxGrphDiv.id = ' + idxGrphDiv.id);
         if (graphType == 'stocks') {
             svg.append("svg")
                 .attr("id","theSVG")

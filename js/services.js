@@ -454,15 +454,34 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                return y(d.close);
             }),
 
+            svg = d3.select('#'+idxGrphDiv.id);
 
-            svg = d3.select('#'+idxGrphDiv.id)
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
+        if (graphType == 'stocks') {
+            svg.append("svg")
+                .attr("id","theSVG")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        } else {
+            svg.append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        }
 
-            data = [];
+        var data = [];
+//            }),
+
+//            svg = d3.select('#'+idxGrphDiv.id)
+//            .append("svg")
+//            .attr("width", width + margin.left + margin.right)
+//            .attr("height", height + margin.top + margin.bottom)
+//            .append("g")
+//            .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
+//
+//            data = [];
 
 // CONVERT AN LONG ARRAY OF ARRAYS into an array of objects
 

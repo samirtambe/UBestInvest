@@ -141,7 +141,7 @@ console.log('chartDiv.scrollWidth = '+wide);
                    .attr("y", 6)
                    .attr("dy", ".71em")
                    .style("text-anchor", "end")
-                   .text("$ US");
+                   .text("pts");
 
            };//drawChart
 

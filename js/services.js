@@ -495,11 +495,13 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
 // Find the lowest closing price from the data array
         lowestCloseValue = d3.min(data, function(d) { return d.close; } );
-console.log('Lowest Y-Axis Domain: ' + (lowestCloseValue - (0.2 * lowestCloseValue)));
+
+console.log(lowestCloseValue + 'Low Y-Axis:' + (lowestCloseValue - (0.2 * lowestCloseValue)));
 
 // Find the highest closing price from the data array
         highestCloseValue = d3.max(data, function(d) { return d.close; } );
-console.log('Highest Y-Axis Domain: ' + (highestCloseValue + (0.1 * highestCloseValue)));
+
+console.log(highestCloseValue+ 'High Y-Axis:' + (highestCloseValue + (0.1 * highestCloseValue)));
 
 
 /* Set domain range of values for Y-Axis to be X% higher and lower

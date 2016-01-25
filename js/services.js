@@ -390,9 +390,9 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             highestCloseValue = undefined,
 
-            domainMinVal = undefined,
+            yLowGap = undefined,
 
-            domainMaxVal = undefined;
+            yHighGap = undefined;
 
 
         switch (graphType) {
@@ -505,13 +505,14 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
         highestCloseValue = d3.max(data, function(d) { return d.close; } );
 
 
-        domainMinVal = lowestCloseValue - (0.1 * lowestCloseValue);
+        yLowGap = 0.05 * lowestCloseValue;
 
 
-        domainMaxVal = highestCloseValue + (0.05 * highestCloseValue);
+        yHighGap = 0.05 * highestCloseValue;
 
 
-        y.domain([  domainMinVal,  domainMaxVal  ]);
+        y.domain([  lowestCloseValue - yLowGap,
+                  highestCloseValue + yHighGap]);
 
         svg.append("path")
            .datum(data)

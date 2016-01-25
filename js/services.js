@@ -380,7 +380,9 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             parentDiv = document.getElementById('stockChartDiv'),
 
-            childSVG = undefined;
+            childSVG = undefined,
+
+            displayUnit = undefined;
 
 
         switch (graphType) {
@@ -388,20 +390,24 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
             case 'dowjones':
                 idxGrphDiv = indexGraphDivs[0];
                 idxGrphDiv.id = 'frontMktDowJonesDiv';
+                displayUnit = 'pts';
                 break;
 
             case 'nasdaq':
                 idxGrphDiv = indexGraphDivs[1];
                 idxGrphDiv.id = 'frontMktNasdaqDiv';
+                displayUnit = 'pts';
                 break;
 
             case 'sp500':
                 idxGrphDiv = indexGraphDivs[2];
                 idxGrphDiv.id = 'frontMktSP500Div';
+                displayUnit = 'pts';
                 break;
 
             case 'stocks':
                 idxGrphDiv = document.getElementById('stockChartDiv');
+                displayUnit = '$ US';
                 break;
         }
 
@@ -503,15 +509,14 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
         });
 
         // Drawing y-axis
-        svg.append("g")
-           .attr("class", "y axis")
+        svg.append("g").attr("class", "y axis")
            .call(yAxis)
            .append("text")
            .attr("transform", "rotate(-90)")
            .attr("y", 6)
            .attr("dy", ".71em")
            .style("text-anchor", "end")
-           .text("pts");
+           .text(displayUnit);
 
         return svg;
     }

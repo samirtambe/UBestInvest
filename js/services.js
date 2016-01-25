@@ -425,7 +425,8 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 break;
         }
 
-
+console.log('wide='+idxGrphDiv.scrollWidth);
+console.log('tall='+idxGrphDiv.scrollHeight);
         var wide = idxGrphDiv.scrollWidth,
 
             tall = idxGrphDiv.scrollHeight,

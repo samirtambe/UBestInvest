@@ -148,7 +148,7 @@ console.log('ResearchCtrl Before: Attempting to remove the childSVG...');
                 var childSVG = document.getElementById('theSVG');
                 parentDiv.removeChild(childSVG);
             }
-            catch(error) {console.log('The childSVG does not exist.');}
+            catch(error) {console.log('CATCH: The childSVG does not exist.');}
 
 
             HttpSvc.getStockData($scope.reqParams)

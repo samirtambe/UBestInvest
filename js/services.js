@@ -382,7 +382,9 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             childSVG = undefined,
 
-            displayUnit = undefined;
+            displayUnit = undefined,
+
+            idSVG = undefined;
 
 
         switch (graphType) {
@@ -391,23 +393,27 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idxGrphDiv = indexGraphDivs[0];
                 idxGrphDiv.id = 'frontMktDowJonesDiv';
                 displayUnit = 'pts';
+                idSVG = graphType+'SVG';
                 break;
 
             case 'nasdaq':
                 idxGrphDiv = indexGraphDivs[1];
                 idxGrphDiv.id = 'frontMktNasdaqDiv';
                 displayUnit = 'pts';
+                idSVG = graphType+'SVG';
                 break;
 
             case 'sp500':
                 idxGrphDiv = indexGraphDivs[2];
                 idxGrphDiv.id = 'frontMktSP500Div';
                 displayUnit = 'pts';
+                idSVG = graphType+'SVG';
                 break;
 
             case 'stocks':
                 idxGrphDiv = document.getElementById('stockChartDiv');
                 displayUnit = '$ US';
+                idSVG = 'theSVG';
                 break;
         }
 
@@ -454,34 +460,15 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                return y(d.close);
             }),
 
-            svg = d3.select('#'+idxGrphDiv.id);
-console.log('idxGrphDiv.id = ' + idxGrphDiv.id);
-        if (graphType == 'stocks') {
-            svg.append("svg")
-                .attr("id","theSVG")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        } else {
-            svg.append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        }
+            svg = d3.select('#'+idxGrphDiv.id)
+            .append("svg")
+            .attr("id",idSVG)
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
 
-        var data = [];
-//            }),
-
-//            svg = d3.select('#'+idxGrphDiv.id)
-//            .append("svg")
-//            .attr("width", width + margin.left + margin.right)
-//            .attr("height", height + margin.top + margin.bottom)
-//            .append("g")
-//            .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
-//
-//            data = [];
+            data = [];
 
 // CONVERT AN LONG ARRAY OF ARRAYS into an array of objects
 

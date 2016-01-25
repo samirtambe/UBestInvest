@@ -199,11 +199,11 @@ angular.module('UBestInvest').controller('MarketCtrl',
 
     $scope.reqParams.endDate = tframe.end;
 
-    var parentDiv = document.getElementById('mktDiv');
-
-    try { parentDiv.removeChild(document.getElementById('leSVG')); }
-
-    catch(error) {}
+//    var parentDiv = document.getElementById('mktDiv');
+//
+//    try { parentDiv.removeChild(document.getElementById('leSVG')); }
+//
+//    catch(error) {}
 
     $scope.populateHomeGraphs = function(graphType) {
 

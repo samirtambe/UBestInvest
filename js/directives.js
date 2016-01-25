@@ -1,8 +1,6 @@
-angular.module('UBestInvest').directive('stockGraph',
-    ['GraphSvc', function(GraphSvc) {
+angular.module('UBestInvest').directive('stockGraph',['GraphSvc', function(GraphSvc) {
 
    return {
-
        restrict: 'E',
 
        scope: {
@@ -16,137 +14,6 @@ angular.module('UBestInvest').directive('stockGraph',
 
        link: function(scope, elem, attrs) {
 
-
-//           var drawChart = function() {
-//
-//
-//               var chrtDivs = document.getElementsByClassName('frontChartDiv');
-//
-//
-//               var aChartDiv = '';
-//
-//
-//               if (attrs.graphtype == 'dowjones') {
-//
-//                   aChartDiv = chrtDivs[0];
-//                   aChartDiv.id = 'frontMktDowJonesDiv';
-//               }
-//
-//               else if(attrs.graphtype == 'nasdaq') {
-//
-//                   aChartDiv = chrtDivs[1];
-//                   aChartDiv.id = 'frontMktNasdaqDiv';
-//               }
-//
-//               else if(attrs.graphtype == 'sp500') {
-//
-//                   aChartDiv = chrtDivs[2];
-//                   aChartDiv.id = 'frontMktSP500Div';
-//               }
-//
-//
-//
-//               var wide = aChartDiv.scrollWidth,
-//
-//                   tall = aChartDiv.scrollHeight,
-//
-//                   margin = {top: 10, right: 10, bottom: 80, left: 55},
-//
-//                   width = 420 - margin.left - margin.right,
-//
-//                   height = 220 - margin.top - margin.bottom,
-//
-//                   parseDate = d3.time.format("%Y-%m-%d").parse,
-//
-//                   // Create x-axis scale
-//                   x = d3.time.scale().range([0, width]),
-//
-//                   // Create y-axis scale
-//                   y = d3.scale.linear().range([height, 0]),
-//
-//                   // Orient x-axis
-//                   xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5),
-//
-//                   // Orient y-axis
-//                   yAxis = d3.svg.axis().scale(y).orient("left").ticks(5),
-//
-//                   area = d3.svg.area().x(function(d) {
-//
-//                       return x(d.date);
-//
-//                   }).y0(height).y1(function(d) {
-//
-//                       return y(d.close);
-//                   }),
-//
-//                   svg = d3.select('#'+aChartDiv.id)
-//                    .append("svg")
-//                    .attr("width", width + margin.left + margin.right)
-//                    .attr("height", height + margin.top + margin.bottom)
-//                    .append("g")
-//                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
-//
-//
-//                   data = [];
-//console.log('chartDiv.scrollWidth = '+wide);
-//    // CONVERT AN LONG ARRAY OF ARRAYS into an array of objects
-//
-//               for (var cat = 0; cat < grData.length; cat++) {
-//
-//                        data.unshift(  {  date: grData[cat][0],  close: grData[cat][1]  }  );
-//                    }
-//
-//               data.forEach(function(pair) {
-//
-//                   pair.date = parseDate(pair.date);
-//
-//                   pair.close = +pair.close;
-//
-//               });
-//
-//               x.domain(d3.extent(data, function(d) {
-//
-//                   return d.date;
-//               } ) );
-//
-//
-//               y.domain([   d3.min(data,  function(d) { return d.close; } )
-//                   ,
-//                   d3.max(data, function(d) {return d.close; } )
-//               ]);
-//
-//               svg.append("path")
-//                   .datum(data)
-//                   .attr("class", "area")
-//                   .attr("d", area);
-//
-//               // Drawing x-axis
-//               svg.append("g")
-//                   .attr("class","x axis")
-//                   .attr("transform","translate(0,"+height+")")
-//                   .call(xAxis)
-//                   .selectAll("text")
-//                   .style("text-anchor", "end")
-//                   .attr("dx", "-.8em")
-//                   .attr("dy", ".15em")
-//                   .attr("transform", function(d) {
-//                        return "rotate(-45)";
-//               });
-//
-//               // Drawing y-axis
-//               svg.append("g")
-//                   .attr("class", "y axis")
-//                   .call(yAxis)
-//                   .append("text")
-//                   .attr("transform", "rotate(-90)")
-//                   .attr("y", 6)
-//                   .attr("dy", ".71em")
-//                   .style("text-anchor", "end")
-//                   .text("pts");
-//
-//           };//drawChart
-
-/************************* Beginning of the LINK FUNCTION ************************** */
            var grData = [];
 
            if (attrs.graphtype == 'dowjones') {
@@ -170,12 +37,11 @@ angular.module('UBestInvest').directive('stockGraph',
 
                    grData = newVal;
 
-                   //drawChart();
                    GraphSvc.createGraph(attrs.graphtype, grData);
-               }
-           });
-       }
-   };
+               }//IF
+           });//WATCH
+       }//link function
+   };//RETURN
 }]);
 
 

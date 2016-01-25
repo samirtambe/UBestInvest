@@ -129,6 +129,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
     $scope.getGraph = function(validForm) {
 console.log('validForm = '+validForm);
         if (validForm == true) {
+console.log('inside if');
 
             var spinner = SpinnerSvc.getSpinner();//starts spinning
 

@@ -274,15 +274,15 @@ may have to normalize it on our end, as best we can. */
     });
 
 }]);
-/***********************************************************************************************/
 
 
 
 
 
 
-/***********************************************************************************************/
-angular.module('UBestInvest').service('ChartSvc', [function() {
+
+
+angular.module('UBestInvest').service('DateSvc', [function() {
 
     function padWithZero(chk) {
 
@@ -363,6 +363,166 @@ angular.module('UBestInvest').service('ChartSvc', [function() {
     });
 }]);
 
+
+
+
+angular.module('UBestInvest').service('GraphSvc', [function() {
+
+    function createGraph(graphType, grData) {
+
+        // DIV of class 'frontChartDiv' is used by the stockGraph directive
+        // directives.js - template: <div class="frontChartDiv"></div>
+        var indexGraphDivs = document.getElementsByClassName('frontChartDiv'),
+
+        // The individual one selected based on the arguments of the specs in
+        // graphtype attribute for stockgraph directive
+            idxGrphDiv = '',
+
+            parentDiv = document.getElementById('stockChartDiv'),
+
+            childSVG = undefined;
+
+
+        switch (graphType) {
+
+            case 'dowjones':
+                idxGrphDiv = indexGraphDivs[0];
+                idxGrphDiv.id = 'frontMktDowJonesDiv';
+                break;
+
+            case 'nasdaq':
+                idxGrphDiv = indexGraphDivs[1];
+                idxGrphDiv.id = 'frontMktNasdaqDiv';
+                break;
+
+            case 'sp500':
+                idxGrphDiv = indexGraphDivs[2];
+                idxGrphDiv.id = 'frontMktSP500Div';
+                break;
+
+            case 'stocks':
+                idxGrphDiv = document.getElementById('stockChartDiv');
+                break;
+        }
+
+
+        var wide = idxGrphDiv.scrollWidth,
+
+            tall = idxGrphDiv.scrollHeight,
+
+
+            margin = { top: 10, right: 10, bottom: 80, left: 55 },
+
+
+            width = 420 - margin.left - margin.right,
+
+
+            height = 220 - margin.top - margin.bottom,
+
+
+            parseDate = d3.time.format("%Y-%m-%d").parse,
+
+
+            // Create x-axis scale
+            x = d3.time.scale().range([0, width]),
+
+
+            // Create y-axis scale
+            y = d3.scale.linear().range([height, 0]),
+
+
+            // Orient x-axis
+            xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5),
+
+
+            // Orient y-axis
+            yAxis = d3.svg.axis().scale(y).orient("left").ticks(5),
+
+
+            area = d3.svg.area().x(function(d) {
+
+               return x(d.date);
+
+            }).y0(height).y1(function(d) {
+
+               return y(d.close);
+            }),
+
+
+            svg = d3.select('#'+idxGrphDiv.id)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
+
+            data = [];
+
+// CONVERT AN LONG ARRAY OF ARRAYS into an array of objects
+
+        for (var cat = 0; cat < grData.length; cat++) {
+
+                data.unshift({ date: grData[cat][0], close: grData[cat][1] });
+            }
+
+        data.forEach(function(pair) {
+
+           pair.date = parseDate(pair.date);
+
+           pair.close = +pair.close;
+
+        });
+
+        x.domain(d3.extent(data, function(d) {
+
+           return d.date;
+        } ) );
+
+
+        y.domain([   d3.min(data,  function(d) { return d.close; } )
+           ,
+           d3.max(data, function(d) {return d.close; } )
+        ]);
+
+        svg.append("path")
+           .datum(data)
+           .attr("class", "area")
+           .attr("d", area);
+
+        // Drawing x-axis
+        svg.append("g")
+           .attr("class","x axis")
+           .attr("transform","translate(0,"+height+")")
+           .call(xAxis)
+           .selectAll("text")
+           .style("text-anchor", "end")
+           .attr("dx", "-.8em")
+           .attr("dy", ".15em")
+           .attr("transform", function(d) {
+                return "rotate(-45)";
+        });
+
+        // Drawing y-axis
+        svg.append("g")
+           .attr("class", "y axis")
+           .call(yAxis)
+           .append("text")
+           .attr("transform", "rotate(-90)")
+           .attr("y", 6)
+           .attr("dy", ".71em")
+           .style("text-anchor", "end")
+           .text("pts");
+
+        return svg;
+    }
+
+    return {
+        createGraph: createGraph
+    };
+}]);
+
+
+
 angular.module('UBestInvest').service('SpinnerSvc', [function() {
 
     function getSpinner() {
@@ -380,7 +540,7 @@ angular.module('UBestInvest').service('SpinnerSvc', [function() {
             , direction: 1 // 1: clockwise, -1: counterclockwise
             , speed: 1 // Rounds per second
             , trail: 60 // Afterglow percentage
-            , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+            , fps: 20 // Frames per second when use setTimeout() asfallback for CSS
             , zIndex: 2e9 // The z-index (defaults to 2000000000)
             , className: 'spinner' // The CSS class to assign to the spinner
             , top: '50%' // Top position relative to parent

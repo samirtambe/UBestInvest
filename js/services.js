@@ -427,6 +427,7 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
 console.log('wide='+idxGrphDiv.scrollWidth);
 console.log('tall='+idxGrphDiv.scrollHeight);
+
         var wide = idxGrphDiv.scrollWidth,
 
             tall = idxGrphDiv.scrollHeight,
@@ -547,9 +548,8 @@ console.log('tall='+idxGrphDiv.scrollHeight);
         return svg;
     }
 
-    return {
-        createGraph: createGraph
-    };
+    return { createGraph: createGraph };
+
 }]);
 
 

@@ -1,6 +1,6 @@
 angular.module('UBestInvest').controller('ResearchCtrl',
-    ['$scope', 'HttpSvc', 'ChartSvc', '$window', 'SpinnerSvc',
-     function($scope, HttpSvc, ChartSvc, $window, SpinnerSvc) {
+    ['$scope', 'HttpSvc', 'DateSvc', '$window', 'SpinnerSvc', 'GraphSvc',
+     function($scope, HttpSvc, DateSvc, $window, SpinnerSvc, GraphSvc) {
 
     $scope.showErrModal = false;
 
@@ -132,9 +132,9 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
             var spinner = SpinnerSvc.getSpinner();//starts spinning
 
-            $scope.reqParams.howLongAgo.setDate(ChartSvc.calcBeginDate($scope));
+            $scope.reqParams.howLongAgo.setDate(DateSvc.calcBeginDate($scope));
 
-            var tframe = ChartSvc.formatDateShort($scope);
+            var tframe = DateSvc.formatDateShort($scope);
 
             $scope.reqParams.startDate = tframe.start;
 
@@ -155,7 +155,9 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
                 $scope.graphData = dataset.data;
                 $scope.reqParams.pair.name = dataset.name;
-                createChart();
+
+                GraphSvc.createGraph('stock', $scope.graphData);
+                //createChart();
 
             }).catch(function(errObj) {
 
@@ -272,8 +274,8 @@ angular.module('UBestInvest').controller('WeatherCtrl',
 
 
 angular.module('UBestInvest').controller('MarketCtrl',
-    ['$scope', 'ChartSvc', 'HttpSvc', 'SpinnerSvc',
-        function($scope, ChartSvc, HttpSvc, SpinnerSvc) {
+    ['$scope', 'DateSvc', 'HttpSvc', 'SpinnerSvc',
+        function($scope, DateSvc, HttpSvc, SpinnerSvc) {
 
     $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
 
@@ -288,9 +290,9 @@ angular.module('UBestInvest').controller('MarketCtrl',
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
     $scope.reqParams.howLongAgo
-       .setDate(  ChartSvc.calcBeginDate($scope)  );
+       .setDate(  DateSvc.calcBeginDate($scope)  );
 
-    var tframe = ChartSvc.formatDateShort($scope);
+    var tframe = DateSvc.formatDateShort($scope);
 
     $scope.reqParams.startDate = tframe.start;
 

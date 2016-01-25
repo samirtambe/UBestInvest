@@ -147,9 +147,8 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 console.log('ResearchCtrl Before: Attempting to remove the childSVG...');
                 var childSVG = document.getElementById('theSVG');
                 parentDiv.removeChild(childSVG);
-console.log('ResearchCtrl After: Attempting to remove the childSVG...');
             }
-            catch(error) {}
+            catch(error) {console.log('The childSVG does not exist.');}
 
 
             HttpSvc.getStockData($scope.reqParams)

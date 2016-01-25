@@ -1,6 +1,6 @@
 angular.module('UBestInvest').controller('ResearchCtrl',
-    ['$scope', 'HttpSvc', 'DateSvc', '$window', 'SpinnerSvc', 'GraphSvc',
-     function($scope, HttpSvc, DateSvc, $window, SpinnerSvc, GraphSvc) {
+    ['$scope', 'HttpSvc', 'DateSvc', 'SpinnerSvc', 'GraphSvc',
+     function($scope, HttpSvc, DateSvc, SpinnerSvc, GraphSvc) {
 
     $scope.showErrModal = false;
 

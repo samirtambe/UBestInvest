@@ -500,16 +500,17 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 // Find the highest closing price from the data array
         highestCloseValue = d3.max(data, function(d) { return d.close; } );
 
+        y.domain([ lowestCloseValue, highestCloseValue ]);
 
 /* Set domain range of values for Y-Axis to be 15% higher and lower
     than the highest and lowest closing price so to prevent the
     highest/lowest close price to be at the absolute top/bottom of the
     graph
 */
-        y.domain([
-            lowestCloseValue - (0.15 * lowestCloseValue),
-            highestCloseValue + (0.15 * highestCloseValue)
-        ]);
+//        y.domain([
+//            lowestCloseValue - (0.15 * lowestCloseValue),
+//            highestCloseValue + (0.15 * highestCloseValue)
+//        ]);
 
         svg.append("path")
            .datum(data)

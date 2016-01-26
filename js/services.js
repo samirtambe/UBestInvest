@@ -394,9 +394,10 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             yHighGap = undefined,
 
-            wide = undefined,
+            wide = idxGrphDiv.scrollWidth,
 
-            tall = undefined;
+            tall = idxGrphDiv.scrollHeight;
+
 
 
         switch (graphType) {
@@ -406,8 +407,6 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
-                wide = 400;
-                tall = 200;
                 break;
 
             case 'nasdaq':
@@ -415,8 +414,6 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
-                wide = 400;
-                tall = 200;
                 break;
 
             case 'sp500':
@@ -424,16 +421,12 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
-                wide = 400;
-                tall = 200;
                 break;
 
             case 'stocks':
                 idxGrphDiv = document.getElementById('stockChartDiv');
                 displayUnit = '$ US';
                 idSVG = 'theSVG';
-                wide = idxGrphDiv.scrollWidth;
-                tall = idxGrphDiv.scrollHeight;
                 break;
         }
 

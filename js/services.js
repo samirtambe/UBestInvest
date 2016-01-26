@@ -426,12 +426,9 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
         var wide = idxGrphDiv.scrollWidth, // preset by the CSS
 
-            tall = idxGrphDiv.scrollHeight; // preset by the CSS
+            tall = idxGrphDiv.scrollHeight, // preset by the CSS
 
-console.log('scrollWidth: ' + idxGrphDiv.scrollWidth);
-console.log('scrollHeight: ' + idxGrphDiv.scrollHeight);
-
-        var margin = { top: 10, right: 10, bottom: 80, left: 55 },
+            margin = { top: 10, right: 10, bottom: 80, left: 55 },
 
 
             widthSVG = wide - margin.left - margin.right,

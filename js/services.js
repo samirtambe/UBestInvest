@@ -392,13 +392,7 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             yLowGap = undefined,
 
-            yHighGap = undefined,
-
-            wide = idxGrphDiv.scrollWidth, // preset by the CSS
-
-            tall = idxGrphDiv.scrollHeight; // preset by the CSS
-
-
+            yHighGap = undefined;
 
         switch (graphType) {
 
@@ -429,6 +423,10 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idSVG = 'theSVG';
                 break;
         }
+
+        var wide = idxGrphDiv.scrollWidth, // preset by the CSS
+
+            tall = idxGrphDiv.scrollHeight; // preset by the CSS
 
 console.log('scrollWidth: ' + idxGrphDiv.scrollWidth);
 console.log('scrollHeight: ' + idxGrphDiv.scrollHeight);

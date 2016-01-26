@@ -480,8 +480,8 @@ console.log('tall='+idxGrphDiv.scrollHeight);
             svg = d3.select('#'+idxGrphDiv.id)
             .append("svg")
             .attr("id",idSVG)
-            .attr("width", widthSVG)
-            .attr("height", heightSVG)
+            .attr("width", widthSVG) //+ margin.left + margin.right
+            .attr("height", heightSVG) // + margin.top + margin.bottom
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
 

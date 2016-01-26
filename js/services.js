@@ -378,9 +378,9 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
         // graphtype attribute for stockgraph directive
             idxGrphDiv = undefined,
 
-            parentDiv = document.getElementById('stockChartDiv'),
-
-            childSVG = undefined,
+//            parentDiv = document.getElementById('stockChartDiv'),
+//
+//            childSVG = undefined,
 
             displayUnit = undefined,
 

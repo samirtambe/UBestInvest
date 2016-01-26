@@ -394,9 +394,9 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             yHighGap = undefined,
 
-            wide = idxGrphDiv.scrollWidth,
+            wide = idxGrphDiv.scrollWidth, // preset by the CSS
 
-            tall = idxGrphDiv.scrollHeight;
+            tall = idxGrphDiv.scrollHeight; // preset by the CSS
 
 
 

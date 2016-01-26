@@ -36,7 +36,7 @@
 }
 /* FRONT PAGE MARKET CHART DIV that will hold a stock graph*/
 div.frontChartDiv {
-    width: 90%;/* used to be auto;*/
+    width: 100%;/* used to be auto;*/
     height: 170px;
     margin-bottom: 30px;
 }

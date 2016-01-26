@@ -437,8 +437,8 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 break;
         }
 
-console.log('wide: ' + wide);
-console.log('tall: ' + tall);
+console.log('scrollWidth: ' + idxGrphDiv.scrollWidth);
+console.log('scrollHeight: ' + idxGrphDiv.scrollHeight);
 
         var margin = { top: 10, right: 10, bottom: 80, left: 55 },
 

@@ -376,7 +376,7 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
         // The individual one selected based on the arguments of the specs in
         // graphtype attribute for stockgraph directive
-            idxGrphDiv = '',
+            idxGrphDiv = undefined,
 
             parentDiv = document.getElementById('stockChartDiv'),
 
@@ -392,7 +392,11 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
 
             yLowGap = undefined,
 
-            yHighGap = undefined;
+            yHighGap = undefined,
+
+            wide = undefined,
+
+            tall = undefined;
 
 
         switch (graphType) {
@@ -402,6 +406,8 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
+                wide = 400;
+                tall = 200;
                 break;
 
             case 'nasdaq':
@@ -409,6 +415,8 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
+                wide = 400;
+                tall = 200;
                 break;
 
             case 'sp500':
@@ -416,41 +424,40 @@ angular.module('UBestInvest').service('GraphSvc', [function() {
                 idxGrphDiv.id = 'idx' + graphType + 'Div';
                 displayUnit = 'pts';
                 idSVG = graphType+'SVG';
+                wide = 400;
+                tall = 200;
                 break;
 
             case 'stocks':
                 idxGrphDiv = document.getElementById('stockChartDiv');
                 displayUnit = '$ US';
                 idSVG = 'theSVG';
+                wide = idxGrphDiv.scrollWidth;
+                tall = idxGrphDiv.scrollHeight;
                 break;
         }
 
 console.log('wide='+idxGrphDiv.scrollWidth);
 console.log('tall='+idxGrphDiv.scrollHeight);
 
-        var wide = idxGrphDiv.scrollWidth,
-
-            tall = idxGrphDiv.scrollHeight,
+        var margin = { top: 10, right: 10, bottom: 80, left: 55 },
 
 
-            margin = { top: 10, right: 10, bottom: 80, left: 55 },
+            widthSVG = wide - margin.left - margin.right,
 
 
-            width = 400 - margin.left - margin.right,
-
-
-            height = 200 - margin.top - margin.bottom,
+            heightSVG = tall - margin.top - margin.bottom,
 
 
             parseDate = d3.time.format("%Y-%m-%d").parse,
 
 
             // Create x-axis scale
-            x = d3.time.scale().range([0, width]),
+            x = d3.time.scale().range([0, widthSVG]),
 
 
             // Create y-axis scale
-            y = d3.scale.linear().range([height, 0]),
+            y = d3.scale.linear().range([heightSVG, 0]),
 
 
             // Orient x-axis
@@ -465,7 +472,7 @@ console.log('tall='+idxGrphDiv.scrollHeight);
 
                return x(d.date);
 
-            }).y0(height).y1(function(d) {
+            }).y0(heightSVG).y1(function(d) {
 
                return y(d.close);
             }),
@@ -473,8 +480,8 @@ console.log('tall='+idxGrphDiv.scrollHeight);
             svg = d3.select('#'+idxGrphDiv.id)
             .append("svg")
             .attr("id",idSVG)
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", widthSVG)
+            .attr("height", heightSVG)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
 
@@ -524,7 +531,7 @@ console.log('tall='+idxGrphDiv.scrollHeight);
         // Drawing x-axis
         svg.append("g")
            .attr("class","x axis")
-           .attr("transform","translate(0,"+height+")")
+           .attr("transform","translate(0,"+heightSVG+")")
            .call(xAxis)
            .selectAll("text")
            .style("text-anchor", "end")

@@ -36,11 +36,11 @@
 }
 /* FRONT PAGE MARKET CHART DIV that will hold a stock graph*/
 div.frontChartDiv {
-    width: auto;
+    width: 90%;/* used to be auto;*/
     height: 170px;
     margin-bottom: 30px;
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
     div.frontChartDiv {
         width: 400px;
         height: 200px;

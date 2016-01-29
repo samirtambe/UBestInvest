@@ -31,7 +31,7 @@ angular.module('UBestInvest',['ui.router'])
         controller:'ResearchCtrl'
     });
 
-//    $rootScope.$on('$stateChangeSuccess', function() {
-//        document.body.scrollTop = document.documentElement.scrollTop = 0;
-//    });
+    $rootScope.$on('$stateChangeSuccess', function() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    });
 });

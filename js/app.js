@@ -6,7 +6,7 @@ angular.module('UBestInvest',['ui.router'])
     $stateProvider.state('home', {
         url: '/home',
         templateUrl: 'views/home.html',
-        controller:
+        controller: 'HomeCtrl'
     }).state('about', {
         url:'/about',
         templateUrl:'views/about.html'

@@ -169,7 +169,12 @@ angular.module('UBestInvest').controller('WeatherCtrl',
 
 
 
+angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'SpinnerSvc',
+    function($scope, HttpSvc, SpinnerSvc) {
 
+    console.log('HomeCtrl...');
+
+}]);
 
 
 

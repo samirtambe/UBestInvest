@@ -1,5 +1,5 @@
 angular.module('UBestInvest',['ui.router'])
-    .config(function($stateProvider, $urlRouterProvider, $rootScope) {
+    .config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');
 

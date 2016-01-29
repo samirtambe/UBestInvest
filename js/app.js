@@ -7,7 +7,7 @@ angular.module('UBestInvest',['ui.router'])
         url: '/home',
         templateUrl: 'views/home.html',
         controller:
-    }).state('about',{
+    }).state('about', {
         url:'/about',
         templateUrl:'views/about.html'
     }).state('news', {

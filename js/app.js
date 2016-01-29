@@ -17,7 +17,7 @@ angular.module('UBestInvest',['ui.router'])
                 templateUrl: 'views/news.html'
             },
             'left@news':{
-                templateUrl: 'leftnews.html',
+                templateUrl: 'views/leftnews.html',
                 controller: 'leftNewsCtrl'
             },
             'right@news':{

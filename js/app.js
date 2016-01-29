@@ -17,11 +17,12 @@ angular.module('UBestInvest',['ui.router'])
                 templateUrl: 'views/news.html'
             },
             'left@news':{
-                templateUrl: 'views/leftnews.html',
-                controller: 'leftNewsCtrl'
+                templateUrl: 'views/leftnews.html'//,
+                //controller: 'leftNewsCtrl'
             },
             'right@news':{
                 templateUrl: 'views/markets.html'
+                // uses directive, no need to refer to a controller here
             }
          }
     }).state('research',{

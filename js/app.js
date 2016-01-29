@@ -13,17 +13,9 @@ angular.module('UBestInvest',['ui.router'])
     }).state('news', {
          url: '/news',
          views: {
-            '': {
-                templateUrl: 'views/news.html'
-            },
-            'left@news':{
-                templateUrl: 'views/leftnews.html'//,
-                //controller: 'leftNewsCtrl'
-            },
-            'right@news':{
-                templateUrl: 'views/markets.html'
-                // uses directive, no need to refer to a controller here
-            }
+            '': {templateUrl: 'views/news.html'},
+            'left@news':{templateUrl: 'views/leftnews.html'/*,controller: 'leftNewsCtrl'*/},
+            'right@news':{templateUrl: 'views/markets.html'}
          }
     }).state('research',{
         url:'/research',

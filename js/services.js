@@ -21,16 +21,14 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 /* * * * * * * * * * * * * * * * API KEYS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             apiKeys = {
                 quandl: 'kA5hVpUMRoQmJyRqFPvk',
-
-                wunderground: '6e5628e3bc5762cf'
+                wunderground: '6e5628e3bc5762cf',
+                nytimes: '6d0f64d3e8a611c1e49bd563b2b84490:15:73885562'
             },
-
-
-
 /* * * * * * * * * * * * * * * * URLS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             urls = {
+                newsbusiness: 'http://api.nytimes.com/svc/topstories/v1/business/',
 
-                news: 'TBA',
+                newslocal: 'http://api.nytimes.com/svc/topstories/v1/nyregion/',
 
                 stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
 
@@ -48,13 +46,12 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
 
 /* * * * * * * * * * * * * * * * HTTP OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
+
             httpObj = {
                 method: 'GET',
                 url: '',
                 params: {}
             },
-
-
 
 /* * * * * * * * * * * * * * * * ERROR OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             errorObject = {
@@ -64,15 +61,17 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 httpStatus: null
             };
 
-
-
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * URL PARAMETER CONSTRUCTION SWITCH * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         switch(reqType) {
 
-            case 'news':
+            case 'newsbusiness':
+                httpObj.url = urls.newsbusiness + format + apiKeys.nytimes;
+                break;
+
+            case 'newslocal':
+                httpObj.url = urls.newslocal + format + apiKeys.nytimes;
                 break;
 
             case 'stock':
@@ -143,8 +142,14 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 switch (reqType) {
 
-                    case 'news':
-                        retObj = response.data;
+                    case 'newsbusiness':
+                        //retObj = response.data;
+                        console.log("business >>>"+response.data);
+                        break;
+
+                    case 'newslocal':
+                        //retObj = response.data;
+                        console.log("local >>>"+response.data);
                         break;
 
                     case 'stock':
@@ -181,6 +186,7 @@ server (or what not handles properly - ex. server error), then we
 may have to normalize it on our end, as best we can. */
 
             function(response) {
+
                 if (response.status == '400' &&
                     response.data.quandl_error.code == 'QECx01') {
 
@@ -254,8 +260,12 @@ may have to normalize it on our end, as best we can. */
         return getData('weather', parm);
     }
 
-    function getNewsData (parm) {
-        return getData('news', parm);
+    function getNewsBusiness (parm) {
+        return getData('newsbusiness', parm);
+    }
+
+    function getNewsLocal (parm) {
+        return getData('newslocal', parm);
     }
 
     function getSymbols(parm) {
@@ -267,7 +277,8 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     return ({
         getHomeGraphData: getHomeGraphData,
-        getNewsData: getNewsData,
+        getNewsBusiness: getNewsBusiness,
+        getNewsLocal: getNewsLocal,
         getStockData: getStockData,
         getSymbols: getSymbols,
         getWeatherData: getWeatherData

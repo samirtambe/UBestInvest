@@ -143,13 +143,11 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 switch (reqType) {
 
                     case 'newsbusiness':
-                        //retObj = response.data;
-                        console.log("business >>>"+response.data);
+                        retObj = response.data.results;
                         break;
 
                     case 'newslocal':
-                        //retObj = response.data;
-                        console.log("local >>>" + response.data.num_results);
+                        retObj = response.data.results;
                         break;
 
                     case 'stock':

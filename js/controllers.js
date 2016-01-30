@@ -175,20 +175,16 @@ angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'Spin
     var spinner = SpinnerSvc.getSpinner();
 
     HttpSvc.getNewsLocal(null).then(function(data) {
-
         $scope.articles = data;
 
-        //console.log("Parcel has arrived: "+$scope.parcel);
+    }).catch(function() {
 
-    }).catch(function(){
-
-            console.log("Home Catch - " + error);
-            spinner.stop();
-
-        }).finally(function() {
-
-            spinner.stop();
-        });
+        console.log("Home Catch:"+error);
+        spinner.stop();
+    })
+        .finally(function() {
+        spinner.stop();
+    });
 }]);
 
 

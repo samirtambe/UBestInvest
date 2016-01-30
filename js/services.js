@@ -67,11 +67,11 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
         switch(reqType) {
 
             case 'newsbusiness':
-                httpObj.url = urls.newsbusiness + format + apiKeys.nytimes;
+                httpObj.url = urls.newsbusiness + format + "?api-key=" +apiKeys.nytimes;
                 break;
 
             case 'newslocal':
-                httpObj.url = urls.newslocal + format + apiKeys.nytimes;
+                httpObj.url = urls.newslocal + format + "?api-key=" + apiKeys.nytimes;
                 break;
 
             case 'stock':

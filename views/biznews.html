@@ -1,2 +1,16 @@
-<h3>LEFT NEWS</h3>
-<p class="well">NY TIMES FINANICAL NEWS WILL COME SOON</p>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>New York Local News</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="article in bizarticles">
+                <td>
+                    {{ article.title }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

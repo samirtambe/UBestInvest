@@ -16,11 +16,11 @@ angular.module('UBestInvest',['ui.router'])
             '': {
                 templateUrl: 'views/news.html'
             },
-            'left@news':{
+            'biznews@news':{
                 templateUrl: 'views/biznews.html',
                 controller: 'BizNewsCtrl'
             },
-            'right@news':{
+            'mktcharts@news':{
                 templateUrl: 'views/markets.html'
             }
          }

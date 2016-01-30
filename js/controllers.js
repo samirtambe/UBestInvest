@@ -175,19 +175,38 @@ angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'Spin
     var spinner = SpinnerSvc.getSpinner();
 
     HttpSvc.getNewsLocal(null).then(function(data) {
+
         $scope.articles = data;
 
     }).catch(function() {
 
         console.log("Home Catch:"+error);
         spinner.stop();
-    })
-        .finally(function() {
+
+    }).finally(function() {
         spinner.stop();
     });
 }]);
 
 
+angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'SpinnerSvc',
+    function($scope, HttpSvc, SpinnerSvc) {
+
+    var spinner = SpinnerSvc.getSpinner();
+
+    HttpSvc.getNewsBusiness(null).then(function(data) {
+
+        $scope.articles = data;
+
+    }).catch(function() {
+
+        console.log("BizNewsCtrl Catch:"+error);
+        spinner.stop();
+
+    }).finally(function() {
+        spinner.stop();
+    });
+}]);
 
 
 angular.module('UBestInvest').controller('MarketCtrl',

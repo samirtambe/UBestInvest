@@ -177,7 +177,9 @@ angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'Spin
     HttpSvc.getNewsLocal(null).then(function(data) {
 
         $scope.parcel = data;
-        console.log("Parcel has arrived: "+$scope.parcel)
+
+        console.log("Parcel has arrived: "+$scope.parcel);
+
     }).catch(function(){
 
             console.log("Home Catch - " + error);

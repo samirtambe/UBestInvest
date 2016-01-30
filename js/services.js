@@ -26,9 +26,9 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
             },
 /* * * * * * * * * * * * * * * * URLS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             urls = {
-                newsbusiness: 'http://api.nytimes.com/svc/topstories/v1/business/',
+                newsbusiness: 'http://api.nytimes.com/svc/topstories/v1/business',
 
-                newslocal: 'http://api.nytimes.com/svc/topstories/v1/nyregion/',
+                newslocal: 'http://api.nytimes.com/svc/topstories/v1/nyregion',
 
                 stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
 

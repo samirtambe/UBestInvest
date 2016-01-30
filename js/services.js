@@ -149,7 +149,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                     case 'newslocal':
                         //retObj = response.data;
-                        console.log("local >>>"+response.num_results);
+                        console.log("local >>>" + response.data.num_results);
                         break;
 
                     case 'stock':

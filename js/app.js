@@ -17,7 +17,8 @@ angular.module('UBestInvest',['ui.router'])
                 templateUrl: 'views/news.html'
             },
             'left@news':{
-                templateUrl: 'views/leftnews.html'
+                templateUrl: 'views/biznews.html',
+                controller: 'BizNewsCtrl'
             },
             'right@news':{
                 templateUrl: 'views/markets.html'
@@ -29,7 +30,4 @@ angular.module('UBestInvest',['ui.router'])
         controller:'ResearchCtrl'
     });
 
-//    $rootScope.$on('$stateChangeSuccess', function() {
-//        document.body.scrollTop = document.documentElement.scrollTop = 0;
-//    });
 });

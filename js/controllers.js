@@ -196,7 +196,7 @@ angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'S
 
     HttpSvc.getNewsBusiness(null).then(function(data) {
 
-        $scope.articles = data;
+        $scope.bizarticles = data;
 
     }).catch(function() {
 

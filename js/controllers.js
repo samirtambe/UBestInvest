@@ -172,8 +172,21 @@ angular.module('UBestInvest').controller('WeatherCtrl',
 angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'SpinnerSvc',
     function($scope, HttpSvc, SpinnerSvc) {
 
-    console.log('HomeCtrl...');
+    var spinner = SpinnerSvc.getSpinner();
 
+    HttpSvc.getNewsLocal(null).then(function(data) {
+
+        $scope.parcel = data;
+        console.log("Parcel has arrived: "+$scope.parcel)
+    }).catch(function(){
+
+            console.log("Home Catch - " + error);
+            spinner.stop();
+
+        }).finally(function() {
+
+            spinner.stop();
+        });
 }]);
 
 

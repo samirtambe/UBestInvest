@@ -1,5 +1,5 @@
 angular.module('UBestInvest',['ui.router'])
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/home');
 
@@ -33,4 +33,6 @@ angular.module('UBestInvest',['ui.router'])
         templateUrl: 'views/terms.html'
     });
 
+    // use the HTML5 History API
+    $locationProvider.html5Mode(true);
 });

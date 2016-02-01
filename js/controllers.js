@@ -235,6 +235,7 @@ angular.module('UBestInvest').controller('MarketCtrl',
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
     $scope.reqParams.howLongAgo.setDate( DateSvc.calcBeginDate($scope) );
+            console.log("howLongAgo" + $scope.reqParams.howLongAgo);
 
     var tframe = DateSvc.formatDateShort($scope);
 

@@ -306,7 +306,7 @@ angular.module('UBestInvest').service('DateSvc', [function() {
 
     function calcBeginDate(scope) {
 
-        var dur = scope.durations,retStartDate;
+        var dur = scope.durations,retStartDate = undefined;
 console.log('dur = '+dur);
         switch(scope.reqParams.duration) {
 

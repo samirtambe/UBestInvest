@@ -19,6 +19,8 @@ angular.module('UBestInvest').controller('ResearchCtrl',
         startDate: '',
         endDate: ''
     };
+console.log("todaysdate"+$scope.reqParams.todayDate);
+console.log("howLongAgo" + $scope.reqParams.howLongAgo);
 
 
     $(".btn").mouseup(function() {
@@ -231,11 +233,11 @@ angular.module('UBestInvest').controller('MarketCtrl',
         startDate: '',
         endDate: ''
     };
-console.log("todaysdate"+$scope.reqParams.todayDate);
+
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
     $scope.reqParams.howLongAgo.setDate( DateSvc.calcBeginDate($scope) );
-console.log("howLongAgo" + $scope.reqParams.howLongAgo);
+
 
     var tframe = DateSvc.formatDateShort($scope);
 

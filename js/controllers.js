@@ -19,15 +19,16 @@ angular.module('UBestInvest').controller('ResearchCtrl',
         startDate: '',
         endDate: ''
     };
-console.log("todaysdate"+$scope.reqParams.todayDate);
-console.log("howLongAgo" + $scope.reqParams.howLongAgo);
 
+console.log("todaysdate:"+$scope.reqParams.todayDate);
 
     $(".btn").mouseup(function() {
          $(this).blur();
     });
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
+console.log("todaysdate:"+$scope.reqParams.todayDate);
+console.log("howLongAgo:" + $scope.reqParams.howLongAgo);
 
     $scope.getGraph = function(validForm) {
 

@@ -309,6 +309,7 @@ angular.module('UBestInvest').service('DateSvc', [function() {
             case dur[0]:
                 retStartDate = scope.reqParams.todayDate.getDate() - 7;
                 console.log('sub: '+ (scope.reqParams.todayDate - 7));
+                console.log('-> '+scope.reqParams.todayDate.setDate(scope.reqParams.todayDate - 7));
                 break;
 
             case dur[1]:

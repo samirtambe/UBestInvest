@@ -295,23 +295,20 @@ angular.module('UBestInvest').service('DateSvc', [function() {
 
     function padWithZero(chk) {
 
-        if (chk.length == 1) {
-            return ('0' + chk);
-        }
-
-        else {
-            return chk;
-        }
+        if (chk.length == 1) { return ('0' + chk); }
+        else { return chk; }
     };
 
     function calcBeginDate(scope) {
 
-        var dur = scope.durations,retStartDate = undefined;
+        var dur = scope.durations,
+            retStartDate = undefined;
 
         switch(scope.reqParams.duration) {
 
             case dur[0]:
                 retStartDate = scope.reqParams.todayDate.getDate() - 7;
+                console.log('>>'+scope.reqParams.todayDate.getDate());
                 break;
 
             case dur[1]:

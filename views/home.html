@@ -23,7 +23,7 @@
         {{currentPage+1}}/{{numberOfPages()}}
         <button class="btn btn-success"
                 ng-click="currentPage = currentPage + 1"
-                ng-disabled="currentPage >= data.length/pageSize - 1">
+                ng-disabled="currentPage >= articles.length/pageSize - 1">
             Next
         </button>
     </div>

@@ -174,6 +174,10 @@ angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'Spin
 
     var spinner = SpinnerSvc.getSpinner();
 
+    $scope.currentPage = 0;
+
+    $scope.pageSize = 5;
+
     HttpSvc.getNewsLocal(null).then(function(data) {
 
         $scope.articles = data;
@@ -184,9 +188,6 @@ angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'Spin
         spinner.stop();
 
     }).finally(function() {
-
-        $scope.currentPage = 0;
-        $scope.pageSize = 5;
 
         $scope.numberOfPages = function() {
             return Math.ceil($scope.articles.length/$scope.pageSize);

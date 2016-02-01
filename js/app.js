@@ -28,6 +28,9 @@ angular.module('UBestInvest',['ui.router'])
         url:'/research',
         templateUrl:'views/finance.html',
         controller:'ResearchCtrl'
+    }).state('terms', {
+        url: '/terms',
+        templateUrl: 'views/terms.html'
     });
 
 });

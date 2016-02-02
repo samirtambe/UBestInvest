@@ -28,7 +28,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
             urls = {
                 newsbusiness: 'http://api.nytimes.com/svc/topstories/v1/business',
 
-                newslocal: 'http://api.nytimes.com/svc/topstories/v1/nyregion',
+  //              newslocal: 'http://api.nytimes.com/svc/topstories/v1/nyregion',
 
                 stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
 
@@ -69,11 +69,11 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
             case 'newsbusiness':
                 httpObj.url = urls.newsbusiness + format + "?api-key=" +apiKeys.nytimes;
                 break;
-
+/*
             case 'newslocal':
                 httpObj.url = urls.newslocal + format + "?api-key=" + apiKeys.nytimes;
                 break;
-
+*/
             case 'stock':
                 httpObj.url = urls.stock + parm.pair.symbol + format;
                 httpObj.params = {
@@ -145,11 +145,11 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                     case 'newsbusiness':
                         retObj = response.data.results;
                         break;
-
+/*
                     case 'newslocal':
                         retObj = response.data.results;
                         break;
-
+*/
                     case 'stock':
                         retObj = response.data.dataset;
                         break;
@@ -231,9 +231,9 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    function getHomeGraphData (homeGraphType, parm) {
+    function getNewsGraphData (newsGraphType, parm) {
 
-        switch (homeGraphType) {
+        switch (newsGraphType) {
 
             case 'dowjones':
                 return getData('dowjones', parm);
@@ -261,11 +261,11 @@ may have to normalize it on our end, as best we can. */
     function getNewsBusiness (parm) {
         return getData('newsbusiness', parm);
     }
-
+/*
     function getNewsLocal (parm) {
         return getData('newslocal', parm);
     }
-
+*/
     function getSymbols(parm) {
         return getData('nslist', parm);
     }
@@ -274,9 +274,9 @@ may have to normalize it on our end, as best we can. */
 /* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     return ({
-        getHomeGraphData: getHomeGraphData,
+        getNewsGraphData: getNewsGraphData,
         getNewsBusiness: getNewsBusiness,
-        getNewsLocal: getNewsLocal,
+        //getNewsLocal: getNewsLocal,
         getStockData: getStockData,
         getSymbols: getSymbols,
         getWeatherData: getWeatherData

@@ -167,7 +167,7 @@ angular.module('UBestInvest').controller('WeatherCtrl',
 
 
 
-
+/*
 angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'SpinnerSvc',
     function($scope, HttpSvc, SpinnerSvc) {
 
@@ -195,7 +195,7 @@ angular.module('UBestInvest').controller('HomeCtrl', ['$scope', 'HttpSvc', 'Spin
         spinner.stop();
     });
 }]);
-
+*/
 
 angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'SpinnerSvc',
     function($scope, HttpSvc, SpinnerSvc) {
@@ -253,11 +253,11 @@ console.log('h:'+$scope.reqParams.howLongAgo);
 
 
 
-    $scope.populateHomeGraphs = function(graphType) {
+    $scope.populateNewsGraphs = function(graphType) {
 
         var spinner = SpinnerSvc.getSpinner();
 
-        HttpSvc.getHomeGraphData(graphType, $scope.reqParams).then(function(data) {
+        HttpSvc.getNewsGraphData(graphType, $scope.reqParams).then(function(data) {
 
             $scope.graphData = data;
 

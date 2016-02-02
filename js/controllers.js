@@ -225,7 +225,7 @@ angular.module('UBestInvest').controller('MarketCtrl',
 
     $scope.reqParams = {
         todayDate : new Date(),
-        howLongAgo: new Date(),
+        howLongAgo: undefined,
         duration: $scope.durations[1],
         startDate: '',
         endDate: ''

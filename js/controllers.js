@@ -24,8 +24,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
          $(this).blur();
     });
 
-    $scope.reqParams.todayDate
-        .setDate($scope.reqParams.todayDate.getTime() - (24 * 60 * 60 * 1000));
+    $scope.reqParams.todayDate = new Date($scope.reqParams.todayDate.getTime() - (24 * 60 * 60 * 1000));
 
     $scope.getGraph = function(validForm) {
 

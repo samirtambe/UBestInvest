@@ -337,7 +337,7 @@ angular.module('UBestInvest').service('DateSvc', [function() {
                 break;
 
             default:
-                retStartDate = scope.reqParams.todayDate.getDate() - 7;
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 7));
         }
         return retStartDate;
     }

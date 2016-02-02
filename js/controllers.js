@@ -218,7 +218,7 @@ angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'S
     }).finally(function() {
 
         $scope.numberOfPages = function() {
-            return Math.ceil($scope.articles.length/$scope.pageSize);
+            return Math.ceil($scope.bizarticles.length/$scope.pageSize);
         };
 
         spinner.stop();

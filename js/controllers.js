@@ -26,15 +26,13 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
     $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
 
-console.log("howLongAgo:" + $scope.reqParams.howLongAgo);
-
     $scope.getGraph = function(validForm) {
 
         if (validForm == true) {
 
             var spinner = SpinnerSvc.getSpinner();//starts spinning
-
-            $scope.reqParams.howLongAgo.setDate(DateSvc.calcBeginDate($scope));
+            //$scope.reqParams.howLongAgo.setDate(DateSvc.calcBeginDate($scope));// ORIG
+            $scope.reqParams.howLongAgo = DateSvc.calcBeginDate($scope);
 
 console.log("--howLongAgo:" + $scope.reqParams.howLongAgo);
 

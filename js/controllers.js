@@ -14,7 +14,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
         pair: {symbol : undefined, name : undefined },
         todayDate : new Date(),
-        howLongAgo: new Date(),
+        howLongAgo: undefined,
         duration: $scope.durations[0],
         startDate: '',
         endDate: ''

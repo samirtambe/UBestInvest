@@ -34,7 +34,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
             //$scope.reqParams.howLongAgo.setDate(DateSvc.calcBeginDate($scope));// ORIG
             $scope.reqParams.howLongAgo = DateSvc.calcBeginDate($scope);
 
-console.log("--howLongAgo:" + $scope.reqParams.howLongAgo);
+console.log("===> howLongAgo:" + $scope.reqParams.howLongAgo);
 
             var tframe = DateSvc.formatDateShort($scope);
 

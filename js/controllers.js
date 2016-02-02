@@ -24,7 +24,8 @@ angular.module('UBestInvest').controller('ResearchCtrl',
          $(this).blur();
     });
 
-    $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
+    $scope.reqParams.todayDate
+        .setDate($scope.reqParams.todayDate.getTime() - (24 * 60 * 60 * 1000));
 
     $scope.getGraph = function(validForm) {
 
@@ -231,10 +232,10 @@ angular.module('UBestInvest').controller('MarketCtrl',
         endDate: ''
     };
 
-    $scope.reqParams.todayDate.setDate($scope.reqParams.todayDate.getDate() - 1);
+    $scope.reqParams.todayDate
+        .setDate($scope.reqParams.todayDate.getTime() - (24 * 60 * 60 * 1000));
 
-    $scope.reqParams.howLongAgo.setDate( DateSvc.calcBeginDate($scope) );
-
+    $scope.reqParams.howLongAgo.setDate = DateSvc.calcBeginDate($scope);
 
     var tframe = DateSvc.formatDateShort($scope);
 

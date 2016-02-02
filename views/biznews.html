@@ -8,8 +8,13 @@
         <tbody>
             <tr ng-repeat="article in bizarticles | startFrom:currentPage*pageSize | limitTo:pageSize">
                 <td>
+                    <a ui-sref="detail({id: article.id })">{{ article.title }}</a>
+                </td>
+<!--
+                <td>
                     {{ article.title }}
                 </td>
+-->
             </tr>
         </tbody>
     </table>

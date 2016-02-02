@@ -302,14 +302,55 @@ angular.module('UBestInvest').service('DateSvc', [function() {
     function calcBeginDate(scope) {
 
         var dur = scope.durations,
+            oneDayMS = 24 * 60 * 60 * 1000,
+            retStartDate = undefined;
+
+/* Formula for calculating the beginning date of the viewing interval for closing
+    price values
+                    var now = new Date();
+                    var d2= new Date(now.getTime() - (24*60*60*1000  *  NUM_OF_DAYS ));
+*/
+        switch(scope.reqParams.duration) {
+
+            case dur[0]:
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 7));
+                break;
+
+            case dur[1]:
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 31));
+                break;
+
+            case dur[2]:
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 93));
+                break;
+
+            case dur[3]:
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 186));
+                break;
+
+            case dur[4]:
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 366));
+                break;
+
+            case dur[5]:
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 1827));
+                break;
+
+            default:
+                retStartDate = scope.reqParams.todayDate.getDate() - 7;
+        }
+        return retStartDate;
+    }
+/*
+    function calcBeginDate(scope) {
+
+        var dur = scope.durations,
             retStartDate = undefined;
 
         switch(scope.reqParams.duration) {
 
             case dur[0]:
                 retStartDate = scope.reqParams.todayDate.getDate() - 7;
-                console.log('sub: '+ (scope.reqParams.todayDate - 7));
-                console.log('-> '+scope.reqParams.todayDate.setDate(scope.reqParams.todayDate - 7));
                 break;
 
             case dur[1]:
@@ -337,7 +378,7 @@ angular.module('UBestInvest').service('DateSvc', [function() {
         }
         return retStartDate;
     }
-
+*/
     function formatDateShort(scope) {
 
         var shortDate = {

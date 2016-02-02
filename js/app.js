@@ -5,8 +5,8 @@ angular.module('UBestInvest',['ui.router'])
 
     $stateProvider.state('home', {
         url: '/home',
-        templateUrl: 'views/home.html',
-        controller: 'HomeCtrl'
+        templateUrl: 'views/home.html'
+        /*,  controller: 'HomeCtrl'  */
     }).state('about', {
         url:'/about',
         templateUrl:'views/about.html'
@@ -24,6 +24,10 @@ angular.module('UBestInvest',['ui.router'])
                 templateUrl: 'views/markets.html'
             }
          }
+    }).state('detail', {
+        url: '/detail/:id',
+        templateUrl: 'views/articleDetail.html',
+        controller: 'ArticleDetailCtrl'
     }).state('research',{
         url:'/research',
         templateUrl:'views/finance.html',

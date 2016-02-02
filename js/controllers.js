@@ -202,6 +202,10 @@ angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'S
 
     var spinner = SpinnerSvc.getSpinner();
 
+    $scope.currentPage = 0;
+
+    $scope.pageSize = 5;
+
     HttpSvc.getNewsBusiness(null).then(function(data) {
 
         $scope.bizarticles = data;
@@ -212,6 +216,11 @@ angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'S
         spinner.stop();
 
     }).finally(function() {
+
+        $scope.numberOfPages = function() {
+            return Math.ceil($scope.articles.length/$scope.pageSize);
+        };
+
         spinner.stop();
     });
 }]);

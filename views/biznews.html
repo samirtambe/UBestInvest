@@ -16,12 +16,12 @@
     <button class="btn btn-success"
             ng-disabled="currentPage == 0"
             ng-click="currentPage = currentPage - 1">
-        Previous
+        &nbsp;&larr;&nbsp;
     </button>
     {{currentPage+1}}/{{numberOfPages()}}
     <button class="btn btn-success"
             ng-click="currentPage = currentPage + 1"
             ng-disabled="currentPage >= bizarticles.length/pageSize - 1">
-        Next
+        &nbsp;&rarr;&nbsp;
     </button>
 </div>

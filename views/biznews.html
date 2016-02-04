@@ -15,13 +15,13 @@
     </table>
 </div>
 <div>
-    <button class="btn btn-success" ng-disabled="currentPage == 0"
+    <button class="btn btn-default" ng-disabled="currentPage == 0"
             ng-click="currentPage = currentPage - 1">&nbsp;&larr;&nbsp;
     </button>
 
     {{currentPage+1}} of {{numberOfPages()}}
 
-    <button class="btn btn-success" ng-click="currentPage = currentPage + 1"
+    <button class="btn btn-default" ng-click="currentPage = currentPage + 1"
             ng-disabled="currentPage >= bizarticles.length/pageSize - 1">&nbsp;&rarr;&nbsp;
     </button>
 

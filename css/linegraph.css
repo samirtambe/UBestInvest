@@ -5,7 +5,8 @@
     shape-rendering: crispEdges;
 }
 .area {
-    fill: steelblue;
+    fill: #DCD;
+    stroke: #000;
 }
 
 /*  USING min-width - it will do what is inside @media

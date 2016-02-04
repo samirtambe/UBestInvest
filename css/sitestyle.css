@@ -17,7 +17,7 @@ html {
     height: 10rem;
 }
 .footer {
-    background-color: #DDD;
+    background-color: #CCC;
 }
 .ng-invalid.ng-dirty {
     color: red;
@@ -53,9 +53,7 @@ html {
   }
 }
 .navbar-default {
-/*
-  background-color: #f8f8f8;*/
-  background-color: #f8f8f8;
+  background-color: #DED;
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {

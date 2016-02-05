@@ -17,11 +17,9 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
             StockColumnNum = '4',
 
-
 /* * * * * * * * * * * * * * * * API KEYS OBJECT * * * * * * * * * * * * * * * * * * * * * */
             apiKeys = {
                 quandl: 'kA5hVpUMRoQmJyRqFPvk',
-                wunderground: '6e5628e3bc5762cf',
                 nytimes: '6d0f64d3e8a611c1e49bd563b2b84490:15:73885562'
             },
 /* * * * * * * * * * * * * * * * URLS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */

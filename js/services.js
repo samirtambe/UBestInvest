@@ -12,13 +12,13 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
         - ADD to callback for failure
 */
     function getData(reqType, parm) {
-/* * * * * * * * * * * * * * * * VARIABLES * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * VARIABLES * * * * * * * * * * * * * * * * * * * * * * * * */
         var format = '.json',
 
             StockColumnNum = '4',
 
 
-/* * * * * * * * * * * * * * * * API KEYS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * API KEYS OBJECT * * * * * * * * * * * * * * * * * * * * * */
             apiKeys = {
                 quandl: 'kA5hVpUMRoQmJyRqFPvk',
                 wunderground: '6e5628e3bc5762cf',
@@ -241,9 +241,6 @@ may have to normalize it on our end, as best we can. */
     });
 
 }]);
-
-
-
 
 
 

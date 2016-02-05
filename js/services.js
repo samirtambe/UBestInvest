@@ -36,32 +36,21 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 sp500: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_GSPC.json',
 
-                weather: 'http://api.wunderground.com/api/',
-
                 nslist: 'http://ubestinvest.cardbycloud.com/rsc/nslist.json'
             },
 
-
-
 /* * * * * * * * * * * * * * * * HTTP OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
 
-            httpObj = {
-                method: 'GET',
-                url: '',
-                params: {}
-            },
+            httpObj = { method: 'GET', url: '', params: {} },
 
 /* * * * * * * * * * * * * * * * ERROR OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
-            errorObject = {
-                details: null,
-                apiErrCode: null,
-                apiErrMsg: null,
-                httpStatus: null
+
+            errorObject={
+                details: null, apiErrCode: null, apiErrMsg: null, httpStatus: null
             };
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /* * * * * * * * * * * * * * * * URL PARAMETER CONSTRUCTION SWITCH * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
         switch(reqType) {
 
             case 'newsbusiness':
@@ -111,11 +100,6 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
 
-            case 'weather':
-                httpObj.url = urls.weather + apiKeys.wunderground + parm.forecastType +
-                    '/q/' + parm.selectedLocation.stateCityStr + format;
-                break;
-
             case 'nslist':
                 httpObj.url = urls.nslist;
                 break;
@@ -130,9 +114,6 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
             function(response) {
 
                 var retObj;
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * RETURN DATA SWITCH * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
                 switch (reqType) {
 
@@ -156,10 +137,6 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                         retObj = response.data.dataset.data;
                         break;
 
-                    case 'weather':
-                        retObj = response.data;
-                        break;
-
                     case 'nslist':
                         retObj = response.data.pairs;
                         break;
@@ -168,6 +145,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 return(retObj);
         },
 /* * * * * * CALLBACK FOR FAILURE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 /* The API response from the server should be returned in a
 normalized format. However, if the request was not handled by the
 server (or what not handles properly - ex. server error), then we
@@ -218,9 +196,9 @@ may have to normalize it on our end, as best we can. */
 
         return (request);
     }//GET DATA
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 /* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
     function getNewsGraphData (newsGraphType, parm) {
 
         switch (newsGraphType) {
@@ -244,10 +222,6 @@ may have to normalize it on our end, as best we can. */
         return getData('stock', parm);
     }
 
-    function getWeatherData (parm) {
-        return getData('weather', parm);
-    }
-
     function getNewsBusiness (parm) {
         return getData('newsbusiness', parm);
     }
@@ -256,15 +230,14 @@ may have to normalize it on our end, as best we can. */
         return getData('nslist', parm);
     }
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 /* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
     return ({
         getNewsGraphData: getNewsGraphData,
         getNewsBusiness: getNewsBusiness,
         getStockData: getStockData,
-        getSymbols: getSymbols,
-        getWeatherData: getWeatherData
+        getSymbols: getSymbols
     });
 
 }]);

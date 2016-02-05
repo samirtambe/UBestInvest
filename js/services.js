@@ -108,7 +108,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
 
 
-        request = $http(httpObj).then(
+        var request = $http(httpObj).then(
 
 /* * * * * * CALLBACK FOR SUCCESS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
             function(response) {

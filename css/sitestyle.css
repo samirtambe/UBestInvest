@@ -22,9 +22,6 @@ html {
 .ng-invalid.ng-dirty {
     color: red;
 }
-.ng-valid.ng-dirty {
-
-}
 .navbar {
   position: relative;
   min-height: 50px;
@@ -32,12 +29,12 @@ html {
   border: 1px solid transparent;
 }
 .navbar-brand {
-  float: left;
-  height: 50px;
-  padding: 15px 15px;
-  font-size: 20px;
-  line-height: 22px;
-
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 20px;
+    line-height: 22px;
+    color: #000;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -284,33 +281,12 @@ fieldset[disabled] .navbar-default .btn-link:focus {
     height: 100px;
 }
 
-div.weatherCurrentBox {
-    font-family: verdana, Tahoma, sans-serif;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 7px 7px 7px 7px;
-}
-span.weatherLocation{
-    font-size: 25px;
-}
 
-span.weatherTempf {
-    font-size: 25px;
-    float: right;
-
-}
 img.cntwthicon {
     margin: auto;
     display: block;
 }
-img.WULogo {
-    margin: auto;
-    display: block;
-    width: 225px;
-    height: 135px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-}
+
 th.centertext, td.centertext {
     text-align: center;
 }

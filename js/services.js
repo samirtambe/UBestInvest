@@ -294,44 +294,8 @@ angular.module('UBestInvest').service('DateSvc', [function() {
         }
         return retStartDate;
     }
-/*
-    function calcBeginDate(scope) {
 
-        var dur = scope.durations,
-            retStartDate = undefined;
 
-        switch(scope.reqParams.duration) {
-
-            case dur[0]:
-                retStartDate = scope.reqParams.todayDate.getDate() - 7;
-                break;
-
-            case dur[1]:
-                retStartDate = scope.reqParams.todayDate.getDate() - 31;
-                break;
-
-            case dur[2]:
-                retStartDate = scope.reqParams.todayDate.getDate() - 93;
-                break;
-
-            case dur[3]:
-                retStartDate = scope.reqParams.todayDate.getDate() - 186;
-                break;
-
-            case dur[4]:
-                retStartDate = scope.reqParams.todayDate.getDate() - 366;
-                break;
-
-            case dur[5]:
-                retStartDate = scope.reqParams.todayDate.getDate() - 1827;
-                break;
-
-            default:
-                retStartDate = scope.reqParams.todayDate.getDate() - 7;
-        }
-        return retStartDate;
-    }
-*/
     function formatDateShort(scope) {
 
         var shortDate = {

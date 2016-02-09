@@ -290,11 +290,13 @@ fieldset[disabled] .navbar-default .btn-link:focus {
             box-shadow: none;
   }
 }
+
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 .menimage {
     width: 100px;
     height: 100px;
@@ -309,20 +311,11 @@ img.cntwthicon {
 th.centertext, td.centertext {
     text-align: center;
 }
+
 tr > td > i[class^="glyphicon"] {
     color: dodgerblue;
 }
+
 tr > td > span > i[class^="glyphicon"] {
     color: dodgerblue;
-}
-div.techGalleryImg  {
-    display: inline-block;
-    width: 150px;
-    height: 150px;
-    margin: 3px;
-}
-div.techGalleryImg > a > img {
-    margin: auto;
-    width: 140px;
-
 }

@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     $(".btn").mouseup(function() {
-         $(this).blur();
+        console.log('blurring...');
+        $(this).blur();
     });
 });

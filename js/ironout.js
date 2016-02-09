@@ -1,7 +1,10 @@
 $(document).ready(function(){
 
-    $(".btn").mouseup(function() {
-        console.log('blurring...');
+    $(".navbar-default .navbar-nav > li > a").mouseup(function() {
+        $(this).blur();
+    });
+
+    $(".navbar-default .navbar-toggle").mouseup(function() {
         $(this).blur();
     });
 });

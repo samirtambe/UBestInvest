@@ -85,12 +85,26 @@ html {
   color: #ccc;
   background-color: transparent;
 }
+@keyframes bounceIn {
+  0% {    opacity: 0;  }
+  60% {    opacity: 0.3;  }
+  100% {    opacity: 1;  }
+}
+@-webkit-keyframes bounceIn {
+  0% {    opacity: 0;  }
+  60% {    opacity: 0.3;  }
+  100% {    opacity: 1;  }
+}
 .navbar-toggle .icon-bar {
     height: 3px;
+    animation-duration: 2s;
+    animation-name: bounceIn;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: bounceIn;
 }
 .navbar-default .navbar-toggle {
-    border-color: #000;
-    border-radius: 20%;
+    border-radius: 7px;
+    border: #000 solid 3px;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {

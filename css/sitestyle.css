@@ -85,22 +85,23 @@ html {
   color: #ccc;
   background-color: transparent;
 }
-@keyframes bounceIn {
-  0% {    opacity: 0;  }
-  60% {    opacity: 0.3;  }
-  100% {    opacity: 1;  }
+@keyframes spinlines {
+    0% { transform: rotateZ(0deg); opacity: 0;}
+    100% { transform: rotateZ(360deg); opacity: 1;}
 }
-@-webkit-keyframes bounceIn {
-  0% {    opacity: 0;  }
-  60% {    opacity: 0.3;  }
-  100% {    opacity: 1;  }
+@-webkit-keyframes spinlines {
+    0% { transform: rotateZ(0deg); opacity: 0;}
+    100% { transform: rotateZ(360deg); opacity: 1;}
 }
+@-moz-keyframes spinlines {
+    0% { transform: rotateZ(0deg); opacity: 0;}
+    100% { transform: rotateZ(360deg); opacity: 1;}
+}
+
 .navbar-toggle .icon-bar {
     height: 3px;
-    animation-duration: 2s;
-    animation-name: bounceIn;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-name: bounceIn;
+    animation: spinlines 4s;
+    -webkit-animation: spinlines 4s;
 }
 .navbar-default .navbar-toggle {
     border-radius: 7px;
@@ -319,3 +320,84 @@ tr > td > i[class^="glyphicon"] {
 tr > td > span > i[class^="glyphicon"] {
     color: dodgerblue;
 }
+/* ************************************************************ */
+#xyAxis {
+    height: 200px;
+    width: 100%;
+    border-bottom: #CCC solid 1px;
+    background-color: inherit;
+}
+@keyframes flickerin {
+    0%{opacity:0.4;} 35%{opacity:1;} 75%{opacity:0;} 100%{opacity:0.4;}
+}
+@-webkit-keyframes flickerin {
+    0%{opacity:0.4;} 35%{opacity:1;} 75%{opacity:0;} 100%{opacity:0.4;}
+}
+@-moz-keyframes flickerin {
+    0%{opacity:0.4;} 35%{opacity:1;} 75%{opacity:0;} 100%{opacity:0.4;}
+}
+@keyframes bulge {
+    0%{height:50%;} 35%{height:20%;} 75%{height:90%;} 100%{height:50%;}
+}
+@-webkit-keyframes bulge {
+    0%{height:50%;} 35%{height:20%;} 75%{height:90%;} 100%{height:50%;}
+}
+@-moz-keyframes bulge {
+    0%{height:50%;} 35%{height:20%;} 75%{height:90%;} 100%{height:50%;}
+}
+.pillar {
+    display: inline-block;
+    background-color: inherit;
+    width: 3%;
+    height: 100%;
+}
+.motionbar {
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+}
+#bar0 {
+    height: 50%;
+    background-color: coral;
+    animation: bulge 2s ease 0s infinite;
+    -webkit-animation: bulge 2s ease 0s infinite;
+}
+#bar1 {
+    height: 25%;
+    background-color: rosybrown;
+    animation: flickerin 4s ease 0s infinite;
+    -webkit-animation: flickerin 4s ease 0s infinite;
+}
+#bar2 {
+    height: 50%;
+    background-color: cornflowerblue;
+    animation: bulge 6s ease 0s infinite;
+    -webkit-animation: bulge 6s ease 0s infinite;
+}
+#bar3 {
+    height: 60%;
+    background-color: springgreen;
+    animation: flickerin 2s ease 0s infinite;
+    -webkit-animation: flickerin 2s ease 0s infinite;
+}
+#bar4 {
+    height: 30%;
+    background-color:firebrick;
+    animation: bulge 8s ease 0s infinite;
+    -webkit-animation: bulge 8s ease 0s infinite;
+}
+#bar5 {
+    height: 80%;
+    background-color: plum;
+    animation: flickerin 6s ease 0s infinite;
+    -webkit-animation: flickerin 6s ease 0s infinite;
+}
+
+/*
+SELECTOR {
+    animation:
+        [animation-name] [animation-duration] [animation-timing-function]
+        [animation-delay] [animation-iteration-count] [animation-direction]
+        [animation-fill-mode] [animation-play-state];
+}
+*/

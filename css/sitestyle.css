@@ -102,6 +102,7 @@ html {
     height: 3px;
     animation: spinlines 4s;
     -webkit-animation: spinlines 4s;
+    -moz-animation: spinlines 4s;
 }
 .navbar-default .navbar-toggle {
     border-radius: 7px;
@@ -361,36 +362,42 @@ tr > td > span > i[class^="glyphicon"] {
     background-color: coral;
     animation: bulge 2s ease 0s infinite;
     -webkit-animation: bulge 2s ease 0s infinite;
+    -moz-animation: bulge 2s ease 0s infinite;
 }
 #bar1 {
     height: 25%;
     background-color: rosybrown;
     animation: flickerin 4s ease 0s infinite;
     -webkit-animation: flickerin 4s ease 0s infinite;
+    -moz-animation: bulge 2s ease 0s infinite;
 }
 #bar2 {
     height: 50%;
     background-color: cornflowerblue;
     animation: bulge 6s ease 0s infinite;
     -webkit-animation: bulge 6s ease 0s infinite;
+    -moz-animation: bulge 2s ease 0s infinite;
 }
 #bar3 {
     height: 60%;
     background-color: springgreen;
     animation: flickerin 2s ease 0s infinite;
     -webkit-animation: flickerin 2s ease 0s infinite;
+    -moz-animation: bulge 2s ease 0s infinite;
 }
 #bar4 {
     height: 30%;
     background-color:firebrick;
     animation: bulge 8s ease 0s infinite;
     -webkit-animation: bulge 8s ease 0s infinite;
+    -moz-animation: bulge 2s ease 0s infinite;
 }
 #bar5 {
     height: 80%;
     background-color: plum;
     animation: flickerin 6s ease 0s infinite;
     -webkit-animation: flickerin 6s ease 0s infinite;
+    -moz-animation: bulge 2s ease 0s infinite;
 }
 
 /*

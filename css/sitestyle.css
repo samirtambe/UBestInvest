@@ -324,6 +324,9 @@ tr > td > i[class^="glyphicon"] {
 tr > td > span > i[class^="glyphicon"] {
     color: dodgerblue;
 }
+/* Business News Headlines cut off with ... if headline exceeds width*/
+
+
 /* ************************************************************ */
 #xyAxis {
     height: 200px;

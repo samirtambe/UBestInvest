@@ -1,23 +1,11 @@
 html {
-    font-size: 100%; /* setting the standard for using REM units */
+    font-size: 100%;
 }
-.box{
-    width: 10rem;
-    padding: 3px 3px 3px 3px;
-    border-radius: 7px;
-    font-size: 1rem;
-    color: #000;
-    background-color: bisque;
-    margin: 0.2rem;
-}
-.wide {
-    height: 5rem;
-}
-.big {
-    height: 10rem;
+h1, h2, h3, h4, h5, h6, li, p, th, select, span, input[type="text"], td, td > a {
+    font-family: 'Montserrat', sans-serif;
 }
 .footer {
-    background-color: #CCC;
+    background-color: powderblue;
 }
 .ng-invalid.ng-dirty {
     color: red;
@@ -37,10 +25,10 @@ html {
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
-  text-decoration: none;
+    text-decoration: none;
 }
 .navbar-brand > img {
-  display: block;
+    display: block;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
@@ -48,34 +36,41 @@ html {
     margin-left: -15px;
   }
 }
+/* TOP MENU BAR BACKGROUND*/
 .navbar-default {
-  background-color: #DED;
-  border-color: #e7e7e7;
+    background-color: #DED;
+    border-color: #e7e7e7;
 }
-/* Site Brand Logo */
+/******* Site Brand Logo **************/
 .navbar-default .navbar-brand {
     color: #000;
-    font-family: Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #000;
-  background-color: transparent;
+    color: #000;
 }
 .navbar-default .navbar-text {
-  color: #000;
+    color: #000;
 }
+/******************* main top menu **********************/
 .navbar-default .navbar-nav > li > a {
     color: #000;
-    font-family: Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: transparent;
 }
 .navbar-default .navbar-nav > li > a:hover {
-    color: #777;
+    background-color: #FFF;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -ms-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;
 }
 .navbar-default .navbar-nav > li > a:focus {
-    color: #777;
+    background-color: #FFF;
 }
+/******************************************************/
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -100,18 +95,31 @@ html {
     0% { transform: rotateZ(0deg); opacity: 0;}
     100% { transform: rotateZ(360deg); opacity: 1;}
 }
+@-ms-keyframes spinlines {
+    0% { transform: rotateZ(0deg); opacity: 0;}
+    100% { transform: rotateZ(360deg); opacity: 1;}
+}
 
 .navbar-toggle .icon-bar {
     height: 3px;
     animation: spinlines 4s;
     -webkit-animation: spinlines 4s;
     -moz-animation: spinlines 4s;
+    -ms-animation: spinlines 4s;
 }
+/************ THREE LINE RESPONSIVE MENU ************************/
 .navbar-default .navbar-toggle {
-    border-radius: 7px;
-    border: #000 solid 3px;
+    background-color: transparent;
+    border: 1px solid #000;
 }
-.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:hover{
+    background-color: #FFF;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -ms-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;
+}
 .navbar-default .navbar-toggle:focus {
     background-color: #FFF;
 }
@@ -326,7 +334,23 @@ tr > td > span > i[class^="glyphicon"] {
 }
 /* Business News Headlines cut off with ... if headline exceeds width*/
 
-
+/****************** Biznews forward back buttons ********************/
+button.smallsizebutton {
+    background-color: powderblue;
+    color: #000;
+    padding: 10px 15px 10px 15px;
+    font-weight: bold;
+    border: none;
+    margin: 5px 8px 20px 8px;
+}
+button.smallsizebutton:hover{
+    background-color: plum;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -ms-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;
+}
 /* ************************************************************ */
 #xyAxis {
     height: 200px;
@@ -334,6 +358,7 @@ tr > td > span > i[class^="glyphicon"] {
     border-bottom: #CCC solid 1px;
     background-color: inherit;
 }
+/* ad @-ms-keyframes ... */
 @keyframes flickerin {
     0%{opacity:0.4;} 35%{opacity:1;} 75%{opacity:0;} 100%{opacity:0.4;}
 }

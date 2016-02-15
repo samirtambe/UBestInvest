@@ -19,8 +19,9 @@
     <button class="smallsizebutton" ng-hide="currentPage == 0"
             ng-click="currentPage = currentPage - 1">&nbsp;&lt;&lt;&nbsp;
     </button>
-
-   Page {{currentPage+1}} of {{numberOfPages()}}
+    <span>
+        page {{currentPage+1}} of {{numberOfPages()}}
+    </span>
 
     <button class="smallsizebutton" ng-click="currentPage = currentPage + 1"
             ng-hide="currentPage >= bizarticles.length/pageSize - 1">&nbsp;&gt;&gt;&nbsp;

@@ -4,7 +4,26 @@
     <h4>Investment Research</h4>
 
     <div id="formWrapperDiv" class = "form-inline">
-
+        <p>
+            Please enter a stock or investment symbol in the field below.
+            You can enter stocks symbols like
+                <span class="stocksymbol">aapl</span>,
+                <span class="stocksymbol">msft</span>,
+                <span class="stocksymbol">ge</span>,
+                <span class="stocksymbol">c</span>,
+                <span class="stocksymbol">b</span>, and many others.
+            There are about 2900+ stocks to choose from from this
+            particular data set from the Quandl API that is being used.
+            A complete listing of stock investments can be viewed in
+            the in our
+            <a href="/rsc/WIKI_tickers.csv">WIKI_tickers.csv</a> file.
+        </p>
+        <p>
+            You may also select from various time frames.  The smallest
+            time frame is the previous 1 week (5 business days). The
+            longest time frame is the previous 5 years of data.
+        </p>
+        <p>Enjoy!</p>
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
 
             <div class = "input-group">
@@ -22,7 +41,7 @@
 
                     <button id = "getGraphBtn"
                             type = "submit"
-                            class = "btn btn-default"
+                            class = "btn btn-primary"
                             ng-disabled="rsForm.$invalid">
                         <i class="glyphicon glyphicon-search"></i>
                     </button>

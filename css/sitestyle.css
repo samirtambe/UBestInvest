@@ -4,6 +4,21 @@ html {
 h1, h2, h3, h4, h5, h6, li, p, th, select, span, input[type="text"], td, td > a {
     font-family: 'Montserrat', sans-serif;
 }
+.pgraphgaptop {
+    margin-top: 25px;
+}
+.pgraphgapbottom {
+    margin-bottom: 80px;
+}
+.stocksymbol {
+    font-family: Courier, monospace;
+    color: steelblue;
+    font-weight: bold;
+    background-color: #EEE;
+}
+table > tbody > tr > td {
+    padding-bottom: 15px;
+}
 .footer {
     background-color: powderblue;
 }

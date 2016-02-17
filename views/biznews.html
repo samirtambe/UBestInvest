@@ -1,5 +1,7 @@
-<div class="table-responsive">
-    <table class="table" ng-if="bizarticles.length">
+<!--<div class="table-responsive">-->
+<div>
+    <table  ng-if="bizarticles.length">
+<!--        <table class="table" ng-if="bizarticles.length">-->
         <thead>
             <tr>
                 <th>Business Headlines &nbsp;
@@ -8,6 +10,7 @@
             </tr>
         </thead>
         <tbody>
+            <tr><td></td></tr>
             <tr ng-repeat="article in bizarticles | startFrom:currentPage*pageSize | limitTo:pageSize">
                 <td>
                     <a href="{{article.url}}" target="_blank">{{ article.title }} </a>

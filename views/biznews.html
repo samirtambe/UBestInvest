@@ -2,13 +2,15 @@
     <table class="table" ng-if="bizarticles.length">
         <thead>
             <tr>
-                <th>Business Headlines</th>
+                <th>Business Headlines &nbsp;
+                <i class="glyphicon glyphicon-new-window"></i>
+                </th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="article in bizarticles | startFrom:currentPage*pageSize | limitTo:pageSize">
                 <td>
-                    <a href="{{article.url}}" target="_blank">{{ article.title }}</a>
+                    <a href="{{article.url}}" target="_blank">{{ article.title }} </a>
                 </td>
             </tr>
         </tbody>

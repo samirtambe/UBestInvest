@@ -154,7 +154,7 @@ may have to normalize it on our end, as best we can. */
                 if (response.status == '400' &&
                     response.data.quandl_error.code == 'QECx01') {
 
-                    errorObject.details = "Perhaps you forgot to enter the stock symbol.";
+                    errorObject.details = "Invalid Symbol or Unknown API Route.";
                     errorObject.apiErrCode = response.data.quandl_error.code;
                     errorObject.apiErrMsg = response.data.quandl_error.message;
                     errorObject.httpStatus = response.status;
@@ -164,7 +164,7 @@ may have to normalize it on our end, as best we can. */
                 else if (response.status == '404' &&
                          response.data.quandl_error.code == 'QECx02') {
 
-                    errorObject.details = "Unable to find symbol.";
+                    errorObject.details = "No Data for that symbol.";
                     errorObject.apiErrCode = response.data.quandl_error.code;
                     errorObject.apiErrMsg = response.data.quandl_error.message;
                     errorObject.httpStatus = response.status;

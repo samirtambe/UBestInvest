@@ -23,7 +23,7 @@
             time frame is the previous 1 week (5 business days). The
             longest time frame is the previous 5 years of data.
         </p>
-        <p>Enjoy!</p>
+
         <form name="rsForm" class="form-group" ng-submit="getGraph(rsForm.$valid)" novalidate>
 
             <div class = "input-group">
@@ -33,9 +33,9 @@
                        class="form-control"
                        type="text"
                        ng-model="reqParams.pair.symbol"
-                       list="dlinv"
+                       ng-maxlength="8"
+                       ng-required="true"
                        placeholder="Enter Symbol">
-
 
                 <div class = "input-group-btn">
 
@@ -60,6 +60,14 @@
             </select>
 
         </div>
+
+        <p ng-show="rsForm.compSelect.$touched && rsForm.compSelect.$pristine"
+              >Do not leave the symbol field blank!</p>
+        <p ng-show=
+           "!rsForm.compSelect.$valid && rsForm.compSelect.$dirty"
+              >You must enter a symbol!</p>
+        <p ng-show="rsForm.compSelect.$error.maxlength"
+              >Symbol is too long!</p>
 
     </div>
 

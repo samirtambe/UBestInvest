@@ -16,6 +16,14 @@ h1, h2, h3, h4, h5, h6, li, p, th, select, span, input[type="text"], td, td > a 
     font-weight: bold;
     background-color: #EEE;
 }
+.marketheadings {
+    margin-bottom: 10px;
+}
+@media(max-width: 767px) {
+    .marketheadings {
+        margin-top: 10px;
+    }
+}
 table > tbody > tr > td {
     padding-bottom: 15px;
 }
@@ -73,6 +81,7 @@ table > tbody > tr > td {
     color: #000;
     font-family: 'Montserrat', sans-serif;
     background-color: transparent;
+    text-align: center;
 }
 .navbar-default .navbar-nav > li > a:hover {
     background-color: #FFF;
@@ -125,18 +134,13 @@ table > tbody > tr > td {
 /************ THREE LINE RESPONSIVE MENU ************************/
 .navbar-default .navbar-toggle {
     background-color: transparent;
-    border: 1px solid #000;
+    border: none;
 }
 .navbar-default .navbar-toggle:hover{
-    background-color: #FFF;
-    -webkit-transition: background-color 0.5s ease;
-    -moz-transition: background-color 0.5s ease;
-    -ms-transition: background-color 0.5s ease;
-    -o-transition: background-color 0.5s ease;
-    transition: background-color 0.5s ease;
+    background-color: transparent;
 }
 .navbar-default .navbar-toggle:focus {
-    background-color: #FFF;
+    background-color: transparent;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #000;
@@ -150,6 +154,29 @@ table > tbody > tr > td {
 .navbar-default .navbar-nav > .open > a:focus {
   color: #555;
   background-color: #e7e7e7;
+}
+@media (max-width: 767px) {
+  .navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-nav .open .dropdown-menu > li > a,
+  .navbar-nav .open .dropdown-menu .dropdown-header {
+    padding: 5px 15px 5px 25px;
+  }
+  .navbar-nav .open .dropdown-menu > li > a {
+    line-height: 20px;
+  }
+  .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-nav .open .dropdown-menu > li > a:focus {
+    background-image: none;
+  }
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -357,15 +384,15 @@ button.smallsizebutton {
     font-weight: bold;
     border: none;
     margin: 5px 8px 20px 8px;
+    box-shadow: 2px 2px 5px;
+    border-radius: 5px;
+
 }
-button.smallsizebutton:hover{
-    background-color: plum;
-    -webkit-transition: background-color 0.5s ease;
-    -moz-transition: background-color 0.5s ease;
-    -ms-transition: background-color 0.5s ease;
-    -o-transition: background-color 0.5s ease;
-    transition: background-color 0.5s ease;
+
+button.smallsizebutton:focus {
+    outline: none;
 }
+
 /* ************************************************************ */
 #xyAxis {
     height: 200px;

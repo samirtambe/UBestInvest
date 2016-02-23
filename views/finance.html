@@ -62,12 +62,12 @@
         </div>
 
         <p ng-show="rsForm.compSelect.$touched && rsForm.compSelect.$pristine"
-              >Do not leave the symbol field blank!</p>
+              class="help-block">Do not leave the symbol field blank!</p>
         <p ng-show=
            "!rsForm.compSelect.$valid && rsForm.compSelect.$dirty"
-              >You must enter a symbol!</p>
+              class="help-block">You must enter a symbol!</p>
         <p ng-show="rsForm.compSelect.$error.maxlength"
-              >Symbol is too long!</p>
+              class="help-block">Symbol is too long!</p>
 
     </div>
 

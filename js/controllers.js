@@ -169,3 +169,8 @@ angular.module('UBestInvest').controller('MarketCtrl',
         });
     }
 }]);
+
+angular.module('UBestInvest').controller('LearnCtrl',
+    ['$scope', 'HttpSvc', 'SpinnerSvc', function ($scope, HttpSvc, SpinnerSvc) {
+
+}]);

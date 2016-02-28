@@ -37,7 +37,7 @@ p {
 }
 .help-block {
     color: red;
-    background-color:bisque;
+    background-color: bisque;
     padding: 10px 10px 10px 10px;
 }
 .marketheadings {
@@ -155,20 +155,6 @@ table > tbody > tr > td > a {
 }
 
 /******************************************************/
-/*
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #555;
-  background-color: #e7e7e7;
-}
-.navbar-default .navbar-nav > .disabled > a,
-.navbar-default .navbar-nav > .disabled > a:hover,
-.navbar-default .navbar-nav > .disabled > a:focus {
-  color: #ccc;
-  background-color: transparent;
-}
-*/
 
 .navbar-toggle .icon-bar {
     height: 4px;
@@ -195,8 +181,8 @@ table > tbody > tr > td > a {
 }
 
 .navbar-nav > li > a {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   line-height: 20px;
 }
 .navbar-nav > li > a > i {
@@ -208,13 +194,11 @@ table > tbody > tr > td > a {
         float: left;
         margin: 0;
     }
+
     .navbar-nav > li {
         float: left;
     }
-    .navbar-nav > li > a {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
+
     .navbar-nav > li > a > i {
         display: none;
     }
@@ -232,7 +216,12 @@ table > tbody > tr > td > a {
     filter: alpha(opacity=50);
     opacity: 1;
 }
-
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    line-height: 1;
+    margin-left: auto;
+    margin-right: auto;
+}
 .carousel-control.left {
     background-image: none;
 }

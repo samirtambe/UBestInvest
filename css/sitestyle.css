@@ -205,22 +205,26 @@ table > tbody > tr > td > a {
 }
 .carousel-control {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 45%;
+    bottom: 25%;
     left: 0;
     width: 15%;
     font-size: 20px;
     color: #fff;
     text-align: center;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-    filter: alpha(opacity=50);
+    text-shadow: 0 9px 9px rgba(0, 0, 0, .9);
+    filter: alpha(opacity=100);
     opacity: 1;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
+    top: 0;
+    left: 0;
     line-height: 1;
+    min-width: 100%;
     margin-left: auto;
     margin-right: auto;
+
 }
 .carousel-control.left {
     background-image: none;
@@ -230,15 +234,12 @@ table > tbody > tr > td > a {
 }
 .carousel-control:hover,
 .carousel-control:focus {
-  color: #fff;
-  text-decoration: none;
-/*  filter: alpha(opacity=90);*/
+    color: #fff;
+    text-decoration: none;
     filter: none;
-  outline: 0;
-  opacity: 1;
+    outline: 0;
+    opacity: 1;
 }
-
-
 
 
 .carousel-indicators {
@@ -254,7 +255,7 @@ table > tbody > tr > td > a {
 }
 .carousel-indicators li {
   width: 40px;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .carousel-indicators .active {
   width: 40px;
@@ -263,35 +264,39 @@ table > tbody > tr > td > a {
   background-color: #fff;
 }
 .carousel-caption {
-  position: absolute;
-  right: 15%;
-  bottom: 20px;
-  left: 15%;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    position: absolute;
+    right: 15%;
+    top: 20px;
+    bottom: auto;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 3px 1px rgba(0, 0, 0, .9);
+    font-family: 'Fauna One', serif;
+    font-size: 1.4em;
 }
 
 /****************** Biznews forward back buttons ********************/
 button.smallsizebutton {
     background-color: powderblue;
     color: #000;
-    padding: 10px 15px 10px 15px;
+    padding: 15px 20px 15px 20px;
     font-weight: bold;
     border: none;
     margin: 5px 8px 20px 8px;
-    box-shadow: 2px 2px 5px;
-    border-radius: 5px;
-
 }
 
 button.smallsizebutton:focus {
-    outline: none;
+/*    outline: none;*/
 }
-
+.blquote {
+    background-color: lemonchiffon;
+    border-radius: 15px;
+    border-left-color: #07A;
+}
 /* ************************************************************ */
 #xyAxis {
     height: 200px;

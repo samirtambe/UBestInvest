@@ -173,4 +173,14 @@ angular.module('UBestInvest').controller('MarketCtrl',
 angular.module('UBestInvest').controller('LearnCtrl',
     ['$scope', 'HttpSvc', 'SpinnerSvc', function ($scope, HttpSvc, SpinnerSvc) {
 
+        $scope.vocab = [
+            {word: 'word0', meaning: 'meaning0'},
+            {word: 'word1', meaning: 'meaning1'},
+            {word: 'word2', meaning: 'meaning2'},
+            {word: 'word3', meaning: 'meaning3'},
+            {word: 'word4', meaning: 'meaning4'},
+            {word: 'word5', meaning: 'meaning5'},
+            {word: 'word6', meaning: 'meaning6'},
+        ];
+
 }]);

@@ -80,11 +80,6 @@ angular.module('UBestInvest').directive('vocabListing', [function() {
     return {
         templateUrl: 'views/vocab.html',
         restrict: 'E',
-        replace:true,
-        scope:true,
-        link: function postLink(scope, element, attrs) {
-
-
-        }
+        scope: { info: '='}
     };
 }]);

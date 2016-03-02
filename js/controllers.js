@@ -56,7 +56,7 @@ angular.module('UBestInvest').controller('ResearchCtrl',
                 $scope.graphData = dataset.data;
 
                 $scope.reqParams.pair.name = dataset.name;
-
+console.log("long form:"+dataset.name);
                 GraphSvc.createGraph('stocks', $scope.graphData);
 
             }).catch(function(errObj) {

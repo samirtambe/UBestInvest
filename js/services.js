@@ -135,7 +135,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                         retObj = response.data.dataset.data;
                         break;
 
-                    case 'nslist':
+                    case 'vocab':
                         retObj = response.data.dict;
                         break;
                 }

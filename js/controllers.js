@@ -172,7 +172,8 @@ angular.module('UBestInvest').controller('MarketCtrl',
 
 angular.module('UBestInvest').controller('LearnCtrl',
     ['$scope', 'HttpSvc', 'SpinnerSvc', function ($scope, HttpSvc, SpinnerSvc) {
-
+        $scope.vocab = [{word: 'w1',meaning:'m1'},{word: 'w2',meaning:'m2'}];
+/*
         var spinner = SpinnerSvc.getSpinner();
 
         $scope.vocab = undefined;
@@ -189,5 +190,5 @@ console.log('Receiving Vocab...');
         }).finally(function() {
             spinner.stop();
         });
-
+*/
 }]);

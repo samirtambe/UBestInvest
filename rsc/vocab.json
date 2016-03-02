@@ -1,22 +1,24 @@
-[
-    {
-        word: "Common Stock",
-        meaning: "An equity ownership in the company and gives shareholders the right to vote on management issues. Shareholders may, or may not, receive dividends."
-    },
-    {
-        word: "Preferred Stock",
-        meaning: "A mixture of a stock and a bond.  This combo means the price of preferred stock does not change as much as the price of common stock. It almost always pays a dividend to shareholders."
-    },
-    {
-        word: "Price Apreciation",
-        meaning: "The more the demand, the more the price goes up for shares of a stock. A shareholder will get a profit, or gain, when they sell stock that has appreciated."
-    },
-    {
-        word: "Dividends",
-        meaning: "A way for a company to share its profit with the shareholder. Each quarter the company pays the shareholder a certain amount of money for each share of stock the shareholder owns. In most cases, dividend payments are significantly smaller than the price of the stock. For example, a company whose stock price is $15 per share might pay a dividend of 4 cents per share each quarter."
-    },
-    {
-        word: "P/E Ratio",
-        meaning: "Price to earnings ratio. It means..."
-    }
-]
+{
+    dict: [
+        {
+            word: "Common Stock",
+            meaning: "An equity ownership in the company and gives shareholders the right to vote on management issues. Shareholders may, or may not, receive dividends."
+        },
+        {
+            word: "Preferred Stock",
+            meaning: "A mixture of a stock and a bond.  This combo means the price of preferred stock does not change as much as the price of common stock. It almost always pays a dividend to shareholders."
+        },
+        {
+            word: "Price Apreciation",
+            meaning: "The more the demand, the more the price goes up for shares of a stock. A shareholder will get a profit, or gain, when they sell stock that has appreciated."
+        },
+        {
+            word: "Dividends",
+            meaning: "A way for a company to share its profit with the shareholder. Each quarter the company pays the shareholder a certain amount of money for each share of stock the shareholder owns. In most cases, dividend payments are significantly smaller than the price of the stock. For example, a company whose stock price is $15 per share might pay a dividend of 4 cents per share each quarter."
+        },
+        {
+            word: "P/E Ratio",
+            meaning: "Price to earnings ratio. It means..."
+        }
+    ]
+}

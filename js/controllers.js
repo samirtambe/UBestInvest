@@ -182,7 +182,7 @@ angular.module('UBestInvest').controller('LearnCtrl',
 
             $scope.vocab = data;
 
-        }).catch(function() {
+        }).catch(function(error) {
 
             console.log("LearnCtrl Catch:" + error);
             spinner.stop();

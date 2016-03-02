@@ -175,6 +175,7 @@ angular.module('UBestInvest').controller('LearnCtrl',
 
 
         var spinner = SpinnerSvc.getSpinner();
+
         $scope.vocab = [
             {word: 'word0', meaning: 'meaning0'},
             {word: 'word1', meaning: 'meaning1'},
@@ -182,7 +183,7 @@ angular.module('UBestInvest').controller('LearnCtrl',
             {word: 'word3', meaning: 'meaning3'},
             {word: 'word4', meaning: 'meaning4'},
             {word: 'word5', meaning: 'meaning5'},
-            {word: 'word6', meaning: 'meaning6'},
+            {word: 'word6', meaning: 'meaning6'}
         ];
 
 
@@ -190,14 +191,11 @@ angular.module('UBestInvest').controller('LearnCtrl',
 
             $scope.vocab = data;
 
-        }).catch(function(error) {
+        }).catch(function() {
 
             console.log("LearnCtrl Catch:" + error);
             spinner.stop();
 
-        }).finally(function() {
-
-            spinner.stop();
-    });
+        }).finally(function() { spinner.stop(); });
 
 }]);

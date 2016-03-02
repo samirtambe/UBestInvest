@@ -1,4 +1,4 @@
-var dict = [
+[
     {
         word: "Common Stock",
         meaning: "An equity ownership in the company and gives shareholders the right to vote on management issues. Shareholders may, or may not, receive dividends."
@@ -19,4 +19,4 @@ var dict = [
         word: "P/E Ratio",
         meaning: "Price to earnings ratio. It means..."
     }
-];
+]

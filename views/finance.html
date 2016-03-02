@@ -12,11 +12,6 @@
                 <span class="stocksymbol">ge</span>,
                 <span class="stocksymbol">c</span>,
                 <span class="stocksymbol">b</span>, and many others.
-            There are about 2900+ stocks to choose from from this
-            particular data set from the Quandl API that is being used.
-            A complete listing of stock investments can be viewed in
-            the in our
-            <a href="/rsc/WIKI_tickers.csv">WIKI_tickers.csv</a> file.
         </p>
         <p>
             You may also select from various time frames.  The smallest
@@ -76,5 +71,15 @@
     <h4><span ng-if="reqParams.pair.symbol">{{ reqParams.pair.name }} </span></h4>
 
     <div id="stockChartDiv"></div>
+    <div class="well">
+        <p>
+                        There are about 2900+ stocks to choose from from this
+            particular data set from the Quandl API that is being used.
+            A complete listing of stock investments can be viewed in
+            the in our
+            <a href="/rsc/WIKI_tickers.csv">WIKI_tickers.csv</a> file.
+
+        </p>
+    </div>
 </div>
 

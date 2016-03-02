@@ -225,7 +225,7 @@ may have to normalize it on our end, as best we can. */
     }
 
     function getVocab() {
-        return getData('vocab', parm)
+        return getData('vocab', null)
     }
 
 /* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */

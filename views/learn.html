@@ -14,7 +14,19 @@
 you started so you feel can feel more comfortable reading articles about
 financial data.</p>
 
+<!--
     <div ng-repeat="entry in vocab">
         <vocab-listing info="entry"></vocab-listing>
     </div>
+-->
+    <table class="table checkered">
+        <tr>
+            <th>Word</th>
+            <th>Definition</th>
+        </tr>
+        <tr ng-repeat="entry in vocab">
+            <td>{{ entry.word }}</td>
+            <td>{{ entry.meaning }}</td>
+        </tr>
+    </table>
 </div>

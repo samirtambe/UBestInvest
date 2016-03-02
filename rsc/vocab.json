@@ -1,4 +1,4 @@
-{
+
     dict: [
         {
             word: "Common Stock",
@@ -21,4 +21,3 @@
             meaning: "Price to earnings ratio. It means..."
         }
     ]
-}

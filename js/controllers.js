@@ -98,13 +98,13 @@ angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'S
 
     $scope.pageSize = 7;
 
-    HttpSvc.getNewsBusiness(null).then(function(data) {
+    HttpSvc.getNewsBusiness().then(function(data) {
 
         $scope.bizarticles = data;
 
     }).catch(function() {
 
-        console.log("BizNewsCtrl Catch:"+error);
+        console.log("BizNewsCtrl Catch:" + error);
         spinner.stop();
 
     }).finally(function() {
@@ -173,6 +173,8 @@ angular.module('UBestInvest').controller('MarketCtrl',
 angular.module('UBestInvest').controller('LearnCtrl',
     ['$scope', 'HttpSvc', 'SpinnerSvc', function ($scope, HttpSvc, SpinnerSvc) {
 
+
+        var spinner = SpinnerSvc.getSpinner();
         $scope.vocab = [
             {word: 'word0', meaning: 'meaning0'},
             {word: 'word1', meaning: 'meaning1'},
@@ -182,5 +184,20 @@ angular.module('UBestInvest').controller('LearnCtrl',
             {word: 'word5', meaning: 'meaning5'},
             {word: 'word6', meaning: 'meaning6'},
         ];
+
+
+        HttpSvc.getVocab().then(function(data){
+
+            $scope.vocab = data;
+
+        }).catch(function() {
+
+            console.log("LearnCtrl Catch:" + error);
+            spinner.stop();
+
+        }).finally(function() {
+
+            spinner.stop();
+    });
 
 }]);

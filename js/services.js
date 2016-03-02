@@ -99,7 +99,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
 
             case 'vocab':
-console.log('Setting vocab to urls.vocab...');
+
                 httpObj.url = urls.vocab;
                 break;
 
@@ -137,7 +137,7 @@ console.log('Setting vocab to urls.vocab...');
                         break;
 
                     case 'vocab':
-console.log('Services.js: getting the data response.data.dict');
+
                         retObj = response.data.dict;
                         break;
                 }
@@ -227,7 +227,6 @@ may have to normalize it on our end, as best we can. */
     }
 
     function getVocab() {
-console.log('Wrapper function refers to this...');
         return getData('vocab', null)
     }
 

@@ -55,8 +55,9 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
                 $scope.graphData = dataset.data;
 
-                $scope.reqParams.pair.name = dataset.name;
-console.log("long form:"+dataset.name);
+// Grab part of name string before the parenthesis and trim off any extra spaces
+                $scope.reqParams.pair.name = ((dataset.name.split('('))[0]).trim();
+
                 GraphSvc.createGraph('stocks', $scope.graphData);
 
             }).catch(function(errObj) {

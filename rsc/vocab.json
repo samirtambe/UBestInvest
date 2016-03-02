@@ -16,7 +16,7 @@ var dict = [
         meaning: "A way for a company to share its profit with the shareholder. Each quarter the company pays the shareholder a certain amount of money for each share of stock the shareholder owns. In most cases, dividend payments are significantly smaller than the price of the stock. For example, a company whose stock price is $15 per share might pay a dividend of 4 cents per share each quarter."
     },
     {
-        word: "Price to Earnings Ratio",
-        meaning: "DEF COMING SOON"
+        word: "P/E Ratio",
+        meaning: "Price to earnings ratio. It means..."
     }
 ];

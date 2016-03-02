@@ -34,7 +34,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 sp500: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_GSPC.json',
 
-                nslist: 'http://ubestinvest.cardbycloud.com/rsc/nslist.json'
+                vocab: 'http://ubitest.tambetech.com/rsc/vocab.json'
             },
 
 /* * * * * * * * * * * * * * * * HTTP OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
@@ -98,8 +98,8 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                 break;
 
 
-            case 'nslist':
-                httpObj.url = urls.nslist;
+            case 'vocab':
+                httpObj.url = urls.vocab;
                 break;
 
         }//SWITCH
@@ -136,7 +136,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
                         break;
 
                     case 'nslist':
-                        retObj = response.data.pairs;
+                        retObj = response.data.dict;
                         break;
                 }
 
@@ -220,14 +220,13 @@ may have to normalize it on our end, as best we can. */
         return getData('stock', parm);
     }
 
-    function getNewsBusiness (parm) {
-        return getData('newsbusiness', parm);
+    function getNewsBusiness () {
+        return getData('newsbusiness', null);
     }
 
-    function getSymbols(parm) {
-        return getData('nslist', parm);
+    function getVocab() {
+        return getData('vocab', parm)
     }
-
 
 /* * * * * * * Unique return reference function to EXPOSE private function * * * * * * * * * */
 
@@ -235,7 +234,7 @@ may have to normalize it on our end, as best we can. */
         getNewsGraphData: getNewsGraphData,
         getNewsBusiness: getNewsBusiness,
         getStockData: getStockData,
-        getSymbols: getSymbols
+        getVocab: getVocab
     });
 
 }]);

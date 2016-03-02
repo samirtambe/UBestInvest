@@ -1,8 +1,8 @@
 {
     "dict" : [
         {
-            "word": "Common Stock",
-            "meaning": "An equity ownership in the company and gives shareholders the right to vote on management issues. Shareholders may, or may not, receive dividends."
+            "word": "Stock",
+            "meaning": "A share in the ownership of a company. Stock represents a claim on the company's assets and earnings. As you acquire more stock, your ownership stake in the company becomes greater. Whether you say shares, equity, or stock, it all means the same thing. This type of stock is technically called a common stock.  Common Stock is what people refer to when speaking of stocks. The importance of stock ownership is your claim on assets and earnings. Without this, the stock wouldn't be worth the paper it's printed on."
         },
         {
             "word": "Preferred Stock",
@@ -18,7 +18,23 @@
         },
         {
             "word": "P/E Ratio",
-            "meaning" : "Price to earnings ratio. It means..."
+            "meaning" : "This is calculated by dividing the current stock price by earnings per share from the last four quarters."
+        },
+        {
+            "word": "52 Week High or Low",
+            "meaning": "These are the highest and lowest prices at which a stock has traded over the previous 52 weeks (one year). This typically does not include the previous day's trading."
+        },
+        {
+            "word": "Dividend Yield",
+            "meaning": "The percentage return on the dividend. Calculated as annual dividends per share divided by price per share."
+        },
+        {
+            "word": "Trading Volume",
+            "meaning": "This figure shows the total number of shares traded for the day, listed in hundreds. To get the actual number traded, add '00' to the end of the number listed."
+        },
+        {
+            "word": "Close",
+            "meaning": "The close is the last trading price recorded when the market closed on the day. If the closing price is up or down more than 5% than the previous day's close, the entire listing for that stock is bold-faced. Keep in mind, you are not guaranteed to get this price if you buy the stock the next day because the price is constantly changing (even after the exchange is closed for the day). The close is merely an indicator of past performance and except in extreme circumstances serves as a ballpark of what you should expect to pay. "
         }
     ]
 }

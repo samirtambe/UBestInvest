@@ -59,6 +59,7 @@ table > tr > td,
 table > tr > td > a,
 table > tr > th,
 table > tbody > tr > td,
+table > tbody > tr > th,
 table > tbody > tr > td > a {
     padding-bottom: 15px;
     font-size: 18px;

@@ -176,7 +176,7 @@ angular.module('UBestInvest').controller('LearnCtrl',
         var spinner = SpinnerSvc.getSpinner();
 
         $scope.vocab = undefined;
-console.log('Trying to get Vocab...');
+
         HttpSvc.getVocab().then(function(data){
 console.log('Receiving Vocab...');
             $scope.vocab = data;
@@ -187,7 +187,6 @@ console.log('Receiving Vocab...');
             spinner.stop();
 
         }).finally(function() {
-            console.log('LearnCtrl Finally...');
             spinner.stop();
         });
 

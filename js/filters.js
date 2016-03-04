@@ -7,3 +7,20 @@ angular.module('UBestInvest').filter('startFrom', function() {
         return input.slice(start);
     }
 });
+
+angular.module('UBestInvest').filter('shorten', function() {
+
+    return function (text, length) {
+        if (isNaN(length)) {
+            length = 80;
+        }
+
+        // 3 is the length of "..."
+        if (text.length <= length || text.length - 3 <= length) {
+            return text;
+        }
+        else {
+            return String(text).substring(0, length - 3) + "...";
+        }
+    }
+});

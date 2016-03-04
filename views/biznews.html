@@ -6,7 +6,8 @@
         <tbody>
             <tr ng-repeat="article in bizarticles | startFrom:currentPage*pageSize | limitTo:pageSize">
                 <td>
-                    <a href="{{article.url}}" target="_blank">{{ article.title }} </a>
+                    <a href="{{article.url}}"
+                       target="_blank">{{ article.title | shorten }} </a>
                 </td>
             </tr>
         </tbody>

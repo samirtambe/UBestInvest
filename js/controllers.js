@@ -182,6 +182,7 @@ angular.module('UBestInvest').controller('LearnCtrl',
         var vocabRef = new Firebase('https://ubestinvest.firebaseio.com/');
 
         $scope.vocab = $firebaseArray(vocabRef);
+for (var ii=0; i<$scope.vocab.length; ii++){console.log('>>'+$scope.vocab[ii]);}
 
 // https://ubestinvest.firebaseio.com/#-JnlJKt1nIbUbxRlghat|6d4ac70b491d54af54a705f2a978d639
 //        HttpSvc.getVocab().then(function(data){

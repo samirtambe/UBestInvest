@@ -71,8 +71,17 @@ table > tbody > tr > td > a {
     padding-bottom: 15px;
     font-size: 18px;
 }
+/* *********************************************************************************************** */
 .footer {
-    background-color: #CCC;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #295E77;
+    /* 1st color: center, 2nd color: outside */
+    background-image: radial-gradient(        55% bottom, #137A9A, #022735);
+    background-image: -webkit-radial-gradient(55% bottom, #137A9A, #022735);
+    background-image: -moz-radial-gradient(   55% bottom, #137A9A, #022735);
+    background-image: -ms-radial-gradient(    50% bottom, #0AF, #000);
+    color: #FFF;
 }
 .ng-invalid.ng-dirty {
     color: red;
@@ -315,7 +324,7 @@ button.smallsizebutton:focus {
     border-bottom: #CCC solid 1px;
     background-color: inherit;
 }
-/* ad @-ms-keyframes ... */
+
 @keyframes flickerin {
     0%{opacity:0.4;} 35%{opacity:1;} 75%{opacity:0;} 100%{opacity:0.4;}
 }
@@ -350,10 +359,15 @@ button.smallsizebutton:focus {
     display: inline-block;
     width: 15%;
     height: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 #bar0 {
     height: 50%;
-    background-color: coral;
+    background-image: radial-gradient(        50% top, #FFF, coral);
+    background-image: -webkit-radial-gradient(50% top, #FFF, coral);
+    background-image: -moz-radial-gradient(   50% top, #FFF, coral);
+    background-image: -ms-radial-gradient(    50% top, #FFF, coral);
     animation: bulge 2s ease 0s infinite;
     -webkit-animation: bulge 2s ease 0s infinite;
     -moz-animation: bulge 2s ease 0s infinite;
@@ -369,11 +383,14 @@ button.smallsizebutton:focus {
 }
 #bar2 {
     height: 50%;
-    background-color: cornflowerblue;
+    background-image: radial-gradient(        50% top, #FFF, #0AF);
+    background-image: -webkit-radial-gradient(50% top, #FFF, #0AF);
+    background-image: -moz-radial-gradient(   50% top, #FFF, #0AF);
+    background-image: -ms-radial-gradient(    50% top, #FFF, #0AF);
     animation: bulge 6s ease 0s infinite;
     -webkit-animation: bulge 6s ease 0s infinite;
-    -moz-animation: bulge 2s ease 0s infinite;
-    -ms-animation: bulge 2s ease 0s infinite;
+    -moz-animation: bulge 6s ease 0s infinite;
+    -ms-animation: bulge 6s ease 0s infinite;
 }
 #bar3 {
     height: 60%;
@@ -385,11 +402,14 @@ button.smallsizebutton:focus {
 }
 #bar4 {
     height: 30%;
-    background-color:firebrick;
+    background-image: radial-gradient(        50% top, #FFF, firebrick);
+    background-image: -webkit-radial-gradient(50% top, #FFF, firebrick);
+    background-image: -moz-radial-gradient(   50% top, #FFF, firebrick);
+    background-image: -ms-radial-gradient(    50% top, #FFF, firebrick);
     animation: bulge 8s ease 0s infinite;
     -webkit-animation: bulge 8s ease 0s infinite;
-    -moz-animation: bulge 2s ease 0s infinite;
-    -ms-animation: bulge 2s ease 0s infinite;
+    -moz-animation: bulge 8s ease 0s infinite;
+    -ms-animation: bulge 8s ease 0s infinite;
 }
 
 #bar5 {

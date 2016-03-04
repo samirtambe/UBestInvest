@@ -172,23 +172,29 @@ angular.module('UBestInvest').controller('MarketCtrl',
 }]);
 
 angular.module('UBestInvest').controller('LearnCtrl',
-    ['$scope', 'HttpSvc', 'SpinnerSvc', function ($scope, HttpSvc, SpinnerSvc) {
+    ['$scope', '$firebaseArray','HttpSvc', 'SpinnerSvc',
+     function ($scope, $firebaseArray, HttpSvc, SpinnerSvc) {
 
         var spinner = SpinnerSvc.getSpinner();
 
         $scope.vocab = undefined;
 
-        HttpSvc.getVocab().then(function(data){
+        var vocabRef = new Firebase('https://ubestinvest.firebaseio.com/');
 
-            $scope.vocab = data;
+        $scope.vocab = $firebaseArray(vocabRef);
 
-        }).catch(function(error) {
-
-            console.log("LearnCtrl Catch:" + error);
-            spinner.stop();
-
-        }).finally(function() {
-            spinner.stop();
-        });
+// https://ubestinvest.firebaseio.com/#-JnlJKt1nIbUbxRlghat|6d4ac70b491d54af54a705f2a978d639
+//        HttpSvc.getVocab().then(function(data){
+//
+//            $scope.vocab = data;
+//
+//        }).catch(function(error) {
+//
+//            console.log("LearnCtrl Catch:" + error);
+//            spinner.stop();
+//
+//        }).finally(function() {
+//            spinner.stop();
+//        });
 
 }]);

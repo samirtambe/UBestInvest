@@ -27,9 +27,15 @@ p {
 .pgraphgaptop {
     margin-top: 25px;
 }
+
 .pgraphgapbottom {
     margin-bottom: 80px;
 }
+
+.articleabstract {
+    font-size: 14px;
+}
+
 .stocksymbol {
     font-family: monospace;
     color: firebrick;
@@ -55,6 +61,7 @@ p {
     }
 
 }
+
 table > tr > td,
 table > tr > td > a,
 table > tr > th,

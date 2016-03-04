@@ -12,7 +12,7 @@ angular.module('UBestInvest').filter('shorten', function() {
 
     return function (text, length) {
         if (isNaN(length)) {
-            length = 80;
+            length = 50;
         }
 
         // 3 is the length of "..."

@@ -97,7 +97,7 @@ angular.module('UBestInvest').controller('BizNewsCtrl', ['$scope', 'HttpSvc', 'S
 
     $scope.currentPage = 0;
 
-    $scope.pageSize = 7;
+    $scope.pageSize = 6;
 
     HttpSvc.getNewsBusiness().then(function(data) {
 

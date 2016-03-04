@@ -1,4 +1,4 @@
-angular.module('UBestInvest',['ui.router'])
+angular.module('UBestInvest',['ui.router','firebase'])
     .config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');

@@ -1,13 +1,14 @@
 <!--<div class="table-responsive">-->
 <div>
     <h4 class="marketheadings"
-        >Business News&nbsp;<i class="glyphicon glyphicon-new-window"></i></h4>
+        >Business Headlines</h4>
     <table  ng-if="bizarticles.length">
         <tbody>
             <tr ng-repeat="article in bizarticles | startFrom:currentPage*pageSize | limitTo:pageSize">
                 <td>
                     <a href="{{article.url}}"
-                       target="_blank">{{ article.title | shorten }} </a>
+                       target="_blank">{{ article.title }} </a><br />
+                    <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
                 </td>
             </tr>
         </tbody>

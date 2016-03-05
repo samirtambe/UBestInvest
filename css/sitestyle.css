@@ -360,10 +360,11 @@ button.smallsizebutton:focus {
 }
 #bar0 {
     height: 50%;
-    background-image: radial-gradient(        50% top, #FFF, coral);
-    background-image: -webkit-radial-gradient(50% top, #FFF, coral);
-    background-image: -moz-radial-gradient(   50% top, #FFF, coral);
-    background-image: -ms-radial-gradient(    50% top, #FFF, coral);
+    background: coral; /* for browsers that do not support gradients */
+    background: radial-gradient(        50% top, #FFF, coral);
+    background: -webkit-radial-gradient(50% top, #FFF, coral);
+    background: -moz-radial-gradient(   50% top, #FFF, coral);
+    background: -ms-radial-gradient(    50% top, #FFF, coral);
     animation: bulge 2s ease 0s infinite;
     -webkit-animation: bulge 2s ease 0s infinite;
     -moz-animation: bulge 2s ease 0s infinite;
@@ -379,10 +380,11 @@ button.smallsizebutton:focus {
 }
 #bar2 {
     height: 50%;
-    background-image: radial-gradient(        50% top, #FFF, #0AF);
-    background-image: -webkit-radial-gradient(50% top, #FFF, #0AF);
-    background-image: -moz-radial-gradient(   50% top, #FFF, #0AF);
-    background-image: -ms-radial-gradient(    50% top, #FFF, #0AF);
+    background: #0AF; /* for browsers that do not support gradients */
+    background: radial-gradient(        50% top, #FFF, #0AF);
+    background: -webkit-radial-gradient(50% top, #FFF, #0AF);
+    background: -moz-radial-gradient(   50% top, #FFF, #0AF);
+    background: -ms-radial-gradient(    50% top, #FFF, #0AF);
     animation: bulge 6s ease 0s infinite;
     -webkit-animation: bulge 6s ease 0s infinite;
     -moz-animation: bulge 6s ease 0s infinite;
@@ -398,10 +400,11 @@ button.smallsizebutton:focus {
 }
 #bar4 {
     height: 30%;
-    background-image: radial-gradient(        50% top, #FFF, firebrick);
-    background-image: -webkit-radial-gradient(50% top, #FFF, firebrick);
-    background-image: -moz-radial-gradient(   50% top, #FFF, firebrick);
-    background-image: -ms-radial-gradient(    50% top, #FFF, firebrick);
+    background: firebrick; /* for browsers that do not support gradients */
+    background: radial-gradient(        50% top, #FFF, firebrick);
+    background: -webkit-radial-gradient(50% top, #FFF, firebrick);
+    background: -moz-radial-gradient(   50% top, #FFF, firebrick);
+    background: -ms-radial-gradient(    50% top, #FFF, firebrick);
     animation: bulge 8s ease 0s infinite;
     -webkit-animation: bulge 8s ease 0s infinite;
     -moz-animation: bulge 8s ease 0s infinite;

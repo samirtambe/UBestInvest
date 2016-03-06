@@ -36,13 +36,6 @@ angular.module('UBestInvest').directive('stockGraph',['GraphSvc', function(Graph
 }]);
 
 
-
-
-/*************************************************************************************/
-
-
-
-
 angular.module('UBestInvest').directive('errorModal', [function() {
     return {
         templateUrl: 'views/invErrModal.html',
@@ -75,11 +68,42 @@ angular.module('UBestInvest').directive('errorModal', [function() {
 }]);
 
 
-
-angular.module('UBestInvest').directive('vocabListing', [function() {
+angular.module('UBestInvest').directive('newsBox', [function() {
     return {
-        templateUrl: 'views/vocab.html',
+
+        templateUrl: 'views/newsBox.html',
+
         restrict: 'E',
-        scope: { info: '='}
+
+        controller: 'NewsBoxCtrl',
+
+        scope: {
+            newstype: '='
+        },
+
+        link: function (scope, element, attrs) {
+
+            switch(attrs.newstype) {
+
+                case 'newsNational':
+                    scope.populateNewsBox('newsNational');
+                    break;
+                case 'newsWorld':
+                    scope.populateNewsBox('newsWorld');
+                    break;
+                case 'newsBusiness':
+                    scope.populateNewsBox('newsBusiness');
+                    break;
+                case 'newsRealEstate':
+                    scope.populateNewsBox('newsRealEstate');
+                    break;
+                case 'newsTech':
+                    scope.populateNewsBox('newsTech');
+                    break;
+                case 'newsSports':
+                    scope.populateNewsBox('newsSports');
+                    break;
+            }
+        }
     };
 }]);

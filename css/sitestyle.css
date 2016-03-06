@@ -75,9 +75,13 @@ table > tbody > tr > td > a {
 .footer {
     padding-top: 40px;
     padding-bottom: 40px;
+    background: #FFF; /* for browsers that do not support gradients */
     /* 1st color: center, 2nd color: outside */
-    background-color: #333;
-    color: #FFF;
+    background: radial-gradient(50% top, #FFF, #0AF);
+    background: -webkit-radial-gradient(50% top, #FFF, #0AF);
+    background: -moz-radial-gradient(50% top, #FFF, #0AF);
+    background: -ms-radial-gradient(50% top, #FFF, #0AF);
+    color: #000;
 }
 .ng-invalid.ng-dirty {
     color: red;

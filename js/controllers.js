@@ -209,6 +209,8 @@ angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'S
 
         spinner = SpinnerSvc.getSpinner();
 
+        $scope.headline = newsType.substr(4);
+
         HttpSvc.getNews(newsType).then(function(data) {
 
             switch(newsType) {

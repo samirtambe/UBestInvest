@@ -198,7 +198,8 @@ angular.module('UBestInvest').controller('LearnCtrl',
 angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'SpinnerSvc',
     function($scope, HttpSvc, SpinnerSvc) {
 
-    var spinner = undefined;
+    var spinner = undefined,
+        numOfArticles = undefined;
 
     $scope.currentPage = 0;
 
@@ -210,7 +211,38 @@ angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'S
 
         HttpSvc.getNews(newsType).then(function(data) {
 
-            $scope.bizarticles = data;
+            switch(newsType) {
+
+                case 'newsNational':
+                    $scope.newsNational = data;
+                    numOfArticles = $scope.newsNational.length;
+                    break;
+
+                case 'newsWorld':
+                    $scope.newsWorld = data;
+                    numOfArticles = $scope.newsWorld.length;
+                    break;
+
+                case 'newsBusiness':
+                    $scope.newsBusiness = data;
+                    numOfArticles = $scope.newsBusiness.length;
+                    break;
+
+                case 'newsRealEstate':
+                    $scope.newsRealEstate = data;
+                    numOfArticles = $scope.newsRealEstate.length;
+                    break;
+
+                case 'newsTech':
+                    $scope.newsTech = data;
+                    numOfArticles = $scope.newsTech.length;
+                    break;
+
+                case 'newsSports':
+                    $scope.newsSports = data;
+                    numOfArticles = $scope.newsSports.length;
+                    break;
+            }
 
         }).catch(function() {
 
@@ -219,9 +251,7 @@ angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'S
 
         }).finally(function() {
 
-            $scope.numberOfPages = function() {
-                return Math.ceil($scope.bizarticles.length/$scope.pageSize);
-            };
+            $scope.numberOfPages = function() {return Math.ceil(numOfArticles/$scope.pageSize);};
 
             spinner.stop();
         });

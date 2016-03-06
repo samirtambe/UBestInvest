@@ -1,5 +1,5 @@
 <div>
-    <h4 class="marketheadings">Business Headlines</h4>
+    <h4 class="marketheadings">{{ headline }} Headlines</h4>
     <table  ng-if="newsNational.length">
         <tr ng-repeat="article in newsNational | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>

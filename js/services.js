@@ -283,6 +283,10 @@ may have to normalize it on our end, as best we can. */
         return getData('stock', parm);
     }
 
+    function getNewsBusiness() {
+        return getData('newsBusiness', null);
+    }
+
     function getNews(newsType) {
         return getData(newsType, null);
     }
@@ -295,6 +299,7 @@ may have to normalize it on our end, as best we can. */
 
     return ({
         getNewsGraphData: getNewsGraphData,
+        getNewsBusiness: getNewsBusiness,
         getNews: getNews,
         getStockData: getStockData,
         getVocab: getVocab

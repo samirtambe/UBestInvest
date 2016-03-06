@@ -24,7 +24,18 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
             },
 /* * * * * * * * * * * * * * * * URLS OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
             urls = {
-                newsbusiness: 'http://api.nytimes.com/svc/topstories/v1/business',
+
+                newsNational:   'http://api.nytimes.com/svc/topstories/v1/national',
+
+                newsWorld:      'http://api.nytimes.com/svc/topstories/v1/world',
+
+                newsBusiness:   'http://api.nytimes.com/svc/topstories/v1/business',
+
+                newsRealEstate: 'http://api.nytimes.com/svc/topstories/v1/realestate',
+
+                newsTech:       'http://api.nytimes.com/svc/topstories/v1/technology',
+
+                newsSports:     'http://api.nytimes.com/svc/topstories/v1/sports',
 
                 stock: 'https://www.quandl.com/api/v3/datasets/WIKI/',
 
@@ -34,25 +45,51 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 sp500: 'https://www.quandl.com/api/v3/datasets/YAHOO/INDEX_GSPC.json',
 
-                vocab: 'http://ubitest.tambetech.com/rsc/vocab.json'
             },
 
 /* * * * * * * * * * * * * * * * HTTP OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
 
-            httpObj = { method: 'GET', url: '', params: {} },
+            httpObj = {
+                method: 'GET',
+                url: '',
+                params: {}
+            },
 
 /* * * * * * * * * * * * * * * * ERROR OBJECT * * * * * * * * * * * * * * * * * * * * * * * */
 
             errorObject={
-                details: null, apiErrCode: null, apiErrMsg: null, httpStatus: null
+                details: null,
+                apiErrCode: null,
+                apiErrMsg: null,
+                httpStatus: null
             };
 
 /* * * * * * * * * * * * * * * * URL PARAMETER CONSTRUCTION SWITCH * * * * * * * * * * * * * */
 
         switch(reqType) {
 
-            case 'newsbusiness':
-                httpObj.url = urls.newsbusiness + format + "?api-key=" +apiKeys.nytimes;
+            case 'newsNational':
+                httpObj.url = urls.newsNational + format + "?api-key=" +apiKeys.nytimes;
+                break;
+
+            case 'newsWorld':
+                httpObj.url = urls.newsWorld + format + "?api-key=" +apiKeys.nytimes;
+                break;
+
+            case 'newsBusiness':
+                httpObj.url = urls.newsBusiness + format + "?api-key=" +apiKeys.nytimes;
+                break;
+
+            case 'newsRealEstate':
+                httpObj.url = urls.newsRealEstate + format + "?api-key=" +apiKeys.nytimes;
+                break;
+
+            case 'newsTech':
+                httpObj.url = urls.newsTech + format + "?api-key=" +apiKeys.nytimes;
+                break;
+
+            case 'newsSports':
+                httpObj.url = urls.newsSports + format + "?api-key=" +apiKeys.nytimes;
                 break;
 
             case 'stock':
@@ -100,7 +137,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
             case 'vocab':
 
-                httpObj.url = urls.vocab;
+//                httpObj.url = urls.vocab;
                 break;
 
         }//SWITCH
@@ -116,7 +153,27 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                 switch (reqType) {
 
-                    case 'newsbusiness':
+                    case 'newsNational':
+                        retObj = response.data.results;
+                        break;
+
+                    case 'newsWorld':
+                        retObj = response.data.results;
+                        break;
+
+                    case 'newsBusiness':
+                        retObj = response.data.results;
+                        break;
+
+                    case 'newsRealEstate':
+                        retObj = response.data.results;
+                        break;
+
+                    case 'newsTech':
+                        retObj = response.data.results;
+                        break;
+
+                    case 'newsSports':
                         retObj = response.data.results;
                         break;
 
@@ -138,7 +195,7 @@ angular.module('UBestInvest').service('HttpSvc', ['$http', '$q', function($http,
 
                     case 'vocab':
 
-                        retObj = response.data.dict;
+//                        retObj = response.data.dict;
                         break;
                 }
 
@@ -198,7 +255,7 @@ may have to normalize it on our end, as best we can. */
     }//GET DATA
 
 /* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * */
-
+/*
     function getNewsGraphData (newsGraphType, parm) {
 
         switch (newsGraphType) {
@@ -215,15 +272,19 @@ may have to normalize it on our end, as best we can. */
                 return getData('sp500', parm);
                 break;
 
-        }//switch
-    }//getHomeGraphData
+        }
+    }
+*/
+    function getNewsGraphData (newsGraphType, parm) {
+        return getData(newsGraphType, parm);
+    }
 
-    function getStockData (parm) {
+    function getStockData(parm) {
         return getData('stock', parm);
     }
 
-    function getNewsBusiness () {
-        return getData('newsbusiness', null);
+    function getNews(newsType) {
+        return getData(newsType, null);
     }
 
     function getVocab() {
@@ -234,7 +295,7 @@ may have to normalize it on our end, as best we can. */
 
     return ({
         getNewsGraphData: getNewsGraphData,
-        getNewsBusiness: getNewsBusiness,
+        getNews: getNews,
         getStockData: getStockData,
         getVocab: getVocab
     });

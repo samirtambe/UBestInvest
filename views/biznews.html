@@ -1,7 +1,7 @@
 <!--<div class="table-responsive">-->
 <div>
-    <h4 class="marketheadings"
-        >Business Headlines</h4>
+    <h4 class="marketheadings">Business Headlines</h4>
+
     <table  ng-if="bizarticles.length">
         <tbody>
             <tr ng-repeat="article in bizarticles | startFrom:currentPage*pageSize | limitTo:pageSize">
@@ -31,3 +31,8 @@
     <div class="visible-sm"><img src="/img/poweredby_nytimes_150a.png"></div>
     <div class="visible-xs"><img src="/img/poweredby_nytimes_65a.png"></div>
 </div>
+<news-box newstype="newsNational"></news-box>
+<news-box newstype="newsWorld"></news-box>
+<news-box newstype="newsBusiness"></news-box>
+<news-box newstype="newsRealEstate"></news-box>
+

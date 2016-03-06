@@ -1,0 +1,32 @@
+<div>
+    <h4 class="marketheadings"
+        >Business Headlines</h4>
+    <table  ng-if="bizarticles.length">
+        <tbody>
+            <tr ng-repeat="article in bizarticles | startFrom:currentPage*pageSize | limitTo:pageSize">
+                <td>
+                    <a href="{{article.url}}"
+                       target="_blank">{{ article.title }} </a><br />
+                    <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <button class="smallsizebutton" ng-hide="currentPage == 0"
+            ng-click="currentPage = currentPage - 1">
+        <i class="glyphicon glyphicon-triangle-left"></i>
+    </button>
+    <span>{{currentPage+1}} of {{numberOfPages()}}</span>
+
+    <button class="smallsizebutton" ng-click="currentPage = currentPage + 1"
+            ng-hide="currentPage >= bizarticles.length/pageSize - 1">
+        <i class="glyphicon glyphicon-triangle-right"></i>
+    </button>
+
+    <div class="visible-md visible-lg"><img src="/img/poweredby_nytimes_200a.png"></div>
+    <div class="visible-sm"><img src="/img/poweredby_nytimes_150a.png"></div>
+    <div class="visible-xs"><img src="/img/poweredby_nytimes_65a.png"></div>
+</div>

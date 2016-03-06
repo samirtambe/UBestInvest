@@ -192,3 +192,38 @@ angular.module('UBestInvest').controller('LearnCtrl',
              spinner.stop();
          }
 }]);
+
+
+
+angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'SpinnerSvc',
+    function($scope, HttpSvc, SpinnerSvc) {
+
+    var spinner = undefined;
+
+    $scope.currentPage = 0;
+
+    $scope.pageSize = 6;
+
+    $scope.populateNewsBox = function(newsType) {
+
+        spinner = SpinnerSvc.getSpinner();
+
+        HttpSvc.getNews(newsType).then(function(data) {
+
+            $scope.bizarticles = data;
+
+        }).catch(function() {
+
+            console.log("NewsBoxCtrl Catch:" + error);
+            spinner.stop();
+
+        }).finally(function() {
+
+            $scope.numberOfPages = function() {
+                return Math.ceil($scope.bizarticles.length/$scope.pageSize);
+            };
+
+            spinner.stop();
+        });
+    }
+}]);

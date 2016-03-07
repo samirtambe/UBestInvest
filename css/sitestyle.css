@@ -41,6 +41,12 @@ p {
     color: firebrick;
     font-weight: bold;
 }
+
+.glyphParagraph {
+    font-size: 4em;
+    color: #0AF;
+}
+
 .help-block {
     color: red;
     background-color: bisque;

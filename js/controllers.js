@@ -177,8 +177,6 @@ angular.module('UBestInvest').controller('LearnCtrl',
 
          var spinner = SpinnerSvc.getSpinner();
 
-         $scope.vocab = undefined;
-
          try {
              var vocabRef = new Firebase('https://ubestinvest.firebaseio.com/dict');
 

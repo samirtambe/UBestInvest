@@ -43,8 +43,11 @@ p {
 }
 
 .glyphParagraph {
-    font-size: 4em;
+    font-size: 3em;
     color: #0AF;
+}
+.homeInfoBox {
+    height: 350px;
 }
 
 .help-block {

@@ -200,7 +200,7 @@ angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'S
         numOfArticles = undefined;
 
     $scope.currentPage = 0;
-console.log('NewsBoxCtrl...');
+
     $scope.pageSize = 6;
 
     $scope.populateNewsBox = function(newsType) {
@@ -251,7 +251,9 @@ console.log('NewsBoxCtrl...');
 
         }).finally(function() {
 
-            $scope.numberOfPages = function() {return Math.ceil(numOfArticles/$scope.pageSize);};
+            $scope.numberOfPages = function() {
+                return Math.ceil(numOfArticles/$scope.pageSize);
+            };
 
             spinner.stop();
         });

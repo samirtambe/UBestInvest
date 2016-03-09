@@ -255,26 +255,8 @@ may have to normalize it on our end, as best we can. */
     }//GET DATA
 
 /* * * * * * * * * * * * * * * * WRAPPER FUNCTIONS * * * * * * * * * * * * * * * * * * * * * */
-/*
-    function getNewsGraphData (newsGraphType, parm) {
 
-        switch (newsGraphType) {
 
-            case 'dowjones':
-                return getData('dowjones', parm);
-                break;
-
-            case 'nasdaq':
-                return getData('nasdaq', parm);
-                break;
-
-            case 'sp500':
-                return getData('sp500', parm);
-                break;
-
-        }
-    }
-*/
     function getNewsGraphData (newsGraphType, parm) {
         return getData(newsGraphType, parm);
     }

@@ -1,11 +1,11 @@
-<div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <h4 class="marketheadings">{{ headline }} Headlines</h4>
     <table  ng-if="newsNational.length">
         <tr ng-repeat="article in newsNational | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title }} </a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
+                   target="_blank">{{ article.title | shorten:50 }}</a><br />
+                <span class="articleabstract">{{ article.abstract | shorten:100 }}</span>
             </td>
         </tr>
     </table>
@@ -13,8 +13,8 @@
         <tr ng-repeat="article in newsWorld | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title }} </a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
+                   target="_blank">{{ article.title | shorten:50 }}</a><br />
+                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
@@ -22,8 +22,8 @@
         <tr ng-repeat="article in newsBusiness | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title }} </a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
+                   target="_blank">{{ article.title | shorten:50 }}</a><br />
+                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
@@ -31,8 +31,8 @@
         <tr ng-repeat="article in newsRealEstate | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title }} </a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
+                   target="_blank">{{ article.title | shorten:50 }}</a><br />
+                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
@@ -40,8 +40,8 @@
         <tr ng-repeat="article in newsTech | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title }} </a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
+                   target="_blank">{{ article.title | shorten:50 }}</a><br />
+                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
@@ -49,23 +49,24 @@
         <tr ng-repeat="article in newsSports | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title }} </a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:130 }}</span>
+                   target="_blank">{{ article.title | shorten:50 }}</a><br />
+                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
 
+    <div class="text-center">
+        <button class="smallsizebutton" ng-hide="currentPage == 0"
+                ng-click="currentPage = currentPage - 1">
+            <i class="glyphicon glyphicon-triangle-left"></i>
+        </button>
+        <span>{{currentPage+1}} of {{numberOfPages()}}</span>
+
+        <button class="smallsizebutton" ng-click="currentPage = currentPage + 1"
+                ng-hide="currentPage >= bizarticles.length/pageSize - 1">
+            <i class="glyphicon glyphicon-triangle-right"></i>
+        </button>
+    </div>
+
 </div>
 
-<div class="text-center">
-    <button class="smallsizebutton" ng-hide="currentPage == 0"
-            ng-click="currentPage = currentPage - 1">
-        <i class="glyphicon glyphicon-triangle-left"></i>
-    </button>
-    <span>{{currentPage+1}} of {{numberOfPages()}}</span>
-
-    <button class="smallsizebutton" ng-click="currentPage = currentPage + 1"
-            ng-hide="currentPage >= bizarticles.length/pageSize - 1">
-        <i class="glyphicon glyphicon-triangle-right"></i>
-    </button>
-</div>

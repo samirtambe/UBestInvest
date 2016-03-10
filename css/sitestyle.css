@@ -61,6 +61,9 @@ p {
 }
 .marketheadings {
     margin-bottom: 10px;
+    background-color: #EEE;
+
+    padding: 7px;
 }
 .markethdr {
     margin-bottom: 15px;
@@ -72,7 +75,6 @@ p {
     .markethdr {
         margin-top: 25px;
     }
-
 }
 
 table > tr > td,

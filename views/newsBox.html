@@ -1,5 +1,6 @@
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <h5 class="marketheadings">{{ headline }}</h5>
+    <div class="newsBoxBlock">
     <table  ng-if="newsNational.length">
         <tr ng-repeat="article in newsNational | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
@@ -70,6 +71,6 @@
         </button>
 
     </div>
-
+    </div>
 </div>
 

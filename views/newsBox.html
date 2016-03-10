@@ -56,16 +56,19 @@
     </table>
 
     <div class="text-center">
-        <button class="smallsizebutton" ng-hide="currentPage == 0"
+        <button class="smallsizebutton"
+                ng-hide="currentPage == 0"
                 ng-click="currentPage = currentPage - 1">
             <i class="glyphicon glyphicon-triangle-left"></i>
         </button>
-        <span>{{currentPage+1}} of {{numberOfPages()}}</span>
+        <span>{{ currentPage + 1 }} of {{ numberOfPages() }}</span>
 
-        <button class="smallsizebutton" ng-click="currentPage = currentPage + 1"
-                ng-hide="currentPage >= bizarticles.length/pageSize - 1">
+        <button class="smallsizebutton"
+                ng-click="currentPage = currentPage + 1"
+                ng-hide="currentPage >= numberOfPages() - 1">
             <i class="glyphicon glyphicon-triangle-right"></i>
         </button>
+
     </div>
 
 </div>

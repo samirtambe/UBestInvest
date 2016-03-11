@@ -5,9 +5,14 @@
     <table  ng-if="newsNational.length">
         <tr ng-repeat="article in newsNational | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
-                <a href="{{article.url}}"
-                   target="_blank">{{ article.title | shorten:50 }}</a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:100 }}</span>
+                <div class="newsTxt">
+                    <a class="newsUrl" href="{{article.url}}" target="_blank">{{ article.title }}</a>
+                    <br />
+                    <span class="newsAbstract">{{ article.abstract }}</span>
+                </div>
+                <div class="newsImg" ng-if="article.multimedia[0].url">
+                    <img alt="NY Times Image" ng-src="{{article.multimedia[0].url}}">
+                </div>
             </td>
         </tr>
     </table>
@@ -15,8 +20,8 @@
         <tr ng-repeat="article in newsWorld | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title | shorten:50 }}</a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
+                   target="_blank">{{ article.title }}</a><br />
+                <span class="articleabstract">{{ article.abstract }}</span>
             </td>
         </tr>
     </table>
@@ -24,8 +29,8 @@
         <tr ng-repeat="article in newsBusiness | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title | shorten:50 }}</a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
+                   target="_blank">{{ article.title }}</a><br />
+                <span class="articleabstract">{{ article.abstract }}</span>
             </td>
         </tr>
     </table>
@@ -33,8 +38,8 @@
         <tr ng-repeat="article in newsRealEstate | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title | shorten:50 }}</a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
+                   target="_blank">{{ article.title }}</a><br />
+                <span class="articleabstract">{{ article.abstract }}</span>
             </td>
         </tr>
     </table>
@@ -42,8 +47,8 @@
         <tr ng-repeat="article in newsTech | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title | shorten:50 }}</a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
+                   target="_blank">{{ article.title }}</a><br />
+                <span class="articleabstract">{{ article.abstract }}</span>
             </td>
         </tr>
     </table>
@@ -51,8 +56,8 @@
         <tr ng-repeat="article in newsSports | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
                 <a href="{{article.url}}"
-                   target="_blank">{{ article.title | shorten:50 }}</a><br />
-                <span class="articleabstract">{{ article.abstract | shorten:120 }}</span>
+                   target="_blank">{{ article.title }}</a><br />
+                <span class="articleabstract">{{ article.abstract }}</span>
             </td>
         </tr>
     </table>

@@ -31,6 +31,10 @@ p {
 .pgraphgapbottom {
     margin-bottom: 80px;
 }
+.newsWrapperDiv {
+/*    border: 1px solid #000;*/
+    height: 500px;
+}
 .newsCell {
     padding-left: 4px;
     padding-right: 4px;
@@ -44,13 +48,11 @@ p {
 .newsImg {
     float: left;
 }
-
 .stocksymbol {
     font-family: monospace;
     color: firebrick;
     font-weight: bold;
 }
-
 .glyphParagraph {
     font-size: 50px;
     color: #0AF;
@@ -74,9 +76,7 @@ p {
 
     padding: 7px;
 }
-.markethdr {
-    margin-bottom: 15px;
-}
+
 @media(max-width: 767px) {
     .marketheadings {
         margin-top: 10px;
@@ -85,6 +85,24 @@ p {
         margin-top: 25px;
     }
 }
+
+/****************** Biznews forward back buttons ********************/
+button.smallsizebutton {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #FFF;
+    color: #07A;
+    padding: 5px 12px 2px 12px;
+    border: 1px solid #888;
+    margin: 5px 8px 20px 8px;
+}
+
+.blquote {
+    background-color: lemonchiffon;
+    border-radius: 15px;
+    border-left-color: #07A;
+}
+/****************** Biznews forward back buttons ********************/
 
 table > tr > td,
 table > tr > td > a,
@@ -300,24 +318,7 @@ table > tbody > tr > td > a {
     text-shadow: 0 4px 3px rgba(0, 0, 0, .9);
 }
 
-/****************** Biznews forward back buttons ********************/
-button.smallsizebutton {
-    background-color: powderblue;
-    color: #000;
-    padding: 15px 20px 15px 20px;
-    font-weight: bold;
-    border: none;
-    margin: 5px 8px 20px 8px;
-}
 
-button.smallsizebutton:focus {
-/*    outline: none;*/
-}
-.blquote {
-    background-color: lemonchiffon;
-    border-radius: 15px;
-    border-left-color: #07A;
-}
 /* ************************************************************ */
 #xyAxis {
     height: 200px;

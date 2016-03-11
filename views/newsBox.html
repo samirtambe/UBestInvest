@@ -2,62 +2,70 @@
 
     <h5 class="marketheadings">{{ headline }}</h5>
 
-    <table  ng-if="newsNational.length">
+    <table ng-if="newsNational.length">
         <tr ng-repeat="article in newsNational | startFrom:currentPage*pageSize | limitTo:pageSize">
-            <td>
-                <div class="newsTxt">
-                    <a class="newsUrl" href="{{article.url}}" target="_blank">{{ article.title }}</a>
-                    <br />
-                    <span class="newsAbstract">{{ article.abstract }}</span>
-                </div>
-                <div class="newsImg" ng-if="article.multimedia[0].url">
-                    <img alt="NY Times Image" ng-src="{{article.multimedia[0].url}}">
-                </div>
+            <td >
+                <a class="newsUrl"
+                   href="{{article.url}}"
+                   target="_blank">{{ article.title  | shorten:60 }}</a>
+                <br />
+                <span class="newsAbstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
+
     <table  ng-if="newsWorld.length">
         <tr ng-repeat="article in newsWorld | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
-                <a href="{{article.url}}"
-                   target="_blank">{{ article.title }}</a><br />
-                <span class="articleabstract">{{ article.abstract }}</span>
+                <a class="newsUrl"
+                   href="{{article.url}}"
+                   target="_blank">{{ article.title | shorten:65 }}</a>
+                <br />
+                <span class="newsAbstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
     <table  ng-if="newsBusiness.length">
         <tr ng-repeat="article in newsBusiness | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
-                <a href="{{article.url}}"
-                   target="_blank">{{ article.title }}</a><br />
-                <span class="articleabstract">{{ article.abstract }}</span>
+                <a class="newsUrl"
+                   href="{{article.url}}"
+                   target="_blank">{{ article.title | shorten:65 }}</a>
+                <br />
+                <span class="newsAbstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
     <table  ng-if="newsRealEstate.length">
         <tr ng-repeat="article in newsRealEstate | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
-                <a href="{{article.url}}"
-                   target="_blank">{{ article.title }}</a><br />
-                <span class="articleabstract">{{ article.abstract }}</span>
+                <a class="newsUrl"
+                   href="{{article.url}}"
+                   target="_blank">{{ article.title | shorten:65 }}</a>
+                <br />
+                <span class="newsAbstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
     <table  ng-if="newsTech.length">
         <tr ng-repeat="article in newsTech | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
-                <a href="{{article.url}}"
-                   target="_blank">{{ article.title }}</a><br />
-                <span class="articleabstract">{{ article.abstract }}</span>
+                <a class="newsUrl"
+                   href="{{article.url}}"
+                   target="_blank">{{ article.title | shorten:65 }}</a>
+                <br />
+                <span class="newsAbstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>
     <table  ng-if="newsSports.length">
         <tr ng-repeat="article in newsSports | startFrom:currentPage*pageSize | limitTo:pageSize">
             <td>
-                <a href="{{article.url}}"
-                   target="_blank">{{ article.title }}</a><br />
-                <span class="articleabstract">{{ article.abstract }}</span>
+                <a class="newsUrl"
+                   href="{{article.url}}"
+                   target="_blank">{{ article.title | shorten:65 }}</a>
+                <br />
+                <span class="newsAbstract">{{ article.abstract | shorten:120 }}</span>
             </td>
         </tr>
     </table>

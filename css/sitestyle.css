@@ -31,9 +31,18 @@ p {
 .pgraphgapbottom {
     margin-bottom: 80px;
 }
-
-.articleabstract {
-    font-size: 14px;
+.newsCell {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.newsUrl {
+    font-size: 16px;
+}
+.newsAbstract {
+    font-size: 16px;
+}
+.newsImg {
+    float: left;
 }
 
 .stocksymbol {

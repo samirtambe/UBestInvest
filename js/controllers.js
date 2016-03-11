@@ -201,7 +201,7 @@ angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'S
 
     $scope.currentPage = 0;
 
-    $scope.pageSize = 6;
+    $scope.pageSize = 4;
 
     $scope.populateNewsBox = function(newsType) {
 

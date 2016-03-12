@@ -209,6 +209,10 @@ angular.module('UBestInvest').controller('NewsBoxCtrl', ['$scope', 'HttpSvc', 'S
 
         $scope.headline = newsType.substr(4);
 
+        if ($scope.headline == 'RealEstate') {
+            $scope.headline ='Real Estate';
+        }
+
         HttpSvc.getNews(newsType).then(function(data) {
 
             switch(newsType) {

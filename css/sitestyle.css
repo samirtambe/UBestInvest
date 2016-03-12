@@ -32,7 +32,6 @@ p {
     margin-bottom: 80px;
 }
 .newsWrapperDiv {
-/*    border: 1px solid #000;*/
     height: 500px;
 }
 .newsCell {
@@ -75,6 +74,16 @@ p {
     background-color: #EEE;
 
     padding: 7px;
+}
+@media(max-width: 549px) {
+    .newsWrapperDiv {
+        height: 650px;
+    }
+}
+@media(min-width: 992px) {
+    .newsWrapperDiv {
+        height: 600px;
+    }
 }
 
 @media(max-width: 767px) {

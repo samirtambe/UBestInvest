@@ -34,19 +34,23 @@ p {
 .newsWrapperDiv {
     height: 500px;
 }
-.newsCell {
-    padding-left: 4px;
-    padding-right: 4px;
+div.newsWrapperDiv > table {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .newsUrl {
-    font-size: 16px;
+    font-size: 18px;
+}
+.newsByWhom {
+    font-size: 12px;
+    color: #AAA;
 }
 .newsAbstract {
     font-size: 16px;
 }
-.newsImg {
-    float: left;
-}
+
+.newsImg { }
+
 .stocksymbol {
     font-family: monospace;
     color: firebrick;
@@ -69,10 +73,12 @@ p {
     background-color: bisque;
     padding: 10px 10px 10px 10px;
 }
+
 .marketheadings {
     margin-bottom: 10px;
-    background-color: #EEE;
-
+    background-color: #FFF;
+    color: #000;
+    border-bottom: 3px double #07A;
     padding: 7px;
 }
 @media(max-width: 549px) {

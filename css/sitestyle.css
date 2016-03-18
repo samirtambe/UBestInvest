@@ -2,16 +2,16 @@ html {
     font-size: 100%;
 }
 body {
-    font-family: 'Noto Sans', Tahoma, sans-serif;
+    font-family: 'Droid Sans', sans-serif;
 }
 
 h4 {
-    font-family: 'Fauna One', serif;
+    font-family: 'Droid Sans', sans-serif;
     font-size: 1.7em;
     color: #07A;
 }
 h5 {
-    font-family: 'Fauna One', serif;
+    font-family: 'Droid Sans', sans-serif;
     font-size: 1.6em;
     color: #000;
 }
@@ -194,7 +194,7 @@ table > tbody > tr > td > a {
 /******* Site Brand Logo **************/
 .navbar-default .navbar-brand {
     color: #FFF;
-    font-family: 'Fauna One', serif;
+    font-family: 'Droid Sans', sans-serif;
     font-size: 2em;
     animation: spacecreate 3s;
     -webkit-animation: spacecreate 3s;
@@ -211,7 +211,7 @@ table > tbody > tr > td > a {
 /******************* main top menu **********************/
 .navbar-default .navbar-nav > li > a {
     color: #FFF;
-    font-family: 'Fauna One', serif;
+    font-family: 'Droid Sans', sans-serif;
     font-size: 1.7em;
     text-align: center;
     background-color: transparent;

@@ -99,14 +99,6 @@ div.newsWrapperDiv > table {
     .markethdr {
         margin-top: 25px;
     }
-    .carousel-caption {
-        right: 15%;
-        top: 20px;
-        bottom: auto;
-        left: 15%;
-        font-size: 8px;
-        text-shadow: 0 3px 2px rgba(0, 0, 0, 1);
-    }
 }
 
 /****************** Biznews forward back buttons ********************/

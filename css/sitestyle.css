@@ -99,6 +99,14 @@ div.newsWrapperDiv > table {
     .markethdr {
         margin-top: 25px;
     }
+    .carousel-caption {
+        right: 15%;
+        top: 20px;
+        bottom: auto;
+        left: 15%;
+        font-size: 8px;
+        text-shadow: 0 3px 2px rgba(0, 0, 0, 1);
+    }
 }
 
 /****************** Biznews forward back buttons ********************/
@@ -163,12 +171,6 @@ table > tbody > tr > td > a {
 .navbar-brand > img {
     display: block;
 }
-@media (min-width: 768px) {
-  .navbar > .container .navbar-brand,
-  .navbar > .container-fluid .navbar-brand {
-    margin-left: -15px;
-  }
-}
 /* TOP MENU BAR BACKGROUND*/
 .navbar-default {
     background-color: #07A;
@@ -194,7 +196,7 @@ table > tbody > tr > td > a {
 /******* Site Brand Logo **************/
 .navbar-default .navbar-brand {
     color: #FFF;
-    font-family: 'Droid Sans', sans-serif;
+    font-family: 'Fauna One', serif;
     font-size: 2em;
     animation: spacecreate 3s;
     -webkit-animation: spacecreate 3s;
@@ -211,7 +213,7 @@ table > tbody > tr > td > a {
 /******************* main top menu **********************/
 .navbar-default .navbar-nav > li > a {
     color: #FFF;
-    font-family: 'Droid Sans', sans-serif;
+    font-family: 'Fauna One', serif;
     font-size: 1.7em;
     text-align: center;
     background-color: transparent;
@@ -268,6 +270,12 @@ table > tbody > tr > td > a {
 }
 
 @media (min-width: 768px) {
+
+    .navbar > .container .navbar-brand,
+    .navbar > .container-fluid .navbar-brand {
+        margin-left: -15px;
+    }
+
     .navbar-nav {
         float: left;
         margin: 0;
@@ -329,8 +337,7 @@ table > tbody > tr > td > a {
     bottom: auto;
     left: 15%;
     font-size: 18px;
-    font-weight: bold;
-    text-shadow: 0 4px 3px rgba(0, 0, 0, .9);
+    text-shadow: 0 3px 2px rgba(0, 0, 0, 1);
 }
 
 

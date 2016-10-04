@@ -141,13 +141,13 @@ angular.module('UBestInvest').directive('resize', ['$window',function($window) {
 /* -in index.html or finance.html put 'resize' broadcaster
    -in finance.html put 'elastic-div' attribute
 */
-angular.module('UBestInvest').directive('elasticDiv', [function() {
+angular.module('UBestInvest').directive('elasticDiv', ['GraphSvc',function(GraphSvc) {
     return {
         restrict: 'A',
         //template: '<div></div>',
         link: function(scope, element) {
             scope.$on('resize::resize', function() {
-                console.log('Receiving broadcast signal...');
+                console.log('Window Resize Detected...');
 /* ************************************ */
             var parentDiv = document.getElementById('stockChartDiv');
 

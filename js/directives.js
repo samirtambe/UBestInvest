@@ -124,7 +124,7 @@ angular.module('UBestInvest').directive('resize', ['$window',function($window) {
                 function sendBroadcast() {
 
                     scope.$broadcast('resize::resize');
-console.log('<-< ');
+console.log('Broadcasting...');
                 }
             }
 

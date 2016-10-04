@@ -148,7 +148,19 @@ angular.module('UBestInvest').directive('elasticDiv', [function() {
         link: function(scope, element) {
             scope.$on('resize::resize', function() {
                 console.log('Receiving broadcast signal...');
+/* ************************************ */
+            var parentDiv = document.getElementById('stockChartDiv');
 
+            try {
+                var childSVG = document.getElementById('theSVG');
+
+                parentDiv.removeChild(childSVG);
+
+                GraphSvc.createGraph('stocks', scope.graphData);
+            }
+            catch(error) {}
+
+/* ************************************ */
             });
         }
     };

@@ -107,3 +107,49 @@ angular.module('UBestInvest').directive('newsBox', [function() {
         }
     };
 }]);
+
+
+angular.module('UBestInvest').directive('resize', ['$window',function($window) {
+    return {
+        link: function(scope) {
+
+            var timeout=false, delay=650;
+
+            function onResize(e) {
+
+                clearTimeout(timeout);
+
+                timeout = setTimeout(sendBroadcast, delay);
+
+                function sendBroadcast() {
+
+                    scope.$broadcast('resize::resize');
+
+                }
+            }
+
+            function cleanUp() {
+                console.log('cleanup called...');
+                angular.element($window).off('resize', onResize);
+            }
+
+            angular.element($window).on('resize', onResize);
+
+            scope.$on('$destroy', cleanUp);
+        }
+    }
+}]);
+/* -in index.html or finance.html put 'resize' broadcaster
+   -in finance.html put 'elastic-div' attribute
+*/
+angular.module('UBestInvest').directive('elasticDiv', [function() {
+    return {
+        restrict: 'A',
+        //template: '<div></div>',
+        link: function(scope, element) {
+            scope.$on('resize::resize', function() {
+                console.log('Receiving broadcast signal...');
+            });
+        }
+    };
+}]);

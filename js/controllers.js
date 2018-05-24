@@ -178,9 +178,20 @@ angular.module('UBestInvest').controller('LearnCtrl',
          var spinner = SpinnerSvc.getSpinner();
 
          try {
-             var vocabRef = new Firebase('https://ubestinvest.firebaseio.com/dict');
+  // Initialize Firebase
+             var config = {
+                 apiKey: "AIzaSyDxn5vFQuWv9L3ST7Jk_7GCTxtksP-Ngzk",
+                 authDomain: "ubestinvest.firebaseapp.com",
+                 databaseURL: "https://ubestinvest.firebaseio.com",
+                 projectId: "ubestinvest",
+                 storageBucket: "ubestinvest.appspot.com",
+                 messagingSenderId: "138242128157"
+             };
 
-             $scope.vocab = $firebaseArray(vocabRef);
+             firebase.initializeApp(config);
+
+             var ref = firebase.database().ref();
+
          }
          catch (e) {
              spinner.stop();

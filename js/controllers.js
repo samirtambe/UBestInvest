@@ -190,9 +190,17 @@ angular.module('UBestInvest').controller('LearnCtrl',
 
              firebase.initializeApp(config);
 
-             var ref = firebase.database().ref();
+             var rf = firebase.database().ref('/dict');
 
-         }
+             $scope.vocab = [];
+             rf.once('value', function(snapshot) {
+                 snapshot.forEach(function(child) {
+                        $scope.vocab.push({word: child.val().word, meaning: child.val().meaning});
+                 });
+                 $scope.$digest();
+            });
+         } // TRY
+
          catch (e) {
              spinner.stop();
              console.log (e);

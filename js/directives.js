@@ -138,8 +138,9 @@ angular.module('UBestInvest').directive('resize', ['$window',function($window) {
         }
     }
 }]);
-/* -in index.html or finance.html put 'resize' broadcaster
-   -in finance.html put 'elastic-div' attribute
+/*
+   -in index.html 'resize' broadcaster in the BODY tag
+   -in finance.html put 'elastic-div' attribute for DIV id=stockChartDiv
 */
 angular.module('UBestInvest').directive('elasticDiv', ['GraphSvc',function(GraphSvc) {
     return {

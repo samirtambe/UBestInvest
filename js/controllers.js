@@ -8,7 +8,9 @@ angular.module('UBestInvest').controller('ResearchCtrl',
 
     $scope.pair = undefined;
 
-    $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
+//    $scope.durations = ['1 Week','1 Month','3 Months','6 Months','1 Year','5 Years'];
+    $scope.durations = ['3 Months','6 Months','1 Year','5 Years'];
+
 
     $scope.reqParams = {
 

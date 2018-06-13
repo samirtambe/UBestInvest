@@ -187,9 +187,10 @@ angular.module('UBestInvest').controller('LearnCtrl',
                  storageBucket: "ubestinvest.appspot.com",
                  messagingSenderId: "138242128157"
              };
+             if (!firebase.apps.length) {
 
-             firebase.initializeApp(config);
-
+                firebase.initializeApp(config);
+             }
              var rf = firebase.database().ref('/dict');
 
              $scope.vocab = [];

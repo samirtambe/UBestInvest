@@ -313,7 +313,7 @@ angular.module('UBestInvest').service('DateSvc', [function() {
                     var d2= new Date(now.getTime() - (24*60*60*1000  *  NUM_OF_DAYS ));
 */
         switch(scope.reqParams.duration) {
-
+/*
             case dur[0]:
                 retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 7));
                 break;
@@ -321,25 +321,25 @@ angular.module('UBestInvest').service('DateSvc', [function() {
             case dur[1]:
                 retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 31));
                 break;
-
-            case dur[2]:
+*/
+            case dur[0]:
                 retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 93));
                 break;
 
-            case dur[3]:
+            case dur[1]:
                 retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 186));
                 break;
 
-            case dur[4]:
+            case dur[2]:
                 retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 366));
                 break;
 
-            case dur[5]:
+            case dur[3]:
                 retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 1827));
                 break;
 
             default:
-                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 7));
+                retStartDate = new Date(scope.reqParams.todayDate.getTime() - (oneDayMS * 93));
         }
         return retStartDate;
     }

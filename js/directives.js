@@ -113,7 +113,7 @@ angular.module('UBestInvest').directive('resize', ['$window',function($window) {
     return {
         link: function(scope) {
 
-            var timeout=false, delay=650;
+            var timeout=false, delay=50;//650
 
             function onResize(e) {
 
